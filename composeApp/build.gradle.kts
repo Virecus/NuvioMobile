@@ -302,6 +302,10 @@ afterEvaluate {
     dependencies {
         add("fullImplementation", files("libs/quickjs-kt-android-1.0.5-nuvio.aar"))
         add("fullImplementation", libs.ksoup)
+        add("fullImplementation", "com.github.recloudstream.cloudstream:library:v4.7.0") {
+            isTransitive = false
+        }
+        add("fullImplementation", libs.conscrypt.android)
     }
 }
 

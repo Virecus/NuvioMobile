@@ -284,7 +284,7 @@
     <string name="collections_pinned">Sabitlendi</string>
     <string name="collections_tab_all">Tümü</string>
     <string name="collections_your_collections">Koleksiyonların</string>
-    <string name="compose_about_made_with">Tapframe ve arkadaşları tarafından ❤️ ile yapıldı</string>
+    <string name="compose_about_made_with">Virecus tarafından ❤️ ile yapıldı</string>
     <string name="compose_about_version_format">Sürüm %1$s (%2$s)</string>
     <string name="compose_action_off">Kapalı</string>
     <string name="compose_action_on">Açık</string>
@@ -308,6 +308,7 @@
     <string name="compose_catalog_subtitle_trakt_library">Trakt kitaplığı</string>
     <string name="compose_nav_home">Ana sayfa</string>
     <string name="compose_nav_library">Kitaplık</string>
+    <string name="compose_nav_live_tv">Canlı TV</string>
     <string name="compose_nav_profile">Profil</string>
     <string name="compose_nav_search">Ara</string>
     <string name="compose_player_audio_tracks">Ses parçaları</string>
@@ -1413,4 +1414,42 @@
     </plurals>
     <string name="cw_new_episode">Yeni Bölüm</string>
     <string name="cw_new_season">Yeni Sezon</string>
+
+    <string name="license_title">Lisans Aktivasyonu</string>
+    <string name="license_subtitle">Royal\'ı aktive etmek için lisans anahtarınızı girin.</string>
+    <string name="license_code_placeholder">Lisans anahtarı</string>
+    <string name="license_activate">Aktive et</string>
+    <string name="license_clear">Temizle</string>
+    <string name="license_loading">Doğrulanıyor…</string>
+    <string name="license_loading_subtitle">Lisansınız kontrol ediliyor, lütfen bekleyin.</string>
+    <string name="license_missing_title">Lisans Anahtarı Yok</string>
+    <string name="license_missing_subtitle">Uygulamayı aktive etmek için lisans anahtarınızı girin.</string>
+    <string name="license_invalid_title">Geçersiz Anahtar</string>
+    <string name="license_invalid_subtitle">Bu lisans anahtarı bulunamadı. Lütfen kontrol edip tekrar deneyin.</string>
+    <string name="license_expired_title">Lisans Süresi Doldu</string>
+    <string name="license_expired_subtitle">Lisansınızın süresi %1$s tarihinde doldu.</string>
+    <string name="license_not_started_title">Lisans Henüz Aktif Değil</string>
+    <string name="license_not_started_subtitle">Lisansınız %1$s tarihinde başlayacak.</string>
+    <string name="license_valid_title">Lisans Aktif</string>
+    <string name="license_valid_subtitle">%1$s gün kaldı · %2$s\'de sona eriyor</string>
+    <string name="license_network_error_title">Ağ Hatası</string>
+    <string name="license_network_error_subtitle">Lisans sunucusuna ulaşılamadı. Bağlantınızı kontrol edip tekrar deneyin.</string>
+    <string name="license_account_mismatch_title">Hesap Uyuşmazlığı</string>
+    <string name="license_account_mismatch_subtitle">Bu lisans başka bir hesaba ait. Doğru e-posta ile giriş yapın.</string>
+    <string name="license_account_required_subtitle">Bu lisansla ilişkili hesapla giriş yapın.</string>
+    <string name="license_signed_in_as">%1$s olarak giriş yapıldı</string>
+    <string name="license_switch_account">Hesap değiştir</string>
+    <string name="license_gate_hint">Royal\'a erişmek için geçerli bir lisans ve hesap gereklidir.</string>
+    <string name="license_account_section_title">Hesap</string>
+    <string name="license_account_section_subtitle">Lisansınızı doğrulamak için giriş yapın.</string>
+    <string name="extra_settings_section_general">Genel</string>
+    <string name="extra_settings_live_tv_title">Canlı TV</string>
+    <string name="extra_settings_live_tv_subtitle">Canlı TV sekmesini göster</string>
+    <string name="extra_settings_translate_trakt_title">Trakt Yorumlarını Çevir</string>
+    <string name="extra_settings_translate_trakt_subtitle">Trakt yorumlarını Türkçeye otomatik çevir</string>
+    <string name="extra_settings_developer_mode_title">Geliştirici Ayarları</string>
+    <string name="extra_settings_developer_mode_subtitle">Gelişmiş ayarları ve gizli seçenekleri göster</string>
+    <string name="compose_settings_page_extra">Ek Ayarlar</string>
+    <string name="compose_settings_root_extra_description">Özel özellikler ve ek seçenekler</string>
+    <string name="compose_settings_root_extra_section">Ek Ayarlar</string>
 </resources>

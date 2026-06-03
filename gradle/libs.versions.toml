@@ -76,6 +76,7 @@ quickjs-kt = { module = "io.github.dokar3:quickjs-kt", version.ref = "quickjsKt"
 ksoup = { module = "com.fleeksoft.ksoup:ksoup", version.ref = "ksoup" }
 reorderable = { module = "sh.calvin.reorderable:reorderable", version.ref = "reorderable" }
 desugar-jdk-libs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugarJdkLibs" }
+conscrypt-android = { group = "org.conscrypt", name = "conscrypt-android", version = "2.5.2" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

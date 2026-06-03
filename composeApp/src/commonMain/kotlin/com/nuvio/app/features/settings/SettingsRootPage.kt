@@ -49,7 +49,9 @@ import nuvio.composeapp.generated.resources.compose_settings_root_trakt_descript
 import nuvio.composeapp.generated.resources.compose_settings_root_about_section
 import nuvio.composeapp.generated.resources.compose_settings_root_account_section
 import nuvio.composeapp.generated.resources.compose_settings_page_content_discovery
+import nuvio.composeapp.generated.resources.compose_settings_page_extra
 import nuvio.composeapp.generated.resources.compose_settings_page_trakt
+import nuvio.composeapp.generated.resources.compose_settings_root_extra_description
 import nuvio.composeapp.generated.resources.settings_playback_subtitle
 import nuvio.composeapp.generated.resources.about_supporters_contributors_subtitle
 import nuvio.composeapp.generated.resources.about_licenses_attributions_subtitle
@@ -70,6 +72,8 @@ internal fun LazyListScope.settingsRootContent(
     onDownloadsClick: () -> Unit,
     onAccountClick: () -> Unit,
     onSwitchProfileClick: (() -> Unit)? = null,
+    onExtraSettingsClick: () -> Unit = {},
+    extraSettings: ExtraSettings = ExtraSettings(),
     showAccountSection: Boolean = true,
     showGeneralSection: Boolean = true,
     showAboutSection: Boolean = true,
@@ -124,14 +128,16 @@ internal fun LazyListScope.settingsRootContent(
                         isTablet = isTablet,
                         onClick = onAppearanceClick,
                     )
-                    SettingsGroupDivider(isTablet = isTablet)
-                    SettingsNavigationRow(
-                        title = stringResource(Res.string.compose_settings_page_content_discovery),
-                        description = stringResource(Res.string.compose_settings_root_content_discovery_description),
-                        icon = Icons.Rounded.Extension,
-                        isTablet = isTablet,
-                        onClick = onContentDiscoveryClick,
-                    )
+                    if (extraSettings.developerMode) {
+                        SettingsGroupDivider(isTablet = isTablet)
+                        SettingsNavigationRow(
+                            title = stringResource(Res.string.compose_settings_page_content_discovery),
+                            description = stringResource(Res.string.compose_settings_root_content_discovery_description),
+                            icon = Icons.Rounded.Extension,
+                            isTablet = isTablet,
+                            onClick = onContentDiscoveryClick,
+                        )
+                    }
                     SettingsGroupDivider(isTablet = isTablet)
                     SettingsNavigationRow(
                         title = stringResource(Res.string.compose_settings_root_downloads_title),
@@ -148,22 +154,24 @@ internal fun LazyListScope.settingsRootContent(
                         isTablet = isTablet,
                         onClick = onPlaybackClick,
                     )
-                    SettingsGroupDivider(isTablet = isTablet)
-                    SettingsNavigationRow(
-                        title = stringResource(Res.string.compose_settings_page_streams),
-                        description = stringResource(Res.string.compose_settings_root_streams_description),
-                        icon = Icons.Rounded.Style,
-                        isTablet = isTablet,
-                        onClick = onStreamsClick,
-                    )
-                    SettingsGroupDivider(isTablet = isTablet)
-                    SettingsNavigationRow(
-                        title = stringResource(Res.string.compose_settings_page_integrations),
-                        description = stringResource(Res.string.compose_settings_root_integrations_description),
-                        icon = Icons.Rounded.Link,
-                        isTablet = isTablet,
-                        onClick = onIntegrationsClick,
-                    )
+                    if (extraSettings.developerMode) {
+                        SettingsGroupDivider(isTablet = isTablet)
+                        SettingsNavigationRow(
+                            title = stringResource(Res.string.compose_settings_page_streams),
+                            description = stringResource(Res.string.compose_settings_root_streams_description),
+                            icon = Icons.Rounded.Style,
+                            isTablet = isTablet,
+                            onClick = onStreamsClick,
+                        )
+                        SettingsGroupDivider(isTablet = isTablet)
+                        SettingsNavigationRow(
+                            title = stringResource(Res.string.compose_settings_page_integrations),
+                            description = stringResource(Res.string.compose_settings_root_integrations_description),
+                            icon = Icons.Rounded.Link,
+                            isTablet = isTablet,
+                            onClick = onIntegrationsClick,
+                        )
+                    }
                     SettingsGroupDivider(isTablet = isTablet)
                     SettingsNavigationRow(
                         title = stringResource(Res.string.compose_settings_page_notifications),
@@ -183,21 +191,24 @@ internal fun LazyListScope.settingsRootContent(
                 isTablet = isTablet,
             ) {
                 SettingsGroup(isTablet = isTablet) {
-                    SettingsNavigationRow(
-                        title = stringResource(Res.string.compose_settings_page_supporters_contributors),
-                        description = stringResource(Res.string.about_supporters_contributors_subtitle),
-                        icon = Icons.Rounded.Favorite,
-                        isTablet = isTablet,
-                        onClick = onSupportersContributorsClick,
-                    )
-                    SettingsGroupDivider(isTablet = isTablet)
-                    SettingsNavigationRow(
-                        title = stringResource(Res.string.compose_settings_page_licenses_attributions),
-                        description = stringResource(Res.string.about_licenses_attributions_subtitle),
-                        icon = Icons.Rounded.Info,
-                        isTablet = isTablet,
-                        onClick = onLicensesAttributionsClick,
-                    )
+                    if (extraSettings.developerMode) {
+                        SettingsNavigationRow(
+                            title = stringResource(Res.string.compose_settings_page_supporters_contributors),
+                            description = stringResource(Res.string.about_supporters_contributors_subtitle),
+                            icon = Icons.Rounded.Favorite,
+                            isTablet = isTablet,
+                            onClick = onSupportersContributorsClick,
+                        )
+                        SettingsGroupDivider(isTablet = isTablet)
+                        SettingsNavigationRow(
+                            title = stringResource(Res.string.compose_settings_page_licenses_attributions),
+                            description = stringResource(Res.string.about_licenses_attributions_subtitle),
+                            icon = Icons.Rounded.Info,
+                            isTablet = isTablet,
+                            onClick = onLicensesAttributionsClick,
+                        )
+                        SettingsGroupDivider(isTablet = isTablet)
+                    }
                     if (onCheckForUpdatesClick != null) {
                         SettingsGroupDivider(isTablet = isTablet)
                         SettingsNavigationRow(
@@ -208,6 +219,14 @@ internal fun LazyListScope.settingsRootContent(
                             onClick = onCheckForUpdatesClick,
                         )
                     }
+                    SettingsGroupDivider(isTablet = isTablet)
+                    SettingsNavigationRow(
+                        title = stringResource(Res.string.compose_settings_page_extra),
+                        description = stringResource(Res.string.compose_settings_root_extra_description),
+                        icon = Icons.Rounded.Extension,
+                        isTablet = isTablet,
+                        onClick = onExtraSettingsClick,
+                    )
                 }
             }
         }

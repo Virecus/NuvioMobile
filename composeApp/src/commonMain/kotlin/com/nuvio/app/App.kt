@@ -28,6 +28,7 @@ import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Tv
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -101,7 +102,10 @@ import com.nuvio.app.core.ui.NativeNavigationTab
 import com.nuvio.app.core.ui.NativeTabBridge
 import com.nuvio.app.core.ui.isLiquidGlassNativeTabBarSupported
 import com.nuvio.app.core.ui.localizedContinueWatchingSubtitle
-import com.nuvio.app.features.auth.AuthScreen
+import com.nuvio.app.features.license.LicenseScreen
+import com.nuvio.app.features.livetv.LiveTvScreen
+import com.nuvio.app.core.license.LicenseManager
+import com.nuvio.app.core.license.LicenseStatus
 import com.nuvio.app.features.addons.AddonRepository
 import com.nuvio.app.features.catalog.CatalogRepository
 import com.nuvio.app.features.catalog.CatalogScreen
@@ -213,6 +217,7 @@ import nuvio.composeapp.generated.resources.compose_catalog_subtitle_library
 import nuvio.composeapp.generated.resources.compose_catalog_subtitle_trakt_library
 import nuvio.composeapp.generated.resources.compose_nav_home
 import nuvio.composeapp.generated.resources.compose_nav_library
+import nuvio.composeapp.generated.resources.compose_nav_live_tv
 import nuvio.composeapp.generated.resources.compose_nav_profile
 import nuvio.composeapp.generated.resources.compose_nav_search
 import nuvio.composeapp.generated.resources.sidebar_library
@@ -316,6 +321,7 @@ enum class AppScreenTab {
     Home,
     Search,
     Library,
+    LiveTv,
     Settings,
 }
 
@@ -323,6 +329,7 @@ private fun AppScreenTab.toNativeNavigationTab(): NativeNavigationTab = when (th
     AppScreenTab.Home -> NativeNavigationTab.Home
     AppScreenTab.Search -> NativeNavigationTab.Search
     AppScreenTab.Library -> NativeNavigationTab.Library
+    AppScreenTab.LiveTv -> NativeNavigationTab.Settings
     AppScreenTab.Settings -> NativeNavigationTab.Settings
 }
 
@@ -344,7 +351,7 @@ private fun PlayerLaunch.toExternalPlayerPlaybackRequest(): ExternalPlayerPlayba
 
 private enum class AppGateScreen {
     Loading,
-    Auth,
+    License,
     ProfileSelection,
     ProfileEdit,
     Main,
@@ -454,14 +461,14 @@ fun App() {
                         enterProfileGate(cachedProfiles, syncOnEnter = false)
                     } else {
                         ProfileRepository.clearInMemory()
-                        gateScreen = AppGateScreen.Auth.name
+                        gateScreen = AppGateScreen.License.name
                     }
                 }
                 is AuthState.Authenticated -> {
                     val authenticatedState = authState as AuthState.Authenticated
                     ProfileRepository.ensureLoaded(authenticatedState.userId)
-                    if (gateScreen == AppGateScreen.Loading.name || gateScreen == AppGateScreen.Auth.name) {
-                        enterProfileGate(ProfileRepository.state.value.profiles, syncOnEnter = true)
+                    if (gateScreen == AppGateScreen.Loading.name) {
+                        gateScreen = AppGateScreen.License.name
                     }
                 }
             }
@@ -471,6 +478,15 @@ fun App() {
             val authenticatedState = authState as? AuthState.Authenticated ?: return@LaunchedEffect
             ProfileRepository.ensureLoaded(authenticatedState.userId)
             ProfileRepository.pullProfiles()
+        }
+
+        LaunchedEffect(Unit) {
+            LicenseManager.status.collect { licenseStatus ->
+                if (licenseStatus is LicenseStatus.Valid && gateScreen == AppGateScreen.License.name) {
+                    val authenticatedState = authState as? AuthState.Authenticated ?: return@collect
+                    enterProfileGate(ProfileRepository.state.value.profiles, syncOnEnter = true)
+                }
+            }
         }
 
         LaunchedEffect(gateScreen, autoSkipProfileSelection, profileState.profiles) {
@@ -506,8 +522,8 @@ fun App() {
                         CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
                     }
                 }
-                AppGateScreen.Auth.name -> {
-                    AuthScreen(modifier = Modifier.fillMaxSize())
+                AppGateScreen.License.name -> {
+                    LicenseScreen(modifier = Modifier.fillMaxSize())
                 }
                 AppGateScreen.ProfileSelection.name -> {
                     PlatformBackHandler(enabled = gateScreen == AppGateScreen.ProfileSelection.name) {
@@ -613,6 +629,10 @@ private fun MainAppContent(
         }.collectAsStateWithLifecycle()
         val authState by AuthRepository.state.collectAsStateWithLifecycle()
         val profileState by ProfileRepository.state.collectAsStateWithLifecycle()
+    val extraSettings by remember {
+        com.nuvio.app.features.settings.ExtraSettingsRepository.ensureLoaded()
+        com.nuvio.app.features.settings.ExtraSettingsRepository.uiState
+    }.collectAsStateWithLifecycle()
     val playerSettingsUiState by remember {
         PlayerSettingsRepository.ensureLoaded()
         PlayerSettingsRepository.uiState
@@ -658,7 +678,14 @@ private fun MainAppContent(
                 searchScrollToTopRequests.tryEmit(Unit)
             }
             AppScreenTab.Library -> libraryScrollToTopRequests.tryEmit(Unit)
+            AppScreenTab.LiveTv -> Unit
             AppScreenTab.Settings -> settingsRootActionRequests.tryEmit(Unit)
+        }
+    }
+
+    LaunchedEffect(extraSettings.liveTvEnabled) {
+        if (!extraSettings.liveTvEnabled && selectedTab == AppScreenTab.LiveTv) {
+            selectedTab = AppScreenTab.Home
         }
     }
 
@@ -1310,6 +1337,14 @@ private fun MainAppContent(
                                             icon = Res.drawable.sidebar_library,
                                             contentDescription = stringResource(Res.string.compose_nav_library),
                                         )
+                                        if (extraSettings.liveTvEnabled) {
+                                            NavItem(
+                                                selected = selectedTab == AppScreenTab.LiveTv,
+                                                onClick = { handleRootTabClick(AppScreenTab.LiveTv) },
+                                                icon = Icons.Filled.Tv,
+                                                contentDescription = stringResource(Res.string.compose_nav_live_tv),
+                                            )
+                                        }
                                         NavItem(
                                             selected = selectedTab == AppScreenTab.Settings,
                                             onClick = { handleRootTabClick(AppScreenTab.Settings) },
@@ -1422,6 +1457,20 @@ private fun MainAppContent(
                                             requestedSettingsPageName = null
                                         },
                                         onInitialHomeContentRendered = { initialHomeReady = true },
+                                        onLiveTvPlay = { title, url ->
+                                            val launch = PlayerLaunch(
+                                                title = title,
+                                                sourceUrl = url,
+                                                streamTitle = title,
+                                                providerName = "Canlı TV",
+                                                contentType = "live",
+                                                videoId = url,
+                                                parentMetaId = url,
+                                                parentMetaType = "live",
+                                            )
+                                            val launchId = PlayerLaunchStore.put(launch)
+                                            navController.navigate(PlayerRoute(launchId = launchId))
+                                        },
                                     )
                                 }
 
@@ -2780,6 +2829,7 @@ private fun AppTabHost(
     requestedSettingsPageName: String? = null,
     onRequestedSettingsPageConsumed: () -> Unit = {},
     onInitialHomeContentRendered: () -> Unit = {},
+    onLiveTvPlay: ((title: String, url: String) -> Unit)? = null,
 ) {
     val tabStateHolder = rememberSaveableStateHolder()
 
@@ -2820,6 +2870,13 @@ private fun AppTabHost(
                         onSectionViewAllClick = onLibrarySectionViewAllClick,
                         onCloudFilePlay = onCloudFilePlay,
                         onConnectCloudClick = onConnectCloudClick,
+                    )
+                }
+
+                AppScreenTab.LiveTv -> {
+                    LiveTvScreen(
+                        modifier = Modifier.fillMaxSize(),
+                        onPlay = { title, url -> onLiveTvPlay?.invoke(title, url) },
                     )
                 }
 

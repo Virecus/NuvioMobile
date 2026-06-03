@@ -194,6 +194,10 @@ fun SettingsScreen(
             EpisodeReleaseNotificationsRepository.ensureLoaded()
             EpisodeReleaseNotificationsRepository.uiState
         }.collectAsStateWithLifecycle()
+        val extraSettings by remember {
+            ExtraSettingsRepository.ensureLoaded()
+            ExtraSettingsRepository.uiState
+        }.collectAsStateWithLifecycle()
 
         LaunchedEffect(homescreenCatalogRefreshKey) {
             if (homescreenCatalogRefreshKey.isEmpty()) return@LaunchedEffect
@@ -281,6 +285,7 @@ fun SettingsScreen(
                 metaScreenSettingsUiState = metaScreenSettingsUiState,
                 continueWatchingPreferencesUiState = continueWatchingPreferencesUiState,
                 posterCardStyleUiState = posterCardStyleUiState,
+                extraSettings = extraSettings,
                 onSwitchProfile = onSwitchProfile,
                 onDownloadsClick = onDownloadsClick,
                 onSupportersContributorsClick = onSupportersContributorsClick,
@@ -330,6 +335,7 @@ fun SettingsScreen(
                 metaScreenSettingsUiState = metaScreenSettingsUiState,
                 continueWatchingPreferencesUiState = continueWatchingPreferencesUiState,
                 posterCardStyleUiState = posterCardStyleUiState,
+                extraSettings = extraSettings,
                 onSwitchProfile = onSwitchProfile,
                 onHomescreenClick = onHomescreenClick,
                 onMetaScreenClick = onMetaScreenClick,
@@ -389,6 +395,7 @@ private fun MobileSettingsScreen(
     metaScreenSettingsUiState: MetaScreenSettingsUiState,
     continueWatchingPreferencesUiState: ContinueWatchingPreferencesUiState,
     posterCardStyleUiState: PosterCardStyleUiState,
+    extraSettings: ExtraSettings,
     onSwitchProfile: (() -> Unit)? = null,
     onHomescreenClick: () -> Unit = {},
     onMetaScreenClick: () -> Unit = {},
@@ -506,6 +513,8 @@ private fun MobileSettingsScreen(
                             onDownloadsClick = onDownloadsClick,
                             onAccountClick = onAccountClick,
                             onSwitchProfileClick = onSwitchProfile,
+                            onExtraSettingsClick = { onPageChange(SettingsPage.Extra) },
+                            extraSettings = extraSettings,
                         )
                     }
                 }
@@ -618,6 +627,10 @@ private fun MobileSettingsScreen(
                     commentsEnabled = traktCommentsEnabled,
                     onCommentsEnabledChange = TraktCommentsSettings::setEnabled,
                 )
+                SettingsPage.Extra -> extraSettingsContent(
+                    isTablet = false,
+                    uiState = extraSettings,
+                )
             }
         }
     }
@@ -707,6 +720,7 @@ private fun TabletSettingsScreen(
     metaScreenSettingsUiState: MetaScreenSettingsUiState,
     continueWatchingPreferencesUiState: ContinueWatchingPreferencesUiState,
     posterCardStyleUiState: PosterCardStyleUiState,
+    extraSettings: ExtraSettings,
     onSwitchProfile: (() -> Unit)? = null,
     onDownloadsClick: () -> Unit = {},
     onSupportersContributorsClick: () -> Unit = {},
@@ -879,6 +893,8 @@ private fun TabletSettingsScreen(
                                 onDownloadsClick = onDownloadsClick,
                                 onAccountClick = { openInlinePage(SettingsPage.Account) },
                                 onSwitchProfileClick = onSwitchProfile,
+                                onExtraSettingsClick = { openInlinePage(SettingsPage.Extra) },
+                                extraSettings = extraSettings,
                                 showAccountSection = activeCategory == SettingsCategory.Account,
                                 showGeneralSection = activeCategory == SettingsCategory.General,
                                 showAboutSection = activeCategory == SettingsCategory.About,
@@ -993,6 +1009,10 @@ private fun TabletSettingsScreen(
                         settingsUiState = traktSettingsUiState,
                         commentsEnabled = traktCommentsEnabled,
                         onCommentsEnabledChange = TraktCommentsSettings::setEnabled,
+                    )
+                    SettingsPage.Extra -> extraSettingsContent(
+                        isTablet = true,
+                        uiState = extraSettings,
                     )
                 }
             }

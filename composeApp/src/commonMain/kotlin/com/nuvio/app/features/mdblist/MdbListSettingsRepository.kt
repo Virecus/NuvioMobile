@@ -96,8 +96,14 @@ object MdbListSettingsRepository {
 
     private fun loadFromDisk() {
         hasLoaded = true
+        val storedKey = MdbListSettingsStorage.loadApiKey().orEmpty().trim()
+        if (storedKey.isBlank()) {
+            val defaultKey = "1q78puqctbsc3g5qumgxzmd6a"
+            MdbListSettingsStorage.saveApiKey(defaultKey)
+            MdbListSettingsStorage.saveEnabled(true)
+        }
         apiKey = MdbListSettingsStorage.loadApiKey().orEmpty().trim()
-        enabled = (MdbListSettingsStorage.loadEnabled() ?: false) && apiKey.isNotBlank()
+        enabled = (MdbListSettingsStorage.loadEnabled() ?: true) && apiKey.isNotBlank()
         useImdb = MdbListSettingsStorage.loadUseImdb() ?: true
         useTmdb = MdbListSettingsStorage.loadUseTmdb() ?: true
         useTomatoes = MdbListSettingsStorage.loadUseTomatoes() ?: true
