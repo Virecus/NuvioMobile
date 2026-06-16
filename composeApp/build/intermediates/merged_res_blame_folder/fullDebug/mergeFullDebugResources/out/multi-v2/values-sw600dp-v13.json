@@ -4,7 +4,7 @@
             "outputFile": "com.nuvio.app.composeApp-mergeFullDebugResources-64:/values-sw600dp-v13/values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "/Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e07aa2cca02825e6a0f1cbf42182bea5/transformed/appcompat-1.7.1/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "/Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/19c5e8d7b3b3fd9eb5dd1c30fb8b4b70/transformed/appcompat-1.7.1/res/values-sw600dp-v13/values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

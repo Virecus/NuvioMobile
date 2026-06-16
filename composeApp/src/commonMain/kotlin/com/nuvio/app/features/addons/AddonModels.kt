@@ -83,7 +83,7 @@ internal fun List<ManagedAddon>.toOverview(): AddonOverview =
     )
 
 internal fun List<ManagedAddon>.enabledAddons(): List<ManagedAddon> =
-    filter { it.enabled }
+    filter { it.isActive }
 
 sealed interface AddAddonResult {
     data class Success(val manifest: AddonManifest) : AddAddonResult

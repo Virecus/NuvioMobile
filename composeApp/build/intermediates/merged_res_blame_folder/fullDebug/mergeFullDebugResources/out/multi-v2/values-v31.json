@@ -4,6 +4,25 @@
             "outputFile": "com.nuvio.app.composeApp-mergeFullDebugResources-64:/values-v31/values-v31.xml",
             "map": [
                 {
+                    "source": "/Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/daaebd1d67bc55ff6154f6fbef74edb6/transformed/core-splashscreen-1.0.1/res/values-v31/values-v31.xml",
+                    "from": {
+                        "startLines": "2,9",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,473",
+                        "endLines": "8,13",
+                        "endColumns": "12,12",
+                        "endOffsets": "468,697"
+                    },
+                    "to": {
+                        "startLines": "10,17",
+                        "startColumns": "4,4",
+                        "startOffsets": "535,953",
+                        "endLines": "16,21",
+                        "endColumns": "12,12",
+                        "endOffsets": "948,1177"
+                    }
+                },
+                {
                     "source": "/Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/res/values-v31/themes.xml",
                     "from": {
                         "startLines": "2,6",
@@ -20,25 +39,6 @@
                         "endLines": "4,9",
                         "endColumns": "12,12",
                         "endOffsets": "217,530"
-                    }
-                },
-                {
-                    "source": "/Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/833fdc62e8c88f09cb5a538abd19025e/transformed/core-splashscreen-1.0.1/res/values-v31/values-v31.xml",
-                    "from": {
-                        "startLines": "2,9",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,473",
-                        "endLines": "8,13",
-                        "endColumns": "12,12",
-                        "endOffsets": "468,697"
-                    },
-                    "to": {
-                        "startLines": "10,17",
-                        "startColumns": "4,4",
-                        "startOffsets": "535,953",
-                        "endLines": "16,21",
-                        "endColumns": "12,12",
-                        "endOffsets": "948,1177"
                     }
                 }
             ]

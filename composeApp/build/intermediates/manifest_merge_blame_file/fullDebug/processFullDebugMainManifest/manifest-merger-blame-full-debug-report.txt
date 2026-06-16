@@ -24,32 +24,32 @@
 15-->/Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:7:5-77
 15-->/Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:7:22-74
 16    <uses-permission android:name="android.permission.WAKE_LOCK" />
-16-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:23:5-68
-16-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:23:22-65
+16-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:23:5-68
+16-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:23:22-65
 17    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-17-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:25:5-81
-17-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:25:22-78
+17-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:25:5-81
+17-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:25:22-78
 18    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-18-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:26:5-77
-18-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:26:22-74
+18-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:26:5-77
+18-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:26:22-74
 19
 20    <permission
-20-->[androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:22:5-24:47
+20-->[androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c0b9d2c56df3a5650a37911fcb1864e7/transformed/core-1.16.0/AndroidManifest.xml:22:5-24:47
 21        android:name="com.nuvio.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-21-->[androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:23:9-81
+21-->[androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c0b9d2c56df3a5650a37911fcb1864e7/transformed/core-1.16.0/AndroidManifest.xml:23:9-81
 22        android:protectionLevel="signature" />
-22-->[androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:24:9-44
+22-->[androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c0b9d2c56df3a5650a37911fcb1864e7/transformed/core-1.16.0/AndroidManifest.xml:24:9-44
 23
 24    <uses-permission android:name="com.nuvio.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-24-->[androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:26:5-97
-24-->[androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:26:22-94
+24-->[androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c0b9d2c56df3a5650a37911fcb1864e7/transformed/core-1.16.0/AndroidManifest.xml:26:5-97
+24-->[androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c0b9d2c56df3a5650a37911fcb1864e7/transformed/core-1.16.0/AndroidManifest.xml:26:22-94
 25
 26    <application
 26-->/Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:9:5-55:19
 27        android:allowBackup="true"
 27-->/Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:10:9-35
 28        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-28-->[androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:28:18-86
+28-->[androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c0b9d2c56df3a5650a37911fcb1864e7/transformed/core-1.16.0/AndroidManifest.xml:28:18-86
 29        android:debuggable="true"
 30        android:extractNativeLibs="true"
 31        android:icon="@mipmap/ic_launcher"
@@ -129,306 +129,306 @@
 73                android:resource="@xml/nuvio_file_paths" />
 74        </provider>
 75        <provider
-75-->[io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e819f3f802b265cc34ef77bb3981a8ab/transformed/auth-kt/AndroidManifest.xml:9:9-17:20
+75-->[io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7731e09d9da82fe79ef432be1561247f/transformed/auth-kt/AndroidManifest.xml:9:9-17:20
 76            android:name="androidx.startup.InitializationProvider"
-76-->[io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e819f3f802b265cc34ef77bb3981a8ab/transformed/auth-kt/AndroidManifest.xml:10:13-67
+76-->[io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7731e09d9da82fe79ef432be1561247f/transformed/auth-kt/AndroidManifest.xml:10:13-67
 77            android:authorities="com.nuvio.app.androidx-startup"
-77-->[io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e819f3f802b265cc34ef77bb3981a8ab/transformed/auth-kt/AndroidManifest.xml:11:13-68
+77-->[io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7731e09d9da82fe79ef432be1561247f/transformed/auth-kt/AndroidManifest.xml:11:13-68
 78            android:exported="false" >
-78-->[io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e819f3f802b265cc34ef77bb3981a8ab/transformed/auth-kt/AndroidManifest.xml:12:13-37
+78-->[io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7731e09d9da82fe79ef432be1561247f/transformed/auth-kt/AndroidManifest.xml:12:13-37
 79            <meta-data
-79-->[io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e819f3f802b265cc34ef77bb3981a8ab/transformed/auth-kt/AndroidManifest.xml:14:13-16:52
+79-->[io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7731e09d9da82fe79ef432be1561247f/transformed/auth-kt/AndroidManifest.xml:14:13-16:52
 80                android:name="io.github.jan.supabase.auth.SupabaseInitializer"
-80-->[io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e819f3f802b265cc34ef77bb3981a8ab/transformed/auth-kt/AndroidManifest.xml:15:17-79
+80-->[io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7731e09d9da82fe79ef432be1561247f/transformed/auth-kt/AndroidManifest.xml:15:17-79
 81                android:value="androidx.startup" />
-81-->[io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e819f3f802b265cc34ef77bb3981a8ab/transformed/auth-kt/AndroidManifest.xml:16:17-49
+81-->[io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7731e09d9da82fe79ef432be1561247f/transformed/auth-kt/AndroidManifest.xml:16:17-49
 82            <meta-data
-82-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:34:13-36:52
+82-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:34:13-36:52
 83                android:name="androidx.work.WorkManagerInitializer"
-83-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:35:17-68
+83-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:35:17-68
 84                android:value="androidx.startup" />
-84-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:36:17-49
+84-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:36:17-49
 85            <meta-data
-85-->[androidx.emoji2:emoji2:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ca6cb4f26983b5767fc0f23fab75172c/transformed/emoji2-1.4.0/AndroidManifest.xml:29:13-31:52
+85-->[androidx.emoji2:emoji2:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c28d1e5b5c3cd359b4f90c7866fa27ec/transformed/emoji2-1.4.0/AndroidManifest.xml:29:13-31:52
 86                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-86-->[androidx.emoji2:emoji2:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ca6cb4f26983b5767fc0f23fab75172c/transformed/emoji2-1.4.0/AndroidManifest.xml:30:17-75
+86-->[androidx.emoji2:emoji2:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c28d1e5b5c3cd359b4f90c7866fa27ec/transformed/emoji2-1.4.0/AndroidManifest.xml:30:17-75
 87                android:value="androidx.startup" />
-87-->[androidx.emoji2:emoji2:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ca6cb4f26983b5767fc0f23fab75172c/transformed/emoji2-1.4.0/AndroidManifest.xml:31:17-49
+87-->[androidx.emoji2:emoji2:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c28d1e5b5c3cd359b4f90c7866fa27ec/transformed/emoji2-1.4.0/AndroidManifest.xml:31:17-49
 88            <meta-data
-88-->[androidx.lifecycle:lifecycle-process:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/089f6c891505fd529a5c9236b62c9a3b/transformed/lifecycle-process-2.11.0-alpha03/AndroidManifest.xml:29:13-31:52
+88-->[androidx.lifecycle:lifecycle-process:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/317d7e34027f66ccc840c4e03c2bf615/transformed/lifecycle-process-2.11.0-alpha03/AndroidManifest.xml:29:13-31:52
 89                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-89-->[androidx.lifecycle:lifecycle-process:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/089f6c891505fd529a5c9236b62c9a3b/transformed/lifecycle-process-2.11.0-alpha03/AndroidManifest.xml:30:17-78
+89-->[androidx.lifecycle:lifecycle-process:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/317d7e34027f66ccc840c4e03c2bf615/transformed/lifecycle-process-2.11.0-alpha03/AndroidManifest.xml:30:17-78
 90                android:value="androidx.startup" />
-90-->[androidx.lifecycle:lifecycle-process:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/089f6c891505fd529a5c9236b62c9a3b/transformed/lifecycle-process-2.11.0-alpha03/AndroidManifest.xml:31:17-49
+90-->[androidx.lifecycle:lifecycle-process:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/317d7e34027f66ccc840c4e03c2bf615/transformed/lifecycle-process-2.11.0-alpha03/AndroidManifest.xml:31:17-49
 91            <meta-data
-91-->[com.russhwolf:multiplatform-settings-no-arg-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/8b9e8713a4a2a23d6d7700d5618eb5c2/transformed/multiplatform-settings-no-arg-debug/AndroidManifest.xml:29:13-31:52
+91-->[com.russhwolf:multiplatform-settings-no-arg-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e4105cee527f5ab4b62aa18f14a05e3f/transformed/multiplatform-settings-no-arg-debug/AndroidManifest.xml:29:13-31:52
 92                android:name="com.russhwolf.settings.SettingsInitializer"
-92-->[com.russhwolf:multiplatform-settings-no-arg-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/8b9e8713a4a2a23d6d7700d5618eb5c2/transformed/multiplatform-settings-no-arg-debug/AndroidManifest.xml:30:17-74
+92-->[com.russhwolf:multiplatform-settings-no-arg-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e4105cee527f5ab4b62aa18f14a05e3f/transformed/multiplatform-settings-no-arg-debug/AndroidManifest.xml:30:17-74
 93                android:value="androidx.startup" />
-93-->[com.russhwolf:multiplatform-settings-no-arg-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/8b9e8713a4a2a23d6d7700d5618eb5c2/transformed/multiplatform-settings-no-arg-debug/AndroidManifest.xml:31:17-49
+93-->[com.russhwolf:multiplatform-settings-no-arg-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e4105cee527f5ab4b62aa18f14a05e3f/transformed/multiplatform-settings-no-arg-debug/AndroidManifest.xml:31:17-49
 94            <meta-data
-94-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:29:13-31:52
+94-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/34a4878ed2e5bd682e1578ccf59f9841/transformed/profileinstaller-1.4.1/AndroidManifest.xml:29:13-31:52
 95                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-95-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:30:17-85
+95-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/34a4878ed2e5bd682e1578ccf59f9841/transformed/profileinstaller-1.4.1/AndroidManifest.xml:30:17-85
 96                android:value="androidx.startup" />
-96-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:31:17-49
+96-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/34a4878ed2e5bd682e1578ccf59f9841/transformed/profileinstaller-1.4.1/AndroidManifest.xml:31:17-49
 97        </provider>
 98        <provider
-98-->[org.jetbrains.compose.components:components-resources-android:1.11.0-beta03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7eeba193368244e683fac25d7a168aaf/transformed/library-release/AndroidManifest.xml:8:9-13:20
+98-->[org.jetbrains.compose.components:components-resources-android:1.11.0-beta03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ea8b26b9f1244fb39b57ef616e1dabce/transformed/library-release/AndroidManifest.xml:8:9-13:20
 99            android:name="org.jetbrains.compose.resources.AndroidContextProvider"
-99-->[org.jetbrains.compose.components:components-resources-android:1.11.0-beta03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7eeba193368244e683fac25d7a168aaf/transformed/library-release/AndroidManifest.xml:9:13-82
+99-->[org.jetbrains.compose.components:components-resources-android:1.11.0-beta03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ea8b26b9f1244fb39b57ef616e1dabce/transformed/library-release/AndroidManifest.xml:9:13-82
 100            android:authorities="com.nuvio.app.resources.AndroidContextProvider"
-100-->[org.jetbrains.compose.components:components-resources-android:1.11.0-beta03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7eeba193368244e683fac25d7a168aaf/transformed/library-release/AndroidManifest.xml:10:13-84
+100-->[org.jetbrains.compose.components:components-resources-android:1.11.0-beta03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ea8b26b9f1244fb39b57ef616e1dabce/transformed/library-release/AndroidManifest.xml:10:13-84
 101            android:enabled="true"
-101-->[org.jetbrains.compose.components:components-resources-android:1.11.0-beta03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7eeba193368244e683fac25d7a168aaf/transformed/library-release/AndroidManifest.xml:11:13-35
+101-->[org.jetbrains.compose.components:components-resources-android:1.11.0-beta03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ea8b26b9f1244fb39b57ef616e1dabce/transformed/library-release/AndroidManifest.xml:11:13-35
 102            android:exported="false" >
-102-->[org.jetbrains.compose.components:components-resources-android:1.11.0-beta03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7eeba193368244e683fac25d7a168aaf/transformed/library-release/AndroidManifest.xml:12:13-37
+102-->[org.jetbrains.compose.components:components-resources-android:1.11.0-beta03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ea8b26b9f1244fb39b57ef616e1dabce/transformed/library-release/AndroidManifest.xml:12:13-37
 103        </provider>
 104
 105        <activity
-105-->[androidx.compose.ui:ui-tooling-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/660e30c834ca2ca5620d70be34069d3c/transformed/ui-tooling/AndroidManifest.xml:23:9-25:39
+105-->[androidx.compose.ui:ui-tooling-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/b6fa1b8900cb567d1027023be96cd011/transformed/ui-tooling/AndroidManifest.xml:23:9-25:39
 106            android:name="androidx.compose.ui.tooling.PreviewActivity"
-106-->[androidx.compose.ui:ui-tooling-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/660e30c834ca2ca5620d70be34069d3c/transformed/ui-tooling/AndroidManifest.xml:24:13-71
+106-->[androidx.compose.ui:ui-tooling-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/b6fa1b8900cb567d1027023be96cd011/transformed/ui-tooling/AndroidManifest.xml:24:13-71
 107            android:exported="true" />
-107-->[androidx.compose.ui:ui-tooling-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/660e30c834ca2ca5620d70be34069d3c/transformed/ui-tooling/AndroidManifest.xml:25:13-36
+107-->[androidx.compose.ui:ui-tooling-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/b6fa1b8900cb567d1027023be96cd011/transformed/ui-tooling/AndroidManifest.xml:25:13-36
 108
 109        <service
-109-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:39:9-45:35
+109-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:39:9-45:35
 110            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
-110-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:40:13-88
+110-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:40:13-88
 111            android:directBootAware="false"
-111-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:41:13-44
+111-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:41:13-44
 112            android:enabled="@bool/enable_system_alarm_service_default"
-112-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:42:13-72
+112-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:42:13-72
 113            android:exported="false" />
-113-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:43:13-37
+113-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:43:13-37
 114        <service
-114-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:46:9-52:35
+114-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:46:9-52:35
 115            android:name="androidx.work.impl.background.systemjob.SystemJobService"
-115-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:47:13-84
+115-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:47:13-84
 116            android:directBootAware="false"
-116-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:48:13-44
+116-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:48:13-44
 117            android:enabled="@bool/enable_system_job_service_default"
-117-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:49:13-70
+117-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:49:13-70
 118            android:exported="true"
-118-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:50:13-36
+118-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:50:13-36
 119            android:permission="android.permission.BIND_JOB_SERVICE" />
-119-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:51:13-69
+119-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:51:13-69
 120        <service
-120-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:53:9-59:35
+120-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:53:9-59:35
 121            android:name="androidx.work.impl.foreground.SystemForegroundService"
-121-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:54:13-81
+121-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:54:13-81
 122            android:directBootAware="false"
-122-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:55:13-44
+122-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:55:13-44
 123            android:enabled="@bool/enable_system_foreground_service_default"
-123-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:56:13-77
+123-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:56:13-77
 124            android:exported="false" />
-124-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:57:13-37
+124-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:57:13-37
 125
 126        <receiver
-126-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:61:9-66:35
+126-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:61:9-66:35
 127            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
-127-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:62:13-88
+127-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:62:13-88
 128            android:directBootAware="false"
-128-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:63:13-44
+128-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:63:13-44
 129            android:enabled="true"
-129-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:64:13-35
+129-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:64:13-35
 130            android:exported="false" />
-130-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:65:13-37
+130-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:65:13-37
 131        <receiver
-131-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:67:9-77:20
+131-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:67:9-77:20
 132            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
-132-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:68:13-106
+132-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:68:13-106
 133            android:directBootAware="false"
-133-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:69:13-44
+133-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:69:13-44
 134            android:enabled="false"
-134-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:70:13-36
+134-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:70:13-36
 135            android:exported="false" >
-135-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:71:13-37
+135-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:71:13-37
 136            <intent-filter>
-136-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:73:13-76:29
+136-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:73:13-76:29
 137                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
-137-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:74:17-87
-137-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:74:25-84
+137-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:74:17-87
+137-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:74:25-84
 138                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
-138-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:75:17-90
-138-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:75:25-87
+138-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:75:17-90
+138-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:75:25-87
 139            </intent-filter>
 140        </receiver>
 141        <receiver
-141-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:78:9-88:20
+141-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:78:9-88:20
 142            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
-142-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:79:13-104
+142-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:79:13-104
 143            android:directBootAware="false"
-143-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:80:13-44
+143-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:80:13-44
 144            android:enabled="false"
-144-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:81:13-36
+144-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:81:13-36
 145            android:exported="false" >
-145-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:82:13-37
+145-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:82:13-37
 146            <intent-filter>
-146-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:84:13-87:29
+146-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:84:13-87:29
 147                <action android:name="android.intent.action.BATTERY_OKAY" />
-147-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:85:17-77
-147-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:85:25-74
+147-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:85:17-77
+147-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:85:25-74
 148                <action android:name="android.intent.action.BATTERY_LOW" />
-148-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:86:17-76
-148-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:86:25-73
+148-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:86:17-76
+148-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:86:25-73
 149            </intent-filter>
 150        </receiver>
 151        <receiver
-151-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:89:9-99:20
+151-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:89:9-99:20
 152            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
-152-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:90:13-104
+152-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:90:13-104
 153            android:directBootAware="false"
-153-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:91:13-44
+153-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:91:13-44
 154            android:enabled="false"
-154-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:92:13-36
+154-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:92:13-36
 155            android:exported="false" >
-155-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:93:13-37
+155-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:93:13-37
 156            <intent-filter>
-156-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:95:13-98:29
+156-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:95:13-98:29
 157                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
-157-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:96:17-83
-157-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:96:25-80
+157-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:96:17-83
+157-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:96:25-80
 158                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
-158-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:97:17-82
-158-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:97:25-79
+158-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:97:17-82
+158-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:97:25-79
 159            </intent-filter>
 160        </receiver>
 161        <receiver
-161-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:100:9-109:20
+161-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:100:9-109:20
 162            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
-162-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:101:13-103
+162-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:101:13-103
 163            android:directBootAware="false"
-163-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:102:13-44
+163-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:102:13-44
 164            android:enabled="false"
-164-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:103:13-36
+164-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:103:13-36
 165            android:exported="false" >
-165-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:104:13-37
+165-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:104:13-37
 166            <intent-filter>
-166-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:106:13-108:29
+166-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:106:13-108:29
 167                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-167-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:107:17-79
-167-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:107:25-76
+167-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:107:17-79
+167-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:107:25-76
 168            </intent-filter>
 169        </receiver>
 170        <receiver
-170-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:110:9-121:20
+170-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:110:9-121:20
 171            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
-171-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:111:13-88
+171-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:111:13-88
 172            android:directBootAware="false"
-172-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:112:13-44
+172-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:112:13-44
 173            android:enabled="false"
-173-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:113:13-36
+173-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:113:13-36
 174            android:exported="false" >
-174-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:114:13-37
+174-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:114:13-37
 175            <intent-filter>
-175-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:116:13-120:29
+175-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:116:13-120:29
 176                <action android:name="android.intent.action.BOOT_COMPLETED" />
-176-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:117:17-79
-176-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:117:25-76
+176-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:117:17-79
+176-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:117:25-76
 177                <action android:name="android.intent.action.TIME_SET" />
-177-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:118:17-73
-177-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:118:25-70
+177-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:118:17-73
+177-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:118:25-70
 178                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
-178-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:119:17-81
-178-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:119:25-78
+178-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:119:17-81
+178-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:119:25-78
 179            </intent-filter>
 180        </receiver>
 181        <receiver
-181-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:122:9-131:20
+181-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:122:9-131:20
 182            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
-182-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:123:13-99
+182-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:123:13-99
 183            android:directBootAware="false"
-183-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:124:13-44
+183-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:124:13-44
 184            android:enabled="@bool/enable_system_alarm_service_default"
-184-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:125:13-72
+184-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:125:13-72
 185            android:exported="false" >
-185-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:126:13-37
+185-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:126:13-37
 186            <intent-filter>
-186-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:128:13-130:29
+186-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:128:13-130:29
 187                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
-187-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:129:17-98
-187-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:129:25-95
+187-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:129:17-98
+187-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:129:25-95
 188            </intent-filter>
 189        </receiver>
 190        <receiver
-190-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:132:9-142:20
+190-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:132:9-142:20
 191            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
-191-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:133:13-78
+191-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:133:13-78
 192            android:directBootAware="false"
-192-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:134:13-44
+192-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:134:13-44
 193            android:enabled="true"
-193-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:135:13-35
+193-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:135:13-35
 194            android:exported="true"
-194-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:136:13-36
+194-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:136:13-36
 195            android:permission="android.permission.DUMP" >
-195-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:137:13-57
+195-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:137:13-57
 196            <intent-filter>
-196-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:139:13-141:29
+196-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:139:13-141:29
 197                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
-197-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:140:17-88
-197-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:140:25-85
+197-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:140:17-88
+197-->[androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6ff07af28a11e49a029c6e10f97f1aca/transformed/work-runtime-2.10.3/AndroidManifest.xml:140:25-85
 198            </intent-filter>
 199        </receiver>
 200
 201        <uses-library
-201-->[androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/449523cb20a565f7a05115e343ae4356/transformed/window-1.5.0/AndroidManifest.xml:23:9-25:40
+201-->[androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1961cf1ef64d202f9858752e8d40df80/transformed/window-1.5.0/AndroidManifest.xml:23:9-25:40
 202            android:name="androidx.window.extensions"
-202-->[androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/449523cb20a565f7a05115e343ae4356/transformed/window-1.5.0/AndroidManifest.xml:24:13-54
+202-->[androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1961cf1ef64d202f9858752e8d40df80/transformed/window-1.5.0/AndroidManifest.xml:24:13-54
 203            android:required="false" />
-203-->[androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/449523cb20a565f7a05115e343ae4356/transformed/window-1.5.0/AndroidManifest.xml:25:13-37
+203-->[androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1961cf1ef64d202f9858752e8d40df80/transformed/window-1.5.0/AndroidManifest.xml:25:13-37
 204        <uses-library
-204-->[androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/449523cb20a565f7a05115e343ae4356/transformed/window-1.5.0/AndroidManifest.xml:26:9-28:40
+204-->[androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1961cf1ef64d202f9858752e8d40df80/transformed/window-1.5.0/AndroidManifest.xml:26:9-28:40
 205            android:name="androidx.window.sidecar"
-205-->[androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/449523cb20a565f7a05115e343ae4356/transformed/window-1.5.0/AndroidManifest.xml:27:13-51
+205-->[androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1961cf1ef64d202f9858752e8d40df80/transformed/window-1.5.0/AndroidManifest.xml:27:13-51
 206            android:required="false" />
-206-->[androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/449523cb20a565f7a05115e343ae4356/transformed/window-1.5.0/AndroidManifest.xml:28:13-37
+206-->[androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1961cf1ef64d202f9858752e8d40df80/transformed/window-1.5.0/AndroidManifest.xml:28:13-37
 207
 208        <service
-208-->[androidx.room:room-runtime:2.6.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9803eb034b7fe91d8316181b8d1b79f9/transformed/room-runtime-2.6.1/AndroidManifest.xml:24:9-28:63
+208-->[androidx.room:room-runtime:2.6.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/706b1c613fb1294c07ee9e0bd28449b2/transformed/room-runtime-2.6.1/AndroidManifest.xml:24:9-28:63
 209            android:name="androidx.room.MultiInstanceInvalidationService"
-209-->[androidx.room:room-runtime:2.6.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9803eb034b7fe91d8316181b8d1b79f9/transformed/room-runtime-2.6.1/AndroidManifest.xml:25:13-74
+209-->[androidx.room:room-runtime:2.6.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/706b1c613fb1294c07ee9e0bd28449b2/transformed/room-runtime-2.6.1/AndroidManifest.xml:25:13-74
 210            android:directBootAware="true"
-210-->[androidx.room:room-runtime:2.6.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9803eb034b7fe91d8316181b8d1b79f9/transformed/room-runtime-2.6.1/AndroidManifest.xml:26:13-43
+210-->[androidx.room:room-runtime:2.6.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/706b1c613fb1294c07ee9e0bd28449b2/transformed/room-runtime-2.6.1/AndroidManifest.xml:26:13-43
 211            android:exported="false" />
-211-->[androidx.room:room-runtime:2.6.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9803eb034b7fe91d8316181b8d1b79f9/transformed/room-runtime-2.6.1/AndroidManifest.xml:27:13-37
+211-->[androidx.room:room-runtime:2.6.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/706b1c613fb1294c07ee9e0bd28449b2/transformed/room-runtime-2.6.1/AndroidManifest.xml:27:13-37
 212
 213        <receiver
-213-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:34:9-52:20
+213-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/34a4878ed2e5bd682e1578ccf59f9841/transformed/profileinstaller-1.4.1/AndroidManifest.xml:34:9-52:20
 214            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-214-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:35:13-76
+214-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/34a4878ed2e5bd682e1578ccf59f9841/transformed/profileinstaller-1.4.1/AndroidManifest.xml:35:13-76
 215            android:directBootAware="false"
-215-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:36:13-44
+215-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/34a4878ed2e5bd682e1578ccf59f9841/transformed/profileinstaller-1.4.1/AndroidManifest.xml:36:13-44
 216            android:enabled="true"
-216-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:37:13-35
+216-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/34a4878ed2e5bd682e1578ccf59f9841/transformed/profileinstaller-1.4.1/AndroidManifest.xml:37:13-35
 217            android:exported="true"
-217-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:38:13-36
+217-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/34a4878ed2e5bd682e1578ccf59f9841/transformed/profileinstaller-1.4.1/AndroidManifest.xml:38:13-36
 218            android:permission="android.permission.DUMP" >
-218-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:39:13-57
+218-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/34a4878ed2e5bd682e1578ccf59f9841/transformed/profileinstaller-1.4.1/AndroidManifest.xml:39:13-57
 219            <intent-filter>
-219-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:40:13-42:29
+219-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/34a4878ed2e5bd682e1578ccf59f9841/transformed/profileinstaller-1.4.1/AndroidManifest.xml:40:13-42:29
 220                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-220-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:41:17-91
-220-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:41:25-88
+220-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/34a4878ed2e5bd682e1578ccf59f9841/transformed/profileinstaller-1.4.1/AndroidManifest.xml:41:17-91
+220-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/34a4878ed2e5bd682e1578ccf59f9841/transformed/profileinstaller-1.4.1/AndroidManifest.xml:41:25-88
 221            </intent-filter>
 222            <intent-filter>
-222-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:43:13-45:29
+222-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/34a4878ed2e5bd682e1578ccf59f9841/transformed/profileinstaller-1.4.1/AndroidManifest.xml:43:13-45:29
 223                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-223-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:44:17-85
-223-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:44:25-82
+223-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/34a4878ed2e5bd682e1578ccf59f9841/transformed/profileinstaller-1.4.1/AndroidManifest.xml:44:17-85
+223-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/34a4878ed2e5bd682e1578ccf59f9841/transformed/profileinstaller-1.4.1/AndroidManifest.xml:44:25-82
 224            </intent-filter>
 225            <intent-filter>
-225-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:46:13-48:29
+225-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/34a4878ed2e5bd682e1578ccf59f9841/transformed/profileinstaller-1.4.1/AndroidManifest.xml:46:13-48:29
 226                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-226-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:47:17-88
-226-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:47:25-85
+226-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/34a4878ed2e5bd682e1578ccf59f9841/transformed/profileinstaller-1.4.1/AndroidManifest.xml:47:17-88
+226-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/34a4878ed2e5bd682e1578ccf59f9841/transformed/profileinstaller-1.4.1/AndroidManifest.xml:47:25-85
 227            </intent-filter>
 228            <intent-filter>
-228-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:49:13-51:29
+228-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/34a4878ed2e5bd682e1578ccf59f9841/transformed/profileinstaller-1.4.1/AndroidManifest.xml:49:13-51:29
 229                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-229-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:50:17-95
-229-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:50:25-92
+229-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/34a4878ed2e5bd682e1578ccf59f9841/transformed/profileinstaller-1.4.1/AndroidManifest.xml:50:17-95
+229-->[androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/34a4878ed2e5bd682e1578ccf59f9841/transformed/profileinstaller-1.4.1/AndroidManifest.xml:50:25-92
 230            </intent-filter>
 231        </receiver>
 232    </application>
