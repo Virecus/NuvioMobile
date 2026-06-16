@@ -185,11 +185,15 @@ fun LiveTvScreen(
                                     if (loadingChannelId != null) return@LiveChannelListScreen
                                     scope.launch {
                                         loadingChannelId = channel.id
-                                        val url = LiveTvRepository.resolveStreamUrl(channel)
-                                        loadingChannelId = null
-                                        if (url != null) {
-                                            onPlay(channel.name, url)
+                                        try {
+                                            val url = LiveTvRepository.resolveStreamUrl(channel)
+                                            if (url != null) {
+                                                onPlay(channel.name, url)
+                                            }
+                                        } catch (e: Exception) {
+                                            android.util.Log.e("LiveTv", "Error resolving stream for ${channel.name}", e)
                                         }
+                                        loadingChannelId = null
                                     }
                                 },
                             )
