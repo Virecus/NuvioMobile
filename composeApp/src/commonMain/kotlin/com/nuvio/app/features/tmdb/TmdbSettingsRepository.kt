@@ -11,7 +11,7 @@ object TmdbSettingsRepository {
     private var hasLoaded = false
 
     private var enabled = false
-    private var apiKey = ""
+    private var apiKey = TmdbConfig.API_KEY
     private var language = "en"
     private var useTrailers = true
     private var useArtwork = true
@@ -162,7 +162,7 @@ object TmdbSettingsRepository {
 
     private fun loadFromDisk() {
         hasLoaded = true
-        apiKey = TmdbSettingsStorage.loadApiKey()?.trim().orEmpty()
+        apiKey = (TmdbSettingsStorage.loadApiKey()?.trim().takeIf { it?.isNotBlank() == true } ?: TmdbConfig.API_KEY)
         enabled = (TmdbSettingsStorage.loadEnabled() ?: false) && apiKey.isNotBlank()
         val storedLanguage = TmdbSettingsStorage.loadLanguage()
         language = if (storedLanguage == null) "en" else normalizeLanguage(storedLanguage)
