@@ -1,0 +1,134 @@
+[
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/xml_nuvio_file_paths.xml.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/xml/nuvio_file_paths.xml"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/xml_locale_config.xml.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/xml/locale_config.xml"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/drawable_trakt_tv_favicon.xml.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/drawable/trakt_tv_favicon.xml"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/drawable_ic_player_audio_filled.xml.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/drawable/ic_player_audio_filled.xml"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/drawable_trakt_logo_wordmark.xml.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/drawable/trakt_logo_wordmark.xml"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/drawable_ic_player_subtitles.xml.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/drawable/ic_player_subtitles.xml"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/layout_exo_player_view.xml.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/layout/exo_player_view.xml"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/drawable_library_add_plus.xml.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/drawable/library_add_plus.xml"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/mipmap-xxxhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/drawable_ic_player_aspect_ratio.xml.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/drawable/ic_player_aspect_ratio.xml"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/drawable_ic_notification_small.xml.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/drawable/ic_notification_small.xml"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/mipmap-xhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/drawable_ic_player_play.xml.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/drawable/ic_player_play.xml"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/drawable-nodpi_ic_splash_logo.webp.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/drawable-nodpi/ic_splash_logo.webp"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/mipmap-xxhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/drawable_ic_player_pause.xml.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/drawable/ic_player_pause.xml"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/mipmap-hdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/mipmap-hdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/mipmap-mdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/xml_nuvio_updater_file_paths.xml.flat",
+        "source": "com.nuvio.app.composeApp-androidFull-68:/xml/nuvio_updater_file_paths.xml"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/drawable_mdblist_logo.xml.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/drawable/mdblist_logo.xml"
+    },
+    {
+        "merged": "com.nuvio.app.composeApp-fullDebug-66:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.nuvio.app.composeApp-androidMain-70:/mipmap-xxhdpi/ic_launcher_round.webp"
+    }
+]

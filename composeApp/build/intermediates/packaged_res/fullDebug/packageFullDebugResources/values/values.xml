@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="nuvio_background">#020404</color>
+    <item name="libass_overlay_bound_player" type="id"/>
+    <item name="libass_overlay_container_gl" type="id"/>
+    <string name="app_name">Royal</string>
+    <style name="Theme.Nuvio" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/nuvio_background</item>
+    </style>
+    <style name="Theme.Nuvio.Splash" parent="@style/Theme.Nuvio"/>
+</resources>

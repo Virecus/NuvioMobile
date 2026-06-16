@@ -1,0 +1,983 @@
+import { TraktService } from './traktService';
+import { SimklService } from './simklService';
+import { storageService } from './storageService';
+import { mmkvStorage } from './mmkvStorage';
+import { logger } from '../utils/logger';
+import { MalSync } from './mal/MalSync';
+import { MalAuth } from './mal/MalAuth';
+import { ArmSyncService } from './mal/ArmSyncService';
+import { MalApiService } from './mal/MalApi';
+
+export interface LocalWatchedItem {
+    content_id: string;
+    content_type: 'movie' | 'series';
+    title: string;
+    season: number | null;
+    episode: number | null;
+    watched_at: number;
+}
+
+/**
+ * WatchedService - Manages "watched" status for movies, episodes, and seasons.
+ * Handles both local storage and Trakt/Simkl/MAL sync transparently.
+ * 
+ * When a service is authenticated, it syncs to that service.
+ * Always stores locally for offline access and fallback.
+ */
+class WatchedService {
+    private static instance: WatchedService;
+    private traktService: TraktService;
+    private simklService: SimklService;
+    private readonly WATCHED_ITEMS_KEY = '@user:local:watched_items';
+    private watchedSubscribers: Array<() => void> = [];
+
+    private constructor() {
+        this.traktService = TraktService.getInstance();
+        this.simklService = SimklService.getInstance();
+    }
+
+    public static getInstance(): WatchedService {
+        if (!WatchedService.instance) {
+            WatchedService.instance = new WatchedService();
+        }
+        return WatchedService.instance;
+    }
+
+    private watchedKey(item: Pick<LocalWatchedItem, 'content_id' | 'season' | 'episode'>): string {
+        return `${item.content_id}::${item.season ?? -1}::${item.episode ?? -1}`;
+    }
+
+    private normalizeWatchedItem(item: LocalWatchedItem): LocalWatchedItem {
+        return {
+            content_id: String(item.content_id || ''),
+            content_type: item.content_type === 'movie' ? 'movie' : 'series',
+            title: item.title || '',
+            season: item.season == null ? null : Number(item.season),
+            episode: item.episode == null ? null : Number(item.episode),
+            watched_at: Number(item.watched_at || Date.now()),
+        };
+    }
+
+    private notifyWatchedSubscribers(): void {
+        if (this.watchedSubscribers.length === 0) return;
+        this.watchedSubscribers.forEach((cb) => cb());
+    }
+
+    public subscribeToWatchedUpdates(callback: () => void): () => void {
+        this.watchedSubscribers.push(callback);
+        return () => {
+            const index = this.watchedSubscribers.indexOf(callback);
+            if (index > -1) {
+                this.watchedSubscribers.splice(index, 1);
+            }
+        };
+    }
+
+    private async loadWatchedItems(): Promise<LocalWatchedItem[]> {
+        try {
+            const json = await mmkvStorage.getItem(this.WATCHED_ITEMS_KEY);
+            if (!json) return [];
+            const parsed = JSON.parse(json);
+            if (!Array.isArray(parsed)) return [];
+
+            const deduped = new Map<string, LocalWatchedItem>();
+            parsed.forEach((raw) => {
+                if (!raw || typeof raw !== 'object') return;
+                const normalized = this.normalizeWatchedItem(raw as LocalWatchedItem);
+                if (!normalized.content_id) return;
+                const key = this.watchedKey(normalized);
+                const existing = deduped.get(key);
+                if (!existing || normalized.watched_at > existing.watched_at) {
+                    deduped.set(key, normalized);
+                }
+            });
+
+            return Array.from(deduped.values());
+        } catch (error) {
+            logger.error('[WatchedService] Failed to load local watched items:', error);
+            return [];
+        }
+    }
+
+    private async saveWatchedItems(items: LocalWatchedItem[]): Promise<void> {
+        try {
+            await mmkvStorage.setItem(this.WATCHED_ITEMS_KEY, JSON.stringify(items));
+        } catch (error) {
+            logger.error('[WatchedService] Failed to save local watched items:', error);
+        }
+    }
+
+    public async getAllWatchedItems(): Promise<LocalWatchedItem[]> {
+        return await this.loadWatchedItems();
+    }
+
+    private async upsertLocalWatchedItems(items: LocalWatchedItem[]): Promise<void> {
+        if (items.length === 0) return;
+
+        const current = await this.loadWatchedItems();
+        const byKey = new Map<string, LocalWatchedItem>(
+            current.map((item) => [this.watchedKey(item), item])
+        );
+
+        let changed = false;
+        for (const raw of items) {
+            const normalized = this.normalizeWatchedItem(raw);
+            if (!normalized.content_id) continue;
+
+            const key = this.watchedKey(normalized);
+            const existing = byKey.get(key);
+            if (!existing || normalized.watched_at > existing.watched_at || (normalized.title && normalized.title !== existing.title)) {
+                byKey.set(key, normalized);
+                changed = true;
+            }
+        }
+
+        if (changed) {
+            await this.saveWatchedItems(Array.from(byKey.values()));
+            this.notifyWatchedSubscribers();
+        }
+    }
+
+    private async removeLocalWatchedItems(items: Array<Pick<LocalWatchedItem, 'content_id' | 'season' | 'episode'>>): Promise<void> {
+        if (items.length === 0) return;
+
+        const current = await this.loadWatchedItems();
+        const toRemove = new Set(items.map((item) => this.watchedKey({ content_id: item.content_id, season: item.season ?? null, episode: item.episode ?? null })));
+        const filtered = current.filter((item) => !toRemove.has(this.watchedKey(item)));
+
+        if (filtered.length !== current.length) {
+            await this.saveWatchedItems(filtered);
+            this.notifyWatchedSubscribers();
+        }
+    }
+
+    public async mergeRemoteWatchedItems(items: LocalWatchedItem[]): Promise<void> {
+        const normalized = items
+            .map((item) => this.normalizeWatchedItem(item))
+            .filter((item) => Boolean(item.content_id));
+
+        await this.upsertLocalWatchedItems(normalized);
+
+        for (const item of normalized) {
+            if (item.content_type === 'movie') {
+                await this.setLocalWatchedStatus(item.content_id, 'movie', true, undefined, new Date(item.watched_at));
+                continue;
+            }
+
+            if (item.season == null || item.episode == null) continue;
+            const episodeId = `${item.content_id}:${item.season}:${item.episode}`;
+            await this.setLocalWatchedStatus(item.content_id, 'series', true, episodeId, new Date(item.watched_at));
+        }
+    }
+
+    public async reconcileRemoteWatchedItems(items: LocalWatchedItem[]): Promise<void> {
+        const normalizedRemote = items
+            .map((item) => this.normalizeWatchedItem(item))
+            .filter((item) => Boolean(item.content_id));
+
+        // Guard: do not wipe local watched data if backend temporarily returns empty.
+
+        if (normalizedRemote.length === 0) {
+            logger.log('[WatchedService] reconcileRemoteWatchedItems: remote is empty, doing nothing');
+            return;
+        }
+
+        const currentLocal = await this.loadWatchedItems();
+        const remoteKeys = new Set(normalizedRemote.map(r => this.watchedKey(r)));
+
+        // Find local items that need to be removed because they don't exist remotely
+        const toRemove = currentLocal.filter(l => !remoteKeys.has(this.watchedKey(l)));
+
+        await this.saveWatchedItems(normalizedRemote);
+        this.notifyWatchedSubscribers();
+
+        // 1. Set watched status for all remote items
+        for (const item of normalizedRemote) {
+            if (item.content_type === 'movie') {
+                await this.setLocalWatchedStatus(item.content_id, 'movie', true, undefined, new Date(item.watched_at));
+                continue;
+            }
+
+            if (item.season == null || item.episode == null) continue;
+            const episodeId = `${item.content_id}:${item.season}:${item.episode}`;
+            await this.setLocalWatchedStatus(item.content_id, 'series', true, episodeId, new Date(item.watched_at));
+        }
+
+        // 2. Unset watched status for local items that were deleted remotely
+        for (const item of toRemove) {
+            if (item.content_type === 'movie') {
+                await this.setLocalWatchedStatus(item.content_id, 'movie', false);
+            } else if (item.season != null && item.episode != null) {
+                const episodeId = `${item.content_id}:${item.season}:${item.episode}`;
+                await this.setLocalWatchedStatus(item.content_id, 'series', false, episodeId);
+            }
+        }
+
+        if (toRemove.length > 0) {
+            logger.log(`[WatchedService] reconcileRemoteWatchedItems: Removed ${toRemove.length} local items that were deleted remotely`);
+        }
+    }
+
+    /**
+     * Mark a movie as watched
+     * @param imdbId - The IMDb ID of the movie
+     * @param watchedAt - Optional date when watched
+     */
+    /**
+     * Mark a movie as watched
+     * @param imdbId - The IMDb ID of the movie
+     * @param watchedAt - Optional date when watched
+     */
+    public async markMovieAsWatched(
+        imdbId: string,
+        watchedAt: Date = new Date(),
+        malId?: number,
+        tmdbId?: number,
+        title?: string
+    ): Promise<{ success: boolean; syncedToTrakt: boolean }> {
+        try {
+            logger.log(`[WatchedService] Marking movie as watched: ${imdbId} (${title || 'No title'})`);
+
+            const isTraktAuth = await this.traktService.isAuthenticated();
+            let syncedToTrakt = false;
+
+            // Sync to Trakt
+            if (isTraktAuth) {
+                syncedToTrakt = await this.traktService.addToWatchedMovies(imdbId, watchedAt);
+                logger.log(`[WatchedService] Trakt sync result for movie: ${syncedToTrakt}`);
+            }
+
+            // Sync to MAL
+            if (MalAuth.isAuthenticated()) {
+                MalSync.scrobbleEpisode(
+                    title || 'Movie', // Use real title or generic fallback
+                    1,
+                    1,
+                    'movie',
+                    undefined,
+                    imdbId,
+                    undefined,
+                    malId,
+                    undefined,
+                    tmdbId
+                ).catch(err => logger.error('[WatchedService] MAL movie sync failed:', err));
+            }
+
+            // Sync to Simkl
+            const isSimklAuth = await this.simklService.isAuthenticated();
+            if (isSimklAuth) {
+                await this.simklService.addToHistory({ movies: [{ ids: { imdb: imdbId }, watched_at: watchedAt.toISOString() }] });
+                logger.log(`[WatchedService] Simkl sync request sent for movie`);
+            }
+
+            // Also store locally as "completed" (100% progress)
+            await this.setLocalWatchedStatus(imdbId, 'movie', true, undefined, watchedAt);
+            await this.upsertLocalWatchedItems([
+                {
+                    content_id: imdbId,
+                    content_type: 'movie',
+                    title: title || imdbId,
+                    season: null,
+                    episode: null,
+                    watched_at: watchedAt.getTime(),
+                },
+            ]);
+
+            return { success: true, syncedToTrakt };
+        } catch (error) {
+            logger.error('[WatchedService] Failed to mark movie as watched:', error);
+            return { success: false, syncedToTrakt: false };
+        }
+    }
+
+    /**
+     * Mark a single episode as watched
+     * @param showImdbId - The IMDb ID of the show
+     * @param showId - The Stremio ID of the show (for local storage)
+     * @param season - Season number
+     * @param episode - Episode number
+     * @param watchedAt - Optional date when watched
+     */
+    public async markEpisodeAsWatched(
+        showImdbId: string,
+        showId: string,
+        season: number,
+        episode: number,
+        watchedAt: Date = new Date(),
+        releaseDate?: string, // Optional release date for precise matching
+        showTitle?: string,
+        malId?: number,
+        dayIndex?: number,
+        tmdbId?: number
+    ): Promise<{ success: boolean; syncedToTrakt: boolean }> {
+        try {
+            logger.log(`[WatchedService] Marking episode as watched: ${showImdbId} S${season}E${episode}`);
+
+            const isTraktAuth = await this.traktService.isAuthenticated();
+            let syncedToTrakt = false;
+
+            // Sync to Trakt
+            // showId is the Stremio content ID — pass it as fallback so Trakt can resolve
+            // anime/provider IDs (e.g. kitsu:123) that aren't valid IMDb IDs
+            if (isTraktAuth) {
+                syncedToTrakt = await this.traktService.addToWatchedEpisodes(
+                    showImdbId,
+                    season,
+                    episode,
+                    watchedAt,
+                    showId !== showImdbId ? showId : undefined
+                );
+                logger.log(`[WatchedService] Trakt sync result for episode: ${syncedToTrakt}`);
+            }
+
+            // Sync to MAL
+            if (MalAuth.isAuthenticated() && (showImdbId || malId || tmdbId)) {
+                // Strategy 0: Direct Match (if malId is provided)
+                let synced = false;
+                if (malId) {
+                    await MalSync.scrobbleDirect(malId, episode);
+                    synced = true;
+                }
+
+                // Strategy 1: TMDB-based Resolution (High Accuracy for Specials)
+                if (!synced && releaseDate && tmdbId) {
+                    try {
+                        const tmdbResult = await ArmSyncService.resolveByTmdb(tmdbId, releaseDate, dayIndex);
+                        if (tmdbResult) {
+                            await MalSync.scrobbleDirect(tmdbResult.malId, tmdbResult.episode);
+                            synced = true;
+                        }
+                    } catch (e) {
+                        logger.warn('[WatchedService] TMDB Sync failed, falling back to IMDb:', e);
+                    }
+                }
+
+                // Strategy 2: IMDb-based Resolution (Fallback)
+                if (!synced && releaseDate && showImdbId) {
+                    try {
+                        const armResult = await ArmSyncService.resolveByDate(showImdbId, releaseDate, dayIndex);
+                        if (armResult) {
+                            await MalSync.scrobbleDirect(armResult.malId, armResult.episode);
+                            synced = true;
+                        }
+                    } catch (e) {
+                        logger.warn('[WatchedService] ARM Sync failed, falling back to offline map:', e);
+                    }
+                }
+
+                // Strategy 3: Offline Mapping / Search Fallback
+                if (!synced) {
+                    MalSync.scrobbleEpisode(
+                        showTitle || showImdbId || 'Anime',
+                        episode,
+                        0,
+                        'series',
+                        season,
+                        showImdbId,
+                        releaseDate,
+                        malId,
+                        dayIndex,
+                        tmdbId
+                    ).catch(err => logger.error('[WatchedService] MAL sync failed:', err));
+                }
+            }
+
+            // Sync to Simkl
+            const isSimklAuth = await this.simklService.isAuthenticated();
+            if (isSimklAuth) {
+                // Simkl structure: shows -> seasons -> episodes
+                await this.simklService.addToHistory({
+                    shows: [{
+                        ids: { imdb: showImdbId },
+                        seasons: [{
+                            number: season,
+                            episodes: [{ number: episode, watched_at: watchedAt.toISOString() }]
+                        }]
+                    }]
+                });
+                logger.log(`[WatchedService] Simkl sync request sent for episode`);
+            }
+
+            // Store locally as "completed"
+            const episodeId = `${showId}:${season}:${episode}`;
+            await this.setLocalWatchedStatus(showId, 'series', true, episodeId, watchedAt);
+            await this.upsertLocalWatchedItems([
+                {
+                    content_id: showImdbId,
+                    content_type: 'series',
+                    title: showTitle || showImdbId,
+                    season,
+                    episode,
+                    watched_at: watchedAt.getTime(),
+                },
+            ]);
+
+            return { success: true, syncedToTrakt };
+        } catch (error) {
+            logger.error('[WatchedService] Failed to mark episode as watched:', error);
+            return { success: false, syncedToTrakt: false };
+        }
+    }
+
+    /**
+     * Mark multiple episodes as watched (batch operation)
+     * @param showImdbId - The IMDb ID of the show
+     * @param showId - The Stremio ID of the show (for local storage)
+     * @param episodes - Array of { season, episode } objects
+     * @param watchedAt - Optional date when watched
+     */
+    public async markEpisodesAsWatched(
+        showImdbId: string,
+        showId: string,
+        episodes: Array<{ season: number; episode: number }>,
+        watchedAt: Date = new Date(),
+        showTitle?: string
+    ): Promise<{ success: boolean; syncedToTrakt: boolean; count: number }> {
+        try {
+            if (episodes.length === 0) {
+                return { success: true, syncedToTrakt: false, count: 0 };
+            }
+
+            logger.log(`[WatchedService] Marking ${episodes.length} episodes as watched for ${showImdbId}`);
+
+            // Check if Trakt is authenticated
+            const isTraktAuth = await this.traktService.isAuthenticated();
+            let syncedToTrakt = false;
+
+            if (isTraktAuth) {
+                // Sync to Trakt (batch operation)
+                syncedToTrakt = await this.traktService.markEpisodesAsWatched(
+                    showImdbId,
+                    episodes,
+                    watchedAt,
+                    showId !== showImdbId ? showId : undefined
+                );
+                logger.log(`[WatchedService] Trakt batch sync result: ${syncedToTrakt}`);
+            }
+
+            // Sync to Simkl
+            const isSimklAuth = await this.simklService.isAuthenticated();
+            if (isSimklAuth) {
+                // Group by season for Simkl payload efficiency
+                const seasonMap = new Map<number, any[]>();
+                episodes.forEach(ep => {
+                    if (!seasonMap.has(ep.season)) seasonMap.set(ep.season, []);
+                    seasonMap.get(ep.season)?.push({ number: ep.episode, watched_at: watchedAt.toISOString() });
+                });
+
+                const seasons = Array.from(seasonMap.entries()).map(([num, eps]) => ({ number: num, episodes: eps }));
+
+                await this.simklService.addToHistory({
+                    shows: [{
+                        ids: { imdb: showImdbId },
+                        seasons: seasons
+                    }]
+                });
+                logger.log(`[WatchedService] Simkl batch sync request sent`);
+            }
+
+            // Store locally as "completed" for each episode
+            for (const ep of episodes) {
+                const episodeId = `${showId}:${ep.season}:${ep.episode}`;
+                await this.setLocalWatchedStatus(showId, 'series', true, episodeId, watchedAt);
+            }
+
+            await this.upsertLocalWatchedItems(
+                episodes.map((ep) => ({
+                    content_id: showImdbId,
+                    content_type: 'series' as const,
+                    title: showImdbId,
+                    season: ep.season,
+                    episode: ep.episode,
+                    watched_at: watchedAt.getTime(),
+                }))
+            );
+
+            return { success: true, syncedToTrakt, count: episodes.length };
+        } catch (error) {
+            logger.error('[WatchedService] Failed to mark episodes as watched:', error);
+            return { success: false, syncedToTrakt: false, count: 0 };
+        }
+    }
+
+    /**
+     * Mark an entire season as watched
+     * @param showImdbId - The IMDb ID of the show
+     * @param showId - The Stremio ID of the show (for local storage)
+     * @param season - Season number
+     * @param episodeNumbers - Array of episode numbers in the season
+     * @param watchedAt - Optional date when watched
+     */
+    public async markSeasonAsWatched(
+        showImdbId: string,
+        showId: string,
+        season: number,
+        episodeNumbers: number[],
+        watchedAt: Date = new Date(),
+        showTitle?: string
+    ): Promise<{ success: boolean; syncedToTrakt: boolean; count: number }> {
+        try {
+            logger.log(`[WatchedService] Marking season ${season} as watched for ${showImdbId}`);
+
+            // Check if Trakt is authenticated
+            const isTraktAuth = await this.traktService.isAuthenticated();
+            let syncedToTrakt = false;
+
+            if (isTraktAuth) {
+                // Sync entire season to Trakt
+                syncedToTrakt = await this.traktService.markSeasonAsWatched(
+                    showImdbId,
+                    season,
+                    watchedAt,
+                    showId !== showImdbId ? showId : undefined
+                );
+                logger.log(`[WatchedService] Trakt season sync result: ${syncedToTrakt}`);
+            }
+
+            // Sync to Simkl
+            const isSimklAuth = await this.simklService.isAuthenticated();
+            if (isSimklAuth) {
+                // Simkl doesn't have a direct "mark season" generic endpoint in the same way, but we can construct it
+                const episodes = episodeNumbers.map(num => ({ number: num, watched_at: watchedAt.toISOString() }));
+                await this.simklService.addToHistory({
+                    shows: [{
+                        ids: { imdb: showImdbId },
+                        seasons: [{
+                            number: season,
+                            episodes: episodes
+                        }]
+                    }]
+                });
+                logger.log(`[WatchedService] Simkl season sync request sent`);
+            }
+
+            // Store locally as "completed" for each episode in the season
+            for (const epNum of episodeNumbers) {
+                const episodeId = `${showId}:${season}:${epNum}`;
+                await this.setLocalWatchedStatus(showId, 'series', true, episodeId, watchedAt);
+            }
+
+            await this.upsertLocalWatchedItems(
+                episodeNumbers.map((episode) => ({
+                    content_id: showImdbId,
+                    content_type: 'series' as const,
+                    title: showTitle || showImdbId,
+                    season,
+                    episode,
+                    watched_at: watchedAt.getTime(),
+                }))
+            );
+
+            return { success: true, syncedToTrakt, count: episodeNumbers.length };
+        } catch (error) {
+            logger.error('[WatchedService] Failed to mark season as watched:', error);
+            return { success: false, syncedToTrakt: false, count: 0 };
+        }
+    }
+
+    /**
+     * Unmark a movie as watched (remove from history).
+     * @param imdbId - The primary content ID (may be a provider ID like "kitsu:123")
+     * @param malId - Optional MAL ID
+     * @param tmdbId - Optional TMDB ID
+     * @param title - Optional title
+     * @param fallbackImdbId - The resolved IMDb ID from metadata (used when imdbId isn't IMDb format)
+     */
+    public async unmarkMovieAsWatched(
+        imdbId: string,
+        malId?: number,
+        tmdbId?: number,
+        title?: string,
+        fallbackImdbId?: string
+    ): Promise<{ success: boolean; syncedToTrakt: boolean }> {
+        try {
+            logger.log(`[WatchedService] Unmarking movie as watched: ${imdbId}${fallbackImdbId && fallbackImdbId !== imdbId ? ` (fallback: ${fallbackImdbId})` : ''}`);
+
+            const isTraktAuth = await this.traktService.isAuthenticated();
+            let syncedToTrakt = false;
+
+            if (isTraktAuth) {
+                syncedToTrakt = await this.traktService.removeMovieFromHistory(imdbId, fallbackImdbId);
+                logger.log(`[WatchedService] Trakt remove result for movie: ${syncedToTrakt}`);
+            }
+
+            // Sync to MAL
+            if (MalAuth.isAuthenticated()) {
+                MalSync.unscrobbleEpisode(
+                    title || 'Movie',
+                    1,
+                    'movie',
+                    undefined,
+                    imdbId,
+                    undefined,
+                    malId,
+                    undefined,
+                    tmdbId
+                ).catch(err => logger.error('[WatchedService] MAL movie unsync failed:', err));
+            }
+
+            // Simkl Unmark — try both IDs
+            const isSimklAuth = await this.simklService.isAuthenticated();
+            if (isSimklAuth) {
+                const simklId = (fallbackImdbId && fallbackImdbId !== imdbId) ? fallbackImdbId : imdbId;
+                await this.simklService.removeFromHistory({ movies: [{ ids: { imdb: simklId } }] });
+                logger.log(`[WatchedService] Simkl remove request sent for movie`);
+            }
+
+            // Remove local progress — clear both IDs to be safe
+            await storageService.removeWatchProgress(imdbId, 'movie');
+            await mmkvStorage.removeItem(`watched:movie:${imdbId}`);
+            if (fallbackImdbId && fallbackImdbId !== imdbId) {
+                await storageService.removeWatchProgress(fallbackImdbId, 'movie');
+                await mmkvStorage.removeItem(`watched:movie:${fallbackImdbId}`);
+            }
+            await this.removeLocalWatchedItems([
+                { content_id: imdbId, season: null, episode: null },
+            ]);
+
+            return { success: true, syncedToTrakt };
+        } catch (error) {
+            logger.error('[WatchedService] Failed to unmark movie as watched:', error);
+            return { success: false, syncedToTrakt: false };
+        }
+    }
+
+    /**
+     * Unmark an episode as watched (remove from history)
+     */
+    public async unmarkEpisodeAsWatched(
+        showImdbId: string,
+        showId: string,
+        season: number,
+        episode: number,
+        releaseDate?: string,
+        showTitle?: string,
+        malId?: number,
+        dayIndex?: number,
+        tmdbId?: number
+    ): Promise<{ success: boolean; syncedToTrakt: boolean }> {
+        try {
+            logger.log(`[WatchedService] Unmarking episode as watched: ${showImdbId} S${season}E${episode}`);
+
+            const isTraktAuth = await this.traktService.isAuthenticated();
+            let syncedToTrakt = false;
+
+            const fallback = showId !== showImdbId ? showId : undefined;
+
+            if (isTraktAuth) {
+                syncedToTrakt = await this.traktService.removeEpisodeFromHistory(
+                    showImdbId,
+                    season,
+                    episode,
+                    fallback
+                );
+                logger.log(`[WatchedService] Trakt remove result for episode: ${syncedToTrakt}`);
+            }
+
+            // Sync to MAL
+            if (MalAuth.isAuthenticated()) {
+                MalSync.unscrobbleEpisode(
+                    showTitle || 'Anime',
+                    episode,
+                    'series',
+                    season,
+                    showImdbId,
+                    releaseDate,
+                    malId,
+                    dayIndex,
+                    tmdbId
+                ).catch(err => logger.error('[WatchedService] MAL unsync failed:', err));
+            }
+
+            // Simkl Unmark — use best available ID
+            const isSimklAuth = await this.simklService.isAuthenticated();
+            if (isSimklAuth) {
+                const simklId = showImdbId || showId;
+                await this.simklService.removeFromHistory({
+                    shows: [{
+                        ids: { imdb: simklId },
+                        seasons: [{
+                            number: season,
+                            episodes: [{ number: episode }]
+                        }]
+                    }]
+                });
+                logger.log(`[WatchedService] Simkl remove request sent for episode`);
+            }
+
+            // Remove local progress
+            const episodeId = `${showId}:${season}:${episode}`;
+            await storageService.removeWatchProgress(showId, 'series', episodeId);
+            await this.removeLocalWatchedItems([
+                { content_id: showImdbId, season, episode },
+            ]);
+
+            return { success: true, syncedToTrakt };
+        } catch (error) {
+            logger.error('[WatchedService] Failed to unmark episode as watched:', error);
+            return { success: false, syncedToTrakt: false };
+        }
+    }
+
+    /**
+     * Unmark an entire season as watched (remove from history)
+     * @param showImdbId - The IMDb ID of the show
+     * @param showId - The Stremio ID of the show (for local storage)
+     * @param season - Season number
+     * @param episodeNumbers - Array of episode numbers in the season
+     */
+    public async unmarkSeasonAsWatched(
+        showImdbId: string,
+        showId: string,
+        season: number,
+        episodeNumbers: number[],
+        releaseDate?: string,
+        showTitle?: string,
+        malId?: number,
+        dayIndex?: number,
+        tmdbId?: number
+    ): Promise<{ success: boolean; syncedToTrakt: boolean; count: number }> {
+        try {
+            logger.log(`[WatchedService] Unmarking season ${season} as watched for ${showImdbId}`);
+
+            const isTraktAuth = await this.traktService.isAuthenticated();
+            let syncedToTrakt = false;
+
+            const fallback = showId !== showImdbId ? showId : undefined;
+
+            if (isTraktAuth) {
+                // Remove entire season from Trakt
+                syncedToTrakt = await this.traktService.removeSeasonFromHistory(
+                    showImdbId,
+                    season,
+                    fallback
+                );
+                logger.log(`[WatchedService] Trakt season removal result: ${syncedToTrakt}`);
+            }
+
+            // Sync to MAL (Unscrobble the latest episode in this season ONLY if it's the one we're currently on)
+            if (MalAuth.isAuthenticated() && episodeNumbers.length > 0) {
+                const maxEpisodeInSeason = Math.max(...episodeNumbers);
+                
+                const resolveAndUnscrobble = async () => {
+                    try {
+                        // Use the robust resolution logic from MalSync.unscrobbleEpisode 
+                        // to find the ACTUAL malId and absolute episode number
+                        let finalMalId = malId;
+                        let resolvedEpisode = maxEpisodeInSeason;
+
+                        // 1. Try TMDB Resolution
+                        if (!finalMalId && tmdbId && releaseDate) {
+                            const tmdbResult = await ArmSyncService.resolveByTmdb(tmdbId, releaseDate, dayIndex);
+                            if (tmdbResult) {
+                                finalMalId = tmdbResult.malId;
+                                resolvedEpisode = tmdbResult.episode;
+                            }
+                        }
+
+                        // 2. Try IMDb/ARM Fallback
+                        if (!finalMalId && showImdbId && releaseDate) {
+                            const armResult = await ArmSyncService.resolveByDate(showImdbId, releaseDate, dayIndex);
+                            if (armResult) {
+                                finalMalId = armResult.malId;
+                                resolvedEpisode = armResult.episode;
+                            }
+                        }
+
+                        // 3. Last resort: Standard lookup
+                        if (!finalMalId) {
+                             finalMalId = (await MalSync.getMalId(
+                                 showTitle || 'Anime', 
+                                 'series', 
+                                 undefined, 
+                                 season, 
+                                 showImdbId, 
+                                 maxEpisodeInSeason, 
+                                 releaseDate, 
+                                 dayIndex, 
+                                 tmdbId
+                             )) || undefined;
+                        }
+
+                        if (finalMalId) {
+                            const currentInfo = await MalApiService.getMyListStatus(finalMalId);
+                            const currentlyWatched = currentInfo.my_list_status?.num_episodes_watched || 0;
+
+                            // Only unscrobble if the season's end matches our current progress
+                            if (currentlyWatched === resolvedEpisode) {
+                                // Calculate the episode count BEFORE this season started
+                                const minEpisodeInSeason = Math.min(...episodeNumbers);
+                                const newCount = Math.max(0, minEpisodeInSeason - 1);
+                                
+                                let newStatus: any = currentInfo.my_list_status?.status || 'watching';
+                                if (newCount === 0 && newStatus === 'watching') {
+                                    // Optional: could move to plan_to_watch
+                                } else if (newStatus === 'completed') {
+                                    newStatus = 'watching';
+                                }
+
+                                await MalApiService.updateStatus(finalMalId, newStatus, newCount);
+                                logger.log(`[WatchedService] Unmarked season: MAL ID ${finalMalId} reverted to Ep ${newCount}`);
+                            }
+                        }
+                    } catch (e) {
+                        logger.error('[WatchedService] MAL season unsync resolution failed:', e);
+                    }
+                };
+                
+                resolveAndUnscrobble();
+            }
+
+            // Sync to Simkl — use best available ID
+            const isSimklAuth = await this.simklService.isAuthenticated();
+            if (isSimklAuth) {
+                const simklId = showImdbId || showId;
+                const episodes = episodeNumbers.map(num => ({ number: num }));
+                await this.simklService.removeFromHistory({
+                    shows: [{
+                        ids: { imdb: simklId },
+                        seasons: [{ number: season, episodes: episodes }]
+                    }]
+                });
+                logger.log(`[WatchedService] Simkl season removal request sent`);
+            }
+
+            // Remove local progress for each episode in the season
+            for (const epNum of episodeNumbers) {
+                const episodeId = `${showId}:${season}:${epNum}`;
+                await storageService.removeWatchProgress(showId, 'series', episodeId);
+            }
+
+            await this.removeLocalWatchedItems(
+                episodeNumbers.map((episode) => ({
+                    content_id: showImdbId,
+                    season,
+                    episode,
+                }))
+            );
+
+            return { success: true, syncedToTrakt, count: episodeNumbers.length };
+        } catch (error) {
+            logger.error('[WatchedService] Failed to unmark season as watched:', error);
+            return { success: false, syncedToTrakt: false, count: 0 };
+        }
+    }
+
+    /**
+     * Check if a movie is marked as watched (locally)
+     */
+    public async isMovieWatched(imdbId: string, fallbackImdbId?: string): Promise<boolean> {
+        try {
+            const isAuthed = await this.traktService.isAuthenticated();
+
+            if (isAuthed) {
+                const traktWatched =
+                    await this.traktService.isMovieWatchedAccurate(imdbId, fallbackImdbId);
+                if (traktWatched) return true;
+            }
+
+            const local = await mmkvStorage.getItem(`watched:movie:${imdbId}`);
+            if (local === 'true') return true;
+
+            // Also check under fallback ID locally
+            if (fallbackImdbId && fallbackImdbId !== imdbId) {
+                const localFallback = await mmkvStorage.getItem(`watched:movie:${fallbackImdbId}`);
+                if (localFallback === 'true') return true;
+            }
+
+            return false;
+        } catch {
+            return false;
+        }
+    }
+
+
+    /**
+     * Check if an episode is marked as watched (locally)
+     */
+    public async isEpisodeWatched(
+        showId: string,
+        season: number,
+        episode: number,
+        fallbackImdbId?: string
+    ): Promise<boolean> {
+        try {
+            const isAuthed = await this.traktService.isAuthenticated();
+
+            if (isAuthed) {
+                const traktWatched =
+                    await this.traktService.isEpisodeWatchedAccurate(
+                        showId,
+                        season,
+                        episode,
+                        fallbackImdbId
+                    );
+                if (traktWatched) return true;
+            }
+
+            const episodeId = `${showId}:${season}:${episode}`;
+            const progress = await storageService.getWatchProgress(
+                showId,
+                'series',
+                episodeId
+            );
+
+            if (!progress) return false;
+
+            const pct = (progress.currentTime / progress.duration) * 100;
+            return pct >= 99;
+        } catch {
+            return false;
+        }
+    }
+
+    /**
+     * Set local watched status by creating a "completed" progress entry
+     */
+    private async setLocalWatchedStatus(
+        id: string,
+        type: 'movie' | 'series',
+        watched: boolean,
+        episodeId?: string,
+        watchedAt: Date = new Date()
+    ): Promise<void> {
+        try {
+            if (watched) {
+                // If existing progress has real playback data, don't overwrite with placeholder
+                const existing = await storageService.getWatchProgress(id, type, episodeId);
+                if (existing && existing.currentTime > 1 && existing.duration > 1) {
+                    return;
+                }
+
+                // Create a "completed" progress entry (100% watched)
+                const progress = {
+                    currentTime: 1, // Minimal values to indicate completion
+                    duration: 1,
+                    lastUpdated: watchedAt.getTime(),
+                    traktSynced: false, // Will be set to true if Trakt sync succeeded
+                    traktProgress: 100,
+                };
+                await storageService.setWatchProgress(id, type, progress, episodeId, {
+                    forceWrite: true,
+                    forceNotify: true,
+                    preserveTimestamp: true,
+                });
+
+                // Also set the legacy watched flag for movies
+                if (type === 'movie') {
+                    await mmkvStorage.setItem(`watched:${type}:${id}`, 'true');
+                }
+            } else {
+                // Remove progress
+                await storageService.removeWatchProgress(id, type, episodeId);
+                if (type === 'movie') {
+                    await mmkvStorage.removeItem(`watched:${type}:${id}`);
+                }
+            }
+        } catch (error) {
+            logger.error('[WatchedService] Error setting local watched status:', error);
+        }
+    }
+}
+
+export const watchedService = WatchedService.getInstance();

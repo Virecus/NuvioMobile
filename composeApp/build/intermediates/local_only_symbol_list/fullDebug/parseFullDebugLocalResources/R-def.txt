@@ -1,0 +1,28 @@
+R_DEF: Internal format may change without notice
+local
+color nuvio_background
+drawable ic_launcher_background
+drawable ic_notification_small
+drawable ic_player_aspect_ratio
+drawable ic_player_audio_filled
+drawable ic_player_pause
+drawable ic_player_play
+drawable ic_player_subtitles
+drawable ic_splash_logo
+drawable library_add_plus
+drawable mdblist_logo
+drawable trakt_logo_wordmark
+drawable trakt_tv_favicon
+id libass_overlay_bound_player
+id libass_overlay_container
+id libass_overlay_container_gl
+layout exo_player_view
+mipmap ic_launcher
+mipmap ic_launcher_foreground
+mipmap ic_launcher_round
+string app_name
+style Theme.Nuvio
+style Theme.Nuvio.Splash
+xml locale_config
+xml nuvio_file_paths
+xml nuvio_updater_file_paths

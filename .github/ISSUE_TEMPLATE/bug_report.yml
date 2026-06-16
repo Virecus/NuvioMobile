@@ -1,6 +1,6 @@
 name: Bug report
 description: Report a reproducible bug (one per issue).
-title: "[Bug]: short summary here"
+title: "[Bug]: "
 labels:
   - bug
 body:
@@ -10,9 +10,6 @@ body:
         Thanks for reporting a bug.
 
         If we can reproduce it, we can usually fix it. This form is just to get the basics in one place.
-        Please replace the default title with a short summary of the actual problem.
-
-        If the app crashes, logs are required. Crash reports without logs may be labeled `needs-info`.
 
   - type: markdown
     attributes:
@@ -30,8 +27,6 @@ body:
           required: false
         - label: This issue is limited to a single bug (not multiple unrelated problems).
           required: true
-        - label: This is not a source/stream-specific error (the issue happens regardless of which source is used).
-          required: true
 
   - type: markdown
     attributes:
@@ -41,9 +36,9 @@ body:
   - type: input
     id: app_version
     attributes:
-      label: App version / commit
-      description: Release version (e.g. 1.2.3) or commit hash. If unsure, say where you got the build from.
-      placeholder: "e.g. 1.2.3, or main@abc1234"
+      label: App version / OTA update ID
+      description: Release version, commit hash, or OTA update ID. You can find your OTA update ID in Settings > App updates > Current version (hold to copy).
+      placeholder: "e.g. 1.2.3, main@abc1234, or an OTA ID"
     validations:
       required: true
 
@@ -52,9 +47,8 @@ body:
     attributes:
       label: Install method
       options:
-        - GitHub Release / App Store / Play Store
-        - TestFlight
-        - CI build / Nightly
+        - GitHub Release APK / IPA
+        - Expo Go
         - Built from source
         - Other (please describe below)
     validations:
@@ -65,14 +59,10 @@ body:
     attributes:
       label: Platform
       options:
-        - Android (phone/tablet)
-        - iOS (iPhone)
-        - iOS (iPad)
-        - macOS (desktop)
-        - Windows (desktop)
-        - Linux (desktop)
+        - Android phone/tablet
+        - iOS (iPhone/iPad)
         - Android emulator
-        - iOS simulator
+        - iOS Simulator
         - Other (please describe below)
     validations:
       required: true
@@ -81,7 +71,7 @@ body:
     id: device_model
     attributes:
       label: Device model
-      description: "Example: iPhone 15 Pro, Pixel 8, MacBook Air M2, etc."
+      description: "Example: iPhone 15 Pro, Pixel 8, Galaxy S23 Ultra, iPad Pro, etc."
       placeholder: "e.g. iPhone 15 Pro"
     validations:
       required: true
@@ -90,7 +80,22 @@ body:
     id: os_version
     attributes:
       label: OS version
-      placeholder: "e.g. iOS 18.1, Android 14, macOS 15.2"
+      placeholder: "e.g. Android 14, iOS 17.2"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: player_mode
+    attributes:
+      label: Player mode
+      description: If you are using an external player, most playback issues must be reported to that player instead.
+      options:
+        - Internal player (iOS: KSPlayer)
+        - Internal player (Android: ExoPlayer)
+        - Internal player (Android: MPV)
+        - External player
+        - Ask every time
+        - Not sure
     validations:
       required: true
 
@@ -109,14 +114,12 @@ body:
         - Streams / Sources (selection, loading, errors)
         - Next Episode / Auto-play
         - Watch Progress (resume, watched state, history)
-        - Subtitles (download, styling, sync)
+        - Subtitles (styling, sync)
         - Audio tracks
-        - Navigation / Gestures
-        - UI / Layout
+        - UI / Layout / Animations
         - Settings
-        - Sync (Trakt / remote)
-        - Downloads / Offline
-        - Platform-specific (iOS only / Android only / Desktop only)
+        - Sync (Trakt / SIMKL / remote)
+        - Downloads
         - Other
     validations:
       required: true
@@ -129,7 +132,7 @@ body:
       placeholder: |
         1. Open ...
         2. Navigate to ...
-        3. Tap / Click ...
+        3. Press ...
         4. Observe ...
     validations:
       required: true
@@ -195,17 +198,13 @@ body:
   - type: textarea
     id: logs
     attributes:
-      label: Logs (required for crash reports)
+      label: Logs (optional but helpful)
       description: |
-        Required if the app crashes or force closes.
-        For other bug reports, logs are optional but still helpful.
-
-        **Android:** `adb logcat -d | tail -n 300`
-        **iOS:** Crash log from Xcode Organizer or Console.app
-        **Desktop:** Terminal/console output from around the time the issue occurred
+        Not required, but super helpful for playback/crash issues.
+        If you can, include a short snippet from Metro bundler, Xcode, or `adb logcat`.
       render: shell
       placeholder: |
-        Paste logs here
+        adb logcat -d | tail -n 300
     validations:
       required: false
 

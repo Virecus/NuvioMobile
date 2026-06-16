@@ -1,0 +1,937 @@
+-- Merging decision tree log ---
+provider#androidx.core.content.FileProvider
+INJECTED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:46:9-54:20
+	android:authorities
+		INJECTED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml
+manifest
+ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:2:1-57:12
+MERGED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:2:1-57:12
+INJECTED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidFull/AndroidManifest.xml:2:1-6:12
+INJECTED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidFull/AndroidManifest.xml:2:1-6:12
+INJECTED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidFull/AndroidManifest.xml:2:1-6:12
+MERGED from [lib-ui-release.aar] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/594e8ebbbb9d4bd744a13240faa4e749/transformed/lib-ui-release/AndroidManifest.xml:17:1-22:12
+MERGED from [lib-decoder-av1-release.aar] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ab232ca609d34daec9aa1564a768371f/transformed/lib-decoder-av1-release/AndroidManifest.xml:17:1-22:12
+MERGED from [lib-decoder-mpegh-release.aar] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/02e5ebe769152bdda0cddf605870983f/transformed/lib-decoder-mpegh-release/AndroidManifest.xml:17:1-22:12
+MERGED from [lib-decoder-ffmpeg-release.aar] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/31bce96bf6ef6ed614f5ef939c789004/transformed/lib-decoder-ffmpeg-release/AndroidManifest.xml:17:1-22:12
+MERGED from [lib-exoplayer-release.aar] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5ddfb8c7cbb8b934842567a8bcfad1cf/transformed/lib-exoplayer-release/AndroidManifest.xml:17:1-24:12
+MERGED from [quickjs-kt-android-1.0.5-nuvio.aar] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1e91042f0c980950e35746c3f3481344/transformed/quickjs-kt-android-1.0.5-nuvio/AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt.coil3:coil-gif:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2af808070cd78718302c818f4fd117cd/transformed/coil-gif-3.5.0-beta01/AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt.coil3:coil-network-ktor3-android:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c743604a135acfeb103fcf6189a67cab/transformed/coil-network-ktor3/AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt.coil3:coil-svg-android:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5e44e1556ea63e817f8344b235e10207/transformed/coil-svg/AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt.coil3:coil-compose-android:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/3fe32085cba0ef3f2e9c277f9b0ee555/transformed/coil-compose/AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt.coil3:coil-android:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/3d7a094e42b76d4e08b497a419750056/transformed/coil/AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt.coil3:coil-compose-core-android:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/847b8d2543d7964db8e855956f026f81/transformed/coil-compose-core/AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt.coil3:coil-network-core-android:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2c187c88eda537be92ba68fc7104a3a4/transformed/coil-network-core/AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt.coil3:coil-core-android:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/b9fa91044da138d58c4bf1338cf47082/transformed/coil-core/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.appcompat:appcompat-resources:1.7.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/379e5b86e1f4cf5fc208e7941fac75ab/transformed/appcompat-resources-1.7.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.appcompat:appcompat:1.7.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e07aa2cca02825e6a0f1cbf42182bea5/transformed/appcompat-1.7.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.fragment:fragment:1.5.4] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4c5ee63048939a7ea7f022f8044740ae/transformed/fragment-1.5.4/AndroidManifest.xml:17:1-24:12
+MERGED from [dev.chrisbanes.haze:haze-android:1.7.2] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/3ee99a2833470d8e98d01a716de9fdf9/transformed/haze-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-runtime-android:2.9.7] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d0949a134be079f122d0950aa1aa20a1/transformed/navigation-runtime-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-common-android:2.9.7] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/82633001c0a44624388d8da2371cd8f4/transformed/navigation-common-release/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-compose-android:2.9.7] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/15d1e7ffaf9352ce650fbac0bec1c7f0/transformed/navigation-compose-release/AndroidManifest.xml:2:1-7:12
+MERGED from [io.github.jan-tennert.supabase:postgrest-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ee1ede9071381a46073fc60e9807e8f6/transformed/postgrest-kt/AndroidManifest.xml:2:1-7:12
+MERGED from [io.github.jan-tennert.supabase:functions-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/8d078bbecba32380c9d7e024db58fb22/transformed/functions-kt/AndroidManifest.xml:2:1-7:12
+MERGED from [io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e819f3f802b265cc34ef77bb3981a8ab/transformed/auth-kt/AndroidManifest.xml:2:1-20:12
+MERGED from [androidx.browser:browser:1.9.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6573ed4f298fa68c42339fc6fe195a4e/transformed/browser-1.9.0/AndroidManifest.xml:2:1-7:12
+MERGED from [org.jetbrains.compose.components:components-resources-android:1.11.0-beta03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7eeba193368244e683fac25d7a168aaf/transformed/library-release/AndroidManifest.xml:2:1-16:12
+MERGED from [sh.calvin.reorderable:reorderable-android-debug:3.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/24e0dddf89dacdebdd420bf14bbda0e3/transformed/reorderable-debug/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material3:material3-android:1.5.0-alpha17] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/cfa6aa909c3790222c53955efc4b4a0a/transformed/material3/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.animation:animation-core-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/075da455f19bbb28be5312608fb10481/transformed/animation-core/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-ripple-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/416315d9a2113cfbdc1f6c5c41946cff/transformed/material-ripple/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/f8e8006fa3e25f20ca2ff065a0691461/transformed/animation/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/a98cef9da5acca4be2abbfa8a510614c/transformed/foundation-layout/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c0df94592175ae447e56c6c702271ece/transformed/foundation/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/b8dec4cff2110d0a74b5adb5a91207c1/transformed/ui-tooling-data/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-unit-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/bd98845ae97339d3b88b03d0df91054d/transformed/ui-unit/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-geometry-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/db68afa783f1bc64111701dac2d9f116/transformed/ui-geometry/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-graphics-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9dca7c6d56bfa2e952cbce198438b116/transformed/ui-graphics/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-util-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/dc069154747e698fc5fe83958ee950ec/transformed/ui-util/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-text-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/74b5cd1b206b92b73b5a56e7c3deebe4/transformed/ui-text/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/660e30c834ca2ca5620d70be34069d3c/transformed/ui-tooling/AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c3710a361a436e40e41209c6055fb11a/transformed/ui-tooling-preview/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigationevent:navigationevent-android:1.0.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/225d7537db5c5f2231de82e9a49ba325/transformed/navigationevent/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigationevent:navigationevent-compose-android:1.0.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9994f52da87644a50a46cf124c2e495b/transformed/navigationevent-compose/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-annotation-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/84185d265d8efa9eaf742fe0553d65ad/transformed/runtime-annotation/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-retain-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e2a903d56c94cf4380c0d7776c2a504a/transformed/runtime-retain/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.transition:transition:1.6.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1f7b103bd7875b279fb8e49904700790/transformed/transition-1.6.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/767e87494eed1eba4451641dffd74994/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/b1a6ef7abce6d775cb298186bed7ed7e/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5e86cf692aa6e01e442e81e2c52baa49/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.work:work-runtime-ktx:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6844c53d4af6b82d4c74b0d95e181485/transformed/work-runtime-ktx-2.10.3/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:17:1-145:12
+MERGED from [androidx.recyclerview:recyclerview:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4d4df25659de2517eeccdd414bd20dad/transformed/recyclerview-1.4.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.media3:media3-datasource-okhttp:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e4e287fcad77c404e324277d73a11e03/transformed/media3-datasource-okhttp-1.8.0/AndroidManifest.xml:17:1-22:12
+MERGED from [io.github.peerless2012:ass-media:0.4.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/a5e2a89f0e95787438347adef63c15ed/transformed/ass-media-0.4.0-beta01/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.media3:media3-effect:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6c1df75d0f26646fa7309c9c68c3aea0/transformed/media3-effect-1.8.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-datasource:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/be1d1b1c695fd91b45414153eae4f106/transformed/media3-datasource-1.8.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-extractor:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d8adf58b6ae270b5a5dae03e1e879d07/transformed/media3-extractor-1.8.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-decoder:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/075f43bd2a6cf17e3c5aa308b1da1ad3/transformed/media3-decoder-1.8.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-container:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c7687336481de5597793c1d92bd6fe60/transformed/media3-container-1.8.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-database:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/105f7c587b718e80539e3d74168def00/transformed/media3-database-1.8.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-common:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7a0f5995af1297021f63cbcb547b07b0/transformed/media3-common-1.8.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.media3:media3-session:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5aa62fe96ed196b80a3071f7ee1d26ae/transformed/media3-session-1.8.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/05fe2744e64489cb3868374529175373/transformed/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1d7a8172463d22ddcf754811483188fc/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.graphics:graphics-shapes-android:1.1.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/99ff208d0ca38abd3385fbb5e670dd83/transformed/graphics-shapes/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core-ktx:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2735986392da72a946a2b1330aa1e926/transformed/core-ktx-1.16.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.2.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/913c7fb33e93279b2669bf19959b3728/transformed/vectordrawable-animated-1.2.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d220e675dfaa8f8dc65ed43d30a2f45d/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/51b86b76362ff2df9304e6a2699219eb/transformed/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media:media:1.7.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/bd130fa3272947ab0a423993cdcf8330/transformed/media-1.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.2.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/db3af668ba360fc516778b601890e471/transformed/vectordrawable-1.2.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.autofill:autofill:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/11a924ee25b0defcb0cf0008d71b90bd/transformed/autofill-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.window:window-core-android:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9647336bf42d73d1ee44e353c0141805/transformed/window-core/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/449523cb20a565f7a05115e343ae4356/transformed/window-1.5.0/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/107de91e5bec9b3e0d4be76285f2d05a/transformed/emoji2-views-helper-1.4.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ca6cb4f26983b5767fc0f23fab75172c/transformed/emoji2-1.4.0/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.graphics:graphics-path:1.0.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/dedcc3724e9de8842268c30f1c7dcee9/transformed/graphics-path-1.0.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:17:1-30:12
+MERGED from [io.github.jan-tennert.supabase:supabase-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/af99cd77cdcab77c5cbb254ae7f8059a/transformed/supabase-kt/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/089f6c891505fd529a5c9236b62c9a3b/transformed/lifecycle-process-2.11.0-alpha03/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/acb8a9550135202ecc4ccf0d2946b6a2/transformed/lifecycle-runtime-ktx/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/63f2d8cfc79390c7e380bc9291664228/transformed/lifecycle-livedata-core-ktx-2.11.0-alpha03/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/440f005e16e0fa39caad215301790dab/transformed/lifecycle-runtime/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-service:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d238267eebc05e8e7e72fdc42bff4d15/transformed/lifecycle-service-2.11.0-alpha03/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c36751c8e25bcf861fceebdc3b0dc0a5/transformed/lifecycle-viewmodel-ktx-2.11.0-alpha03/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/a85b7500050251f36ee569441baaccbf/transformed/lifecycle-livedata-core-2.11.0-alpha03/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/68fcbe49c32c644ffa143ed1d2c6e16d/transformed/lifecycle-livedata-2.11.0-alpha03/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/78d111d706b0d40fe4c77989cc76f7a1/transformed/lifecycle-viewmodel-2.11.0-alpha03/AndroidManifest.xml:2:1-5:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/33a8315648a944d332b6a4a0a353c96a/transformed/lifecycle-viewmodel/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate-android:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/90dd8a031b9459a9129590d19b9d6d27/transformed/lifecycle-viewmodel-savedstate/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate-android:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/bd9c602e67e7cef5469bf8615631c783/transformed/savedstate/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/fcb2e164339bd01403453ae39cfccb12/transformed/savedstate-ktx-1.4.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.savedstate:savedstate-compose-android:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/be2102088ef791921b10cecc16f6c953/transformed/savedstate-compose/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/923c2eabfd5507132534e9d932eb58f3/transformed/runtime/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/471d92f60fd90e55418308340769ee49/transformed/runtime-saveable/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/de10b88ba0b356178a354bf65b6e803d/transformed/lifecycle-runtime-compose/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/f366891de6b9487357ee8247a8d4717a/transformed/lifecycle-viewmodel-compose/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-icons-extended-android:1.7.6] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/fb77d35d280e1fb8a0da127f38d22b10/transformed/material-icons-extended-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.6] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2ad5335debb2d359fe2bd519b0f68f64/transformed/material-icons-core-release/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.37.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/b4d7ba8d5a4bf48a2efd5e34dfa6e543/transformed/accompanist-drawablepainter-0.37.3/AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.compose.ui:ui-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/3093cd6ff9e376da1433ebbffde3e552/transformed/ui/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity-ktx:1.12.2] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4d1cc832f3eea222723db4bc8c3bdbac/transformed/activity-ktx-1.12.2/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity:1.12.2] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c3443cd7a6e409ee6ae754a9d7189265/transformed/activity-1.12.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity-compose:1.12.2] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/dda242d473edfa6c1b25969db4179f84/transformed/activity-compose-1.12.2/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core-splashscreen:1.0.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/833fdc62e8c88f09cb5a538abd19025e/transformed/core-splashscreen-1.0.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.media3:media3-exoplayer-hls:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/58794038aa5dc4f918b676acd563cfba/transformed/media3-exoplayer-hls-1.8.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-exoplayer-dash:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d7641fb524d7b3d85b8f94b67f772b46/transformed/media3-exoplayer-dash-1.8.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-exoplayer-smoothstreaming:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/83936531938a1d2d192b2cc6df9d0b5b/transformed/media3-exoplayer-smoothstreaming-1.8.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-exoplayer-rtsp:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6532c14709d158c7b7e09253dcf5ca7e/transformed/media3-exoplayer-rtsp-1.8.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.room:room-ktx:2.6.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c93f523c1c4a00684a0272afdea78bbd/transformed/room-ktx-2.6.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.room:room-runtime:2.6.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9803eb034b7fe91d8316181b8d1b79f9/transformed/room-runtime-2.6.1/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.annotation:annotation-experimental:1.5.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5e0ad5b649ba848d2663585d8f7feac7/transformed/annotation-experimental-1.5.1/AndroidManifest.xml:2:1-7:12
+MERGED from [io.github.peerless2012:ass-kt:0.4.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2bdc7ab180b9f2922322a73317f87d7c/transformed/ass-kt-0.4.0-beta01/AndroidManifest.xml:2:1-7:12
+MERGED from [com.fleeksoft.ksoup:ksoup-android:0.2.6] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/a5b0757548555ce98b76d0adb27b397e/transformed/ksoup-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core-viewtree:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1b61feabd56fadd8404e1b18fef57983/transformed/core-viewtree-1.0.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d2a41537750c16cdd4e50acb04d46f4c/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [com.russhwolf:multiplatform-settings-coroutines-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/db1ddd37779f7af6b2a0080e9a913bdf/transformed/multiplatform-settings-coroutines-debug/AndroidManifest.xml:2:1-7:12
+MERGED from [com.russhwolf:multiplatform-settings-no-arg-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/8b9e8713a4a2a23d6d7700d5618eb5c2/transformed/multiplatform-settings-no-arg-debug/AndroidManifest.xml:17:1-35:12
+MERGED from [com.fleeksoft.charset:charset-android:0.0.8] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/350d3478b2d9318111f048cf7163147e/transformed/charset-release/AndroidManifest.xml:2:1-7:12
+MERGED from [com.fleeksoft.io:io-core-android:0.0.8] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5deb9012002107381422d3064311a01d/transformed/io-core-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.sqlite:sqlite-framework:2.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d44c6f13a7ee04f414688816266a7db5/transformed/sqlite-framework-2.4.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite:2.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/430ce18e4edc38856c77d2c2b84a2a84/transformed/sqlite-2.4.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1e170be4bc32fdee4585d7bd4aee1fa3/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1c882c6dcb7384f77d38a1d3e9e7b183/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.startup:startup-runtime:1.2.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/70dcb2368fdf3ad0c67d746e4dbcf799/transformed/startup-runtime-1.2.0/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.exifinterface:exifinterface:1.4.2] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/302b3843d527a8415bdbc6198cf04247/transformed/exifinterface-1.4.2/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1110e5f9847f201688ceb6676194ea13/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.tracing:tracing-ktx:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/522635091f3b9137248df2de3f8e9842/transformed/tracing-ktx-1.3.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.tracing:tracing-android:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7a0e72b257ff7ff3a5b3d7d7d0e0b29c/transformed/tracing/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/69f7e9b5c6ff38a02047e53defba22fe/transformed/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9b0669a9f88e70d5fbaefc961d302596/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/37ec6e06a1ba2d3e13e2ae22f8984a2d/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [co.touchlab:kermit-android-debug:2.0.8] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ce4ab4429df1148743ae93f422ccbe74/transformed/kermit-debug/AndroidManifest.xml:2:1-7:12
+MERGED from [com.russhwolf:multiplatform-settings-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/b451714149adef7e57d6ac4757eca260/transformed/multiplatform-settings-debug/AndroidManifest.xml:2:1-7:12
+MERGED from [co.touchlab:kermit-core-android-debug:2.0.8] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5a5be28a0c92394a0a5b0fa569883a03/transformed/kermit-core-debug/AndroidManifest.xml:2:1-7:12
+MERGED from [org.conscrypt:conscrypt-android:2.5.2] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/587c39891ec993470ac6adbc96ee88a1/transformed/conscrypt-android-2.5.2/AndroidManifest.xml:2:1-13:12
+MERGED from [com.github.recloudstream.cloudstream:library-android:v4.7.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2d0f7b6a0d751b8fb1ba8d8a74bc7e5a/transformed/library-android-v4.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.caverock:androidsvg-aar:1.4] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/b72f5d34b9a16f9aed525f8f1ee21b25/transformed/androidsvg-aar-1.4/AndroidManifest.xml:2:1-11:12
+	package
+		INJECTED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidFull/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidFull/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidFull/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:4:5-67
+	android:name
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:4:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:5:5-79
+MERGED from [lib-exoplayer-release.aar] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5ddfb8c7cbb8b934842567a8bcfad1cf/transformed/lib-exoplayer-release/AndroidManifest.xml:22:5-79
+MERGED from [lib-exoplayer-release.aar] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5ddfb8c7cbb8b934842567a8bcfad1cf/transformed/lib-exoplayer-release/AndroidManifest.xml:22:5-79
+MERGED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:24:5-79
+MERGED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:24:5-79
+MERGED from [androidx.media3:media3-common:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7a0f5995af1297021f63cbcb547b07b0/transformed/media3-common-1.8.0/AndroidManifest.xml:22:5-79
+MERGED from [androidx.media3:media3-common:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7a0f5995af1297021f63cbcb547b07b0/transformed/media3-common-1.8.0/AndroidManifest.xml:22:5-79
+	android:name
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:5:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:6:5-76
+	android:name
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:6:22-73
+uses-permission#android.permission.POST_NOTIFICATIONS
+ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:7:5-77
+	android:name
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:7:22-74
+application
+ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:9:5-55:19
+INJECTED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidFull/AndroidManifest.xml
+MERGED from [io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e819f3f802b265cc34ef77bb3981a8ab/transformed/auth-kt/AndroidManifest.xml:8:5-18:19
+MERGED from [io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e819f3f802b265cc34ef77bb3981a8ab/transformed/auth-kt/AndroidManifest.xml:8:5-18:19
+MERGED from [org.jetbrains.compose.components:components-resources-android:1.11.0-beta03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7eeba193368244e683fac25d7a168aaf/transformed/library-release/AndroidManifest.xml:7:5-14:19
+MERGED from [org.jetbrains.compose.components:components-resources-android:1.11.0-beta03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7eeba193368244e683fac25d7a168aaf/transformed/library-release/AndroidManifest.xml:7:5-14:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/660e30c834ca2ca5620d70be34069d3c/transformed/ui-tooling/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/660e30c834ca2ca5620d70be34069d3c/transformed/ui-tooling/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:28:5-143:19
+MERGED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:28:5-143:19
+MERGED from [androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/449523cb20a565f7a05115e343ae4356/transformed/window-1.5.0/AndroidManifest.xml:22:5-29:19
+MERGED from [androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/449523cb20a565f7a05115e343ae4356/transformed/window-1.5.0/AndroidManifest.xml:22:5-29:19
+MERGED from [androidx.emoji2:emoji2:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ca6cb4f26983b5767fc0f23fab75172c/transformed/emoji2-1.4.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ca6cb4f26983b5767fc0f23fab75172c/transformed/emoji2-1.4.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:28:5-89
+MERGED from [androidx.lifecycle:lifecycle-process:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/089f6c891505fd529a5c9236b62c9a3b/transformed/lifecycle-process-2.11.0-alpha03/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/089f6c891505fd529a5c9236b62c9a3b/transformed/lifecycle-process-2.11.0-alpha03/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.room:room-runtime:2.6.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9803eb034b7fe91d8316181b8d1b79f9/transformed/room-runtime-2.6.1/AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.room:room-runtime:2.6.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9803eb034b7fe91d8316181b8d1b79f9/transformed/room-runtime-2.6.1/AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d2a41537750c16cdd4e50acb04d46f4c/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d2a41537750c16cdd4e50acb04d46f4c/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [com.russhwolf:multiplatform-settings-no-arg-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/8b9e8713a4a2a23d6d7700d5618eb5c2/transformed/multiplatform-settings-no-arg-debug/AndroidManifest.xml:23:5-33:19
+MERGED from [com.russhwolf:multiplatform-settings-no-arg-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/8b9e8713a4a2a23d6d7700d5618eb5c2/transformed/multiplatform-settings-no-arg-debug/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.2.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/70dcb2368fdf3ad0c67d746e4dbcf799/transformed/startup-runtime-1.2.0/AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.startup:startup-runtime:1.2.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/70dcb2368fdf3ad0c67d746e4dbcf799/transformed/startup-runtime-1.2.0/AndroidManifest.xml:23:5-29:19
+MERGED from [org.conscrypt:conscrypt-android:2.5.2] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/587c39891ec993470ac6adbc96ee88a1/transformed/conscrypt-android-2.5.2/AndroidManifest.xml:11:5-20
+MERGED from [org.conscrypt:conscrypt-android:2.5.2] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/587c39891ec993470ac6adbc96ee88a1/transformed/conscrypt-android-2.5.2/AndroidManifest.xml:11:5-20
+	android:extractNativeLibs
+		INJECTED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidFull/AndroidManifest.xml
+	android:localeConfig
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:15:9-50
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:28:18-86
+	android:supportsRtl
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:16:9-35
+	android:label
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:12:9-41
+	android:roundIcon
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:14:9-54
+	android:icon
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:11:9-43
+	android:allowBackup
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:10:9-35
+	android:theme
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:17:9-43
+	android:usesCleartextTraffic
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:13:9-44
+activity#com.nuvio.app.MainActivity
+ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:18:9-40:20
+	android:exported
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:19:13-36
+	android:supportsPictureInPicture
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:22:13-52
+	android:configChanges
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:21:13-91
+	android:theme
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:23:13-54
+	android:name
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:20:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:24:13-28:29
+action#android.intent.action.MAIN
+ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:25:17-69
+	android:name
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:25:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:27:17-77
+	android:name
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:27:27-74
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:auth+data:path:/trakt+data:scheme:nuvio
+ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:29:13-39:29
+action#android.intent.action.VIEW
+ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:30:17-69
+	android:name
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:30:25-66
+category#android.intent.category.DEFAULT
+ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:32:17-76
+	android:name
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:32:27-73
+category#android.intent.category.BROWSABLE
+ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:33:17-78
+	android:name
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:33:27-75
+data
+ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:35:17-38:45
+	android:path
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:38:21-42
+	android:host
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:37:21-40
+	android:scheme
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:36:21-43
+receiver#com.nuvio.app.features.downloads.DownloadsNotificationActionReceiver
+ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:42:9-44:40
+	android:exported
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:44:13-37
+	android:name
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidMain/AndroidManifest.xml:43:13-83
+uses-permission#android.permission.REQUEST_INSTALL_PACKAGES
+ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidFull/AndroidManifest.xml:4:5-83
+	android:name
+		ADDED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidFull/AndroidManifest.xml:4:22-80
+uses-sdk
+INJECTED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidFull/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidFull/AndroidManifest.xml
+INJECTED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidFull/AndroidManifest.xml
+MERGED from [lib-ui-release.aar] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/594e8ebbbb9d4bd744a13240faa4e749/transformed/lib-ui-release/AndroidManifest.xml:20:5-44
+MERGED from [lib-ui-release.aar] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/594e8ebbbb9d4bd744a13240faa4e749/transformed/lib-ui-release/AndroidManifest.xml:20:5-44
+MERGED from [lib-decoder-av1-release.aar] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ab232ca609d34daec9aa1564a768371f/transformed/lib-decoder-av1-release/AndroidManifest.xml:20:5-44
+MERGED from [lib-decoder-av1-release.aar] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ab232ca609d34daec9aa1564a768371f/transformed/lib-decoder-av1-release/AndroidManifest.xml:20:5-44
+MERGED from [lib-decoder-mpegh-release.aar] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/02e5ebe769152bdda0cddf605870983f/transformed/lib-decoder-mpegh-release/AndroidManifest.xml:20:5-44
+MERGED from [lib-decoder-mpegh-release.aar] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/02e5ebe769152bdda0cddf605870983f/transformed/lib-decoder-mpegh-release/AndroidManifest.xml:20:5-44
+MERGED from [lib-decoder-ffmpeg-release.aar] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/31bce96bf6ef6ed614f5ef939c789004/transformed/lib-decoder-ffmpeg-release/AndroidManifest.xml:20:5-44
+MERGED from [lib-decoder-ffmpeg-release.aar] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/31bce96bf6ef6ed614f5ef939c789004/transformed/lib-decoder-ffmpeg-release/AndroidManifest.xml:20:5-44
+MERGED from [lib-exoplayer-release.aar] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5ddfb8c7cbb8b934842567a8bcfad1cf/transformed/lib-exoplayer-release/AndroidManifest.xml:20:5-44
+MERGED from [lib-exoplayer-release.aar] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5ddfb8c7cbb8b934842567a8bcfad1cf/transformed/lib-exoplayer-release/AndroidManifest.xml:20:5-44
+MERGED from [quickjs-kt-android-1.0.5-nuvio.aar] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1e91042f0c980950e35746c3f3481344/transformed/quickjs-kt-android-1.0.5-nuvio/AndroidManifest.xml:5:5-44
+MERGED from [quickjs-kt-android-1.0.5-nuvio.aar] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1e91042f0c980950e35746c3f3481344/transformed/quickjs-kt-android-1.0.5-nuvio/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt.coil3:coil-gif:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2af808070cd78718302c818f4fd117cd/transformed/coil-gif-3.5.0-beta01/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt.coil3:coil-gif:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2af808070cd78718302c818f4fd117cd/transformed/coil-gif-3.5.0-beta01/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt.coil3:coil-network-ktor3-android:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c743604a135acfeb103fcf6189a67cab/transformed/coil-network-ktor3/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt.coil3:coil-network-ktor3-android:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c743604a135acfeb103fcf6189a67cab/transformed/coil-network-ktor3/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt.coil3:coil-svg-android:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5e44e1556ea63e817f8344b235e10207/transformed/coil-svg/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt.coil3:coil-svg-android:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5e44e1556ea63e817f8344b235e10207/transformed/coil-svg/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt.coil3:coil-compose-android:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/3fe32085cba0ef3f2e9c277f9b0ee555/transformed/coil-compose/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt.coil3:coil-compose-android:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/3fe32085cba0ef3f2e9c277f9b0ee555/transformed/coil-compose/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt.coil3:coil-android:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/3d7a094e42b76d4e08b497a419750056/transformed/coil/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt.coil3:coil-android:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/3d7a094e42b76d4e08b497a419750056/transformed/coil/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt.coil3:coil-compose-core-android:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/847b8d2543d7964db8e855956f026f81/transformed/coil-compose-core/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt.coil3:coil-compose-core-android:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/847b8d2543d7964db8e855956f026f81/transformed/coil-compose-core/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt.coil3:coil-network-core-android:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2c187c88eda537be92ba68fc7104a3a4/transformed/coil-network-core/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt.coil3:coil-network-core-android:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2c187c88eda537be92ba68fc7104a3a4/transformed/coil-network-core/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt.coil3:coil-core-android:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/b9fa91044da138d58c4bf1338cf47082/transformed/coil-core/AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt.coil3:coil-core-android:3.5.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/b9fa91044da138d58c4bf1338cf47082/transformed/coil-core/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.7.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/379e5b86e1f4cf5fc208e7941fac75ab/transformed/appcompat-resources-1.7.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.7.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/379e5b86e1f4cf5fc208e7941fac75ab/transformed/appcompat-resources-1.7.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat:1.7.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e07aa2cca02825e6a0f1cbf42182bea5/transformed/appcompat-1.7.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat:1.7.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e07aa2cca02825e6a0f1cbf42182bea5/transformed/appcompat-1.7.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.fragment:fragment:1.5.4] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4c5ee63048939a7ea7f022f8044740ae/transformed/fragment-1.5.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.5.4] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4c5ee63048939a7ea7f022f8044740ae/transformed/fragment-1.5.4/AndroidManifest.xml:20:5-22:41
+MERGED from [dev.chrisbanes.haze:haze-android:1.7.2] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/3ee99a2833470d8e98d01a716de9fdf9/transformed/haze-release/AndroidManifest.xml:5:5-44
+MERGED from [dev.chrisbanes.haze:haze-android:1.7.2] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/3ee99a2833470d8e98d01a716de9fdf9/transformed/haze-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-runtime-android:2.9.7] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d0949a134be079f122d0950aa1aa20a1/transformed/navigation-runtime-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime-android:2.9.7] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d0949a134be079f122d0950aa1aa20a1/transformed/navigation-runtime-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common-android:2.9.7] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/82633001c0a44624388d8da2371cd8f4/transformed/navigation-common-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common-android:2.9.7] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/82633001c0a44624388d8da2371cd8f4/transformed/navigation-common-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-compose-android:2.9.7] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/15d1e7ffaf9352ce650fbac0bec1c7f0/transformed/navigation-compose-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-compose-android:2.9.7] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/15d1e7ffaf9352ce650fbac0bec1c7f0/transformed/navigation-compose-release/AndroidManifest.xml:5:5-44
+MERGED from [io.github.jan-tennert.supabase:postgrest-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ee1ede9071381a46073fc60e9807e8f6/transformed/postgrest-kt/AndroidManifest.xml:5:5-44
+MERGED from [io.github.jan-tennert.supabase:postgrest-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ee1ede9071381a46073fc60e9807e8f6/transformed/postgrest-kt/AndroidManifest.xml:5:5-44
+MERGED from [io.github.jan-tennert.supabase:functions-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/8d078bbecba32380c9d7e024db58fb22/transformed/functions-kt/AndroidManifest.xml:5:5-44
+MERGED from [io.github.jan-tennert.supabase:functions-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/8d078bbecba32380c9d7e024db58fb22/transformed/functions-kt/AndroidManifest.xml:5:5-44
+MERGED from [io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e819f3f802b265cc34ef77bb3981a8ab/transformed/auth-kt/AndroidManifest.xml:6:5-44
+MERGED from [io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e819f3f802b265cc34ef77bb3981a8ab/transformed/auth-kt/AndroidManifest.xml:6:5-44
+MERGED from [androidx.browser:browser:1.9.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6573ed4f298fa68c42339fc6fe195a4e/transformed/browser-1.9.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.browser:browser:1.9.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6573ed4f298fa68c42339fc6fe195a4e/transformed/browser-1.9.0/AndroidManifest.xml:5:5-44
+MERGED from [org.jetbrains.compose.components:components-resources-android:1.11.0-beta03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7eeba193368244e683fac25d7a168aaf/transformed/library-release/AndroidManifest.xml:5:5-44
+MERGED from [org.jetbrains.compose.components:components-resources-android:1.11.0-beta03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7eeba193368244e683fac25d7a168aaf/transformed/library-release/AndroidManifest.xml:5:5-44
+MERGED from [sh.calvin.reorderable:reorderable-android-debug:3.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/24e0dddf89dacdebdd420bf14bbda0e3/transformed/reorderable-debug/AndroidManifest.xml:5:5-44
+MERGED from [sh.calvin.reorderable:reorderable-android-debug:3.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/24e0dddf89dacdebdd420bf14bbda0e3/transformed/reorderable-debug/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material3:material3-android:1.5.0-alpha17] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/cfa6aa909c3790222c53955efc4b4a0a/transformed/material3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material3:material3-android:1.5.0-alpha17] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/cfa6aa909c3790222c53955efc4b4a0a/transformed/material3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/075da455f19bbb28be5312608fb10481/transformed/animation-core/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/075da455f19bbb28be5312608fb10481/transformed/animation-core/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/416315d9a2113cfbdc1f6c5c41946cff/transformed/material-ripple/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/416315d9a2113cfbdc1f6c5c41946cff/transformed/material-ripple/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/f8e8006fa3e25f20ca2ff065a0691461/transformed/animation/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/f8e8006fa3e25f20ca2ff065a0691461/transformed/animation/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/a98cef9da5acca4be2abbfa8a510614c/transformed/foundation-layout/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/a98cef9da5acca4be2abbfa8a510614c/transformed/foundation-layout/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c0df94592175ae447e56c6c702271ece/transformed/foundation/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c0df94592175ae447e56c6c702271ece/transformed/foundation/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/b8dec4cff2110d0a74b5adb5a91207c1/transformed/ui-tooling-data/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/b8dec4cff2110d0a74b5adb5a91207c1/transformed/ui-tooling-data/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/bd98845ae97339d3b88b03d0df91054d/transformed/ui-unit/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/bd98845ae97339d3b88b03d0df91054d/transformed/ui-unit/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/db68afa783f1bc64111701dac2d9f116/transformed/ui-geometry/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/db68afa783f1bc64111701dac2d9f116/transformed/ui-geometry/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9dca7c6d56bfa2e952cbce198438b116/transformed/ui-graphics/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9dca7c6d56bfa2e952cbce198438b116/transformed/ui-graphics/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/dc069154747e698fc5fe83958ee950ec/transformed/ui-util/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/dc069154747e698fc5fe83958ee950ec/transformed/ui-util/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/74b5cd1b206b92b73b5a56e7c3deebe4/transformed/ui-text/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/74b5cd1b206b92b73b5a56e7c3deebe4/transformed/ui-text/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/660e30c834ca2ca5620d70be34069d3c/transformed/ui-tooling/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/660e30c834ca2ca5620d70be34069d3c/transformed/ui-tooling/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c3710a361a436e40e41209c6055fb11a/transformed/ui-tooling-preview/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c3710a361a436e40e41209c6055fb11a/transformed/ui-tooling-preview/AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigationevent:navigationevent-android:1.0.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/225d7537db5c5f2231de82e9a49ba325/transformed/navigationevent/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigationevent:navigationevent-android:1.0.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/225d7537db5c5f2231de82e9a49ba325/transformed/navigationevent/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigationevent:navigationevent-compose-android:1.0.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9994f52da87644a50a46cf124c2e495b/transformed/navigationevent-compose/AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigationevent:navigationevent-compose-android:1.0.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9994f52da87644a50a46cf124c2e495b/transformed/navigationevent-compose/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-annotation-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/84185d265d8efa9eaf742fe0553d65ad/transformed/runtime-annotation/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-annotation-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/84185d265d8efa9eaf742fe0553d65ad/transformed/runtime-annotation/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-retain-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e2a903d56c94cf4380c0d7776c2a504a/transformed/runtime-retain/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-retain-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e2a903d56c94cf4380c0d7776c2a504a/transformed/runtime-retain/AndroidManifest.xml:5:5-44
+MERGED from [androidx.transition:transition:1.6.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1f7b103bd7875b279fb8e49904700790/transformed/transition-1.6.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.transition:transition:1.6.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1f7b103bd7875b279fb8e49904700790/transformed/transition-1.6.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/767e87494eed1eba4451641dffd74994/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/767e87494eed1eba4451641dffd74994/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/b1a6ef7abce6d775cb298186bed7ed7e/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/b1a6ef7abce6d775cb298186bed7ed7e/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5e86cf692aa6e01e442e81e2c52baa49/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5e86cf692aa6e01e442e81e2c52baa49/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.work:work-runtime-ktx:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6844c53d4af6b82d4c74b0d95e181485/transformed/work-runtime-ktx-2.10.3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.work:work-runtime-ktx:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6844c53d4af6b82d4c74b0d95e181485/transformed/work-runtime-ktx-2.10.3/AndroidManifest.xml:20:5-44
+MERGED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:21:5-44
+MERGED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:21:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4d4df25659de2517eeccdd414bd20dad/transformed/recyclerview-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4d4df25659de2517eeccdd414bd20dad/transformed/recyclerview-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.media3:media3-datasource-okhttp:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e4e287fcad77c404e324277d73a11e03/transformed/media3-datasource-okhttp-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-datasource-okhttp:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e4e287fcad77c404e324277d73a11e03/transformed/media3-datasource-okhttp-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [io.github.peerless2012:ass-media:0.4.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/a5e2a89f0e95787438347adef63c15ed/transformed/ass-media-0.4.0-beta01/AndroidManifest.xml:5:5-44
+MERGED from [io.github.peerless2012:ass-media:0.4.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/a5e2a89f0e95787438347adef63c15ed/transformed/ass-media-0.4.0-beta01/AndroidManifest.xml:5:5-44
+MERGED from [androidx.media3:media3-effect:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6c1df75d0f26646fa7309c9c68c3aea0/transformed/media3-effect-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-effect:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6c1df75d0f26646fa7309c9c68c3aea0/transformed/media3-effect-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-datasource:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/be1d1b1c695fd91b45414153eae4f106/transformed/media3-datasource-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-datasource:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/be1d1b1c695fd91b45414153eae4f106/transformed/media3-datasource-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-extractor:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d8adf58b6ae270b5a5dae03e1e879d07/transformed/media3-extractor-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-extractor:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d8adf58b6ae270b5a5dae03e1e879d07/transformed/media3-extractor-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-decoder:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/075f43bd2a6cf17e3c5aa308b1da1ad3/transformed/media3-decoder-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-decoder:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/075f43bd2a6cf17e3c5aa308b1da1ad3/transformed/media3-decoder-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-container:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c7687336481de5597793c1d92bd6fe60/transformed/media3-container-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-container:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c7687336481de5597793c1d92bd6fe60/transformed/media3-container-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-database:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/105f7c587b718e80539e3d74168def00/transformed/media3-database-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-database:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/105f7c587b718e80539e3d74168def00/transformed/media3-database-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-common:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7a0f5995af1297021f63cbcb547b07b0/transformed/media3-common-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-common:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7a0f5995af1297021f63cbcb547b07b0/transformed/media3-common-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-session:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5aa62fe96ed196b80a3071f7ee1d26ae/transformed/media3-session-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-session:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5aa62fe96ed196b80a3071f7ee1d26ae/transformed/media3-session-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/05fe2744e64489cb3868374529175373/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/05fe2744e64489cb3868374529175373/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1d7a8172463d22ddcf754811483188fc/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1d7a8172463d22ddcf754811483188fc/transformed/customview-poolingcontainer-1.0.0/AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.graphics:graphics-shapes-android:1.1.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/99ff208d0ca38abd3385fbb5e670dd83/transformed/graphics-shapes/AndroidManifest.xml:5:5-44
+MERGED from [androidx.graphics:graphics-shapes-android:1.1.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/99ff208d0ca38abd3385fbb5e670dd83/transformed/graphics-shapes/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2735986392da72a946a2b1330aa1e926/transformed/core-ktx-1.16.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2735986392da72a946a2b1330aa1e926/transformed/core-ktx-1.16.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.2.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/913c7fb33e93279b2669bf19959b3728/transformed/vectordrawable-animated-1.2.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.2.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/913c7fb33e93279b2669bf19959b3728/transformed/vectordrawable-animated-1.2.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d220e675dfaa8f8dc65ed43d30a2f45d/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d220e675dfaa8f8dc65ed43d30a2f45d/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/51b86b76362ff2df9304e6a2699219eb/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/51b86b76362ff2df9304e6a2699219eb/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.7.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/bd130fa3272947ab0a423993cdcf8330/transformed/media-1.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.media:media:1.7.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/bd130fa3272947ab0a423993cdcf8330/transformed/media-1.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.2.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/db3af668ba360fc516778b601890e471/transformed/vectordrawable-1.2.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.2.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/db3af668ba360fc516778b601890e471/transformed/vectordrawable-1.2.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.autofill:autofill:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/11a924ee25b0defcb0cf0008d71b90bd/transformed/autofill-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.autofill:autofill:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/11a924ee25b0defcb0cf0008d71b90bd/transformed/autofill-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window-core-android:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9647336bf42d73d1ee44e353c0141805/transformed/window-core/AndroidManifest.xml:5:5-44
+MERGED from [androidx.window:window-core-android:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9647336bf42d73d1ee44e353c0141805/transformed/window-core/AndroidManifest.xml:5:5-44
+MERGED from [androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/449523cb20a565f7a05115e343ae4356/transformed/window-1.5.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/449523cb20a565f7a05115e343ae4356/transformed/window-1.5.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/107de91e5bec9b3e0d4be76285f2d05a/transformed/emoji2-views-helper-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/107de91e5bec9b3e0d4be76285f2d05a/transformed/emoji2-views-helper-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ca6cb4f26983b5767fc0f23fab75172c/transformed/emoji2-1.4.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ca6cb4f26983b5767fc0f23fab75172c/transformed/emoji2-1.4.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.graphics:graphics-path:1.0.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/dedcc3724e9de8842268c30f1c7dcee9/transformed/graphics-path-1.0.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.graphics:graphics-path:1.0.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/dedcc3724e9de8842268c30f1c7dcee9/transformed/graphics-path-1.0.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:20:5-44
+MERGED from [io.github.jan-tennert.supabase:supabase-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/af99cd77cdcab77c5cbb254ae7f8059a/transformed/supabase-kt/AndroidManifest.xml:5:5-44
+MERGED from [io.github.jan-tennert.supabase:supabase-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/af99cd77cdcab77c5cbb254ae7f8059a/transformed/supabase-kt/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/089f6c891505fd529a5c9236b62c9a3b/transformed/lifecycle-process-2.11.0-alpha03/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/089f6c891505fd529a5c9236b62c9a3b/transformed/lifecycle-process-2.11.0-alpha03/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/acb8a9550135202ecc4ccf0d2946b6a2/transformed/lifecycle-runtime-ktx/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/acb8a9550135202ecc4ccf0d2946b6a2/transformed/lifecycle-runtime-ktx/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/63f2d8cfc79390c7e380bc9291664228/transformed/lifecycle-livedata-core-ktx-2.11.0-alpha03/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/63f2d8cfc79390c7e380bc9291664228/transformed/lifecycle-livedata-core-ktx-2.11.0-alpha03/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/440f005e16e0fa39caad215301790dab/transformed/lifecycle-runtime/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/440f005e16e0fa39caad215301790dab/transformed/lifecycle-runtime/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d238267eebc05e8e7e72fdc42bff4d15/transformed/lifecycle-service-2.11.0-alpha03/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d238267eebc05e8e7e72fdc42bff4d15/transformed/lifecycle-service-2.11.0-alpha03/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c36751c8e25bcf861fceebdc3b0dc0a5/transformed/lifecycle-viewmodel-ktx-2.11.0-alpha03/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c36751c8e25bcf861fceebdc3b0dc0a5/transformed/lifecycle-viewmodel-ktx-2.11.0-alpha03/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/a85b7500050251f36ee569441baaccbf/transformed/lifecycle-livedata-core-2.11.0-alpha03/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/a85b7500050251f36ee569441baaccbf/transformed/lifecycle-livedata-core-2.11.0-alpha03/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/68fcbe49c32c644ffa143ed1d2c6e16d/transformed/lifecycle-livedata-2.11.0-alpha03/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/68fcbe49c32c644ffa143ed1d2c6e16d/transformed/lifecycle-livedata-2.11.0-alpha03/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/78d111d706b0d40fe4c77989cc76f7a1/transformed/lifecycle-viewmodel-2.11.0-alpha03/AndroidManifest.xml:4:5-43
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/78d111d706b0d40fe4c77989cc76f7a1/transformed/lifecycle-viewmodel-2.11.0-alpha03/AndroidManifest.xml:4:5-43
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/33a8315648a944d332b6a4a0a353c96a/transformed/lifecycle-viewmodel/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/33a8315648a944d332b6a4a0a353c96a/transformed/lifecycle-viewmodel/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate-android:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/90dd8a031b9459a9129590d19b9d6d27/transformed/lifecycle-viewmodel-savedstate/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate-android:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/90dd8a031b9459a9129590d19b9d6d27/transformed/lifecycle-viewmodel-savedstate/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-android:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/bd9c602e67e7cef5469bf8615631c783/transformed/savedstate/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-android:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/bd9c602e67e7cef5469bf8615631c783/transformed/savedstate/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/fcb2e164339bd01403453ae39cfccb12/transformed/savedstate-ktx-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/fcb2e164339bd01403453ae39cfccb12/transformed/savedstate-ktx-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.savedstate:savedstate-compose-android:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/be2102088ef791921b10cecc16f6c953/transformed/savedstate-compose/AndroidManifest.xml:5:5-44
+MERGED from [androidx.savedstate:savedstate-compose-android:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/be2102088ef791921b10cecc16f6c953/transformed/savedstate-compose/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/923c2eabfd5507132534e9d932eb58f3/transformed/runtime/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/923c2eabfd5507132534e9d932eb58f3/transformed/runtime/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/471d92f60fd90e55418308340769ee49/transformed/runtime-saveable/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/471d92f60fd90e55418308340769ee49/transformed/runtime-saveable/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/de10b88ba0b356178a354bf65b6e803d/transformed/lifecycle-runtime-compose/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/de10b88ba0b356178a354bf65b6e803d/transformed/lifecycle-runtime-compose/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/f366891de6b9487357ee8247a8d4717a/transformed/lifecycle-viewmodel-compose/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/f366891de6b9487357ee8247a8d4717a/transformed/lifecycle-viewmodel-compose/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-extended-android:1.7.6] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/fb77d35d280e1fb8a0da127f38d22b10/transformed/material-icons-extended-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-extended-android:1.7.6] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/fb77d35d280e1fb8a0da127f38d22b10/transformed/material-icons-extended-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.6] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2ad5335debb2d359fe2bd519b0f68f64/transformed/material-icons-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.6] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2ad5335debb2d359fe2bd519b0f68f64/transformed/material-icons-core-release/AndroidManifest.xml:5:5-44
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.37.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/b4d7ba8d5a4bf48a2efd5e34dfa6e543/transformed/accompanist-drawablepainter-0.37.3/AndroidManifest.xml:21:5-44
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.37.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/b4d7ba8d5a4bf48a2efd5e34dfa6e543/transformed/accompanist-drawablepainter-0.37.3/AndroidManifest.xml:21:5-44
+MERGED from [androidx.compose.ui:ui-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/3093cd6ff9e376da1433ebbffde3e552/transformed/ui/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/3093cd6ff9e376da1433ebbffde3e552/transformed/ui/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.12.2] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4d1cc832f3eea222723db4bc8c3bdbac/transformed/activity-ktx-1.12.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.12.2] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4d1cc832f3eea222723db4bc8c3bdbac/transformed/activity-ktx-1.12.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity:1.12.2] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c3443cd7a6e409ee6ae754a9d7189265/transformed/activity-1.12.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.12.2] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c3443cd7a6e409ee6ae754a9d7189265/transformed/activity-1.12.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-compose:1.12.2] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/dda242d473edfa6c1b25969db4179f84/transformed/activity-compose-1.12.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-compose:1.12.2] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/dda242d473edfa6c1b25969db4179f84/transformed/activity-compose-1.12.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-splashscreen:1.0.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/833fdc62e8c88f09cb5a538abd19025e/transformed/core-splashscreen-1.0.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core-splashscreen:1.0.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/833fdc62e8c88f09cb5a538abd19025e/transformed/core-splashscreen-1.0.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media3:media3-exoplayer-hls:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/58794038aa5dc4f918b676acd563cfba/transformed/media3-exoplayer-hls-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-exoplayer-hls:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/58794038aa5dc4f918b676acd563cfba/transformed/media3-exoplayer-hls-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-exoplayer-dash:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d7641fb524d7b3d85b8f94b67f772b46/transformed/media3-exoplayer-dash-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-exoplayer-dash:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d7641fb524d7b3d85b8f94b67f772b46/transformed/media3-exoplayer-dash-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-exoplayer-smoothstreaming:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/83936531938a1d2d192b2cc6df9d0b5b/transformed/media3-exoplayer-smoothstreaming-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-exoplayer-smoothstreaming:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/83936531938a1d2d192b2cc6df9d0b5b/transformed/media3-exoplayer-smoothstreaming-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-exoplayer-rtsp:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6532c14709d158c7b7e09253dcf5ca7e/transformed/media3-exoplayer-rtsp-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-exoplayer-rtsp:1.8.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/6532c14709d158c7b7e09253dcf5ca7e/transformed/media3-exoplayer-rtsp-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-ktx:2.6.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c93f523c1c4a00684a0272afdea78bbd/transformed/room-ktx-2.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-ktx:2.6.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/c93f523c1c4a00684a0272afdea78bbd/transformed/room-ktx-2.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-runtime:2.6.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9803eb034b7fe91d8316181b8d1b79f9/transformed/room-runtime-2.6.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.room:room-runtime:2.6.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9803eb034b7fe91d8316181b8d1b79f9/transformed/room-runtime-2.6.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.5.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5e0ad5b649ba848d2663585d8f7feac7/transformed/annotation-experimental-1.5.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.5.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5e0ad5b649ba848d2663585d8f7feac7/transformed/annotation-experimental-1.5.1/AndroidManifest.xml:5:5-44
+MERGED from [io.github.peerless2012:ass-kt:0.4.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2bdc7ab180b9f2922322a73317f87d7c/transformed/ass-kt-0.4.0-beta01/AndroidManifest.xml:5:5-44
+MERGED from [io.github.peerless2012:ass-kt:0.4.0-beta01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2bdc7ab180b9f2922322a73317f87d7c/transformed/ass-kt-0.4.0-beta01/AndroidManifest.xml:5:5-44
+MERGED from [com.fleeksoft.ksoup:ksoup-android:0.2.6] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/a5b0757548555ce98b76d0adb27b397e/transformed/ksoup-release/AndroidManifest.xml:5:5-44
+MERGED from [com.fleeksoft.ksoup:ksoup-android:0.2.6] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/a5b0757548555ce98b76d0adb27b397e/transformed/ksoup-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-viewtree:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1b61feabd56fadd8404e1b18fef57983/transformed/core-viewtree-1.0.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-viewtree:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1b61feabd56fadd8404e1b18fef57983/transformed/core-viewtree-1.0.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d2a41537750c16cdd4e50acb04d46f4c/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d2a41537750c16cdd4e50acb04d46f4c/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.russhwolf:multiplatform-settings-coroutines-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/db1ddd37779f7af6b2a0080e9a913bdf/transformed/multiplatform-settings-coroutines-debug/AndroidManifest.xml:5:5-44
+MERGED from [com.russhwolf:multiplatform-settings-coroutines-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/db1ddd37779f7af6b2a0080e9a913bdf/transformed/multiplatform-settings-coroutines-debug/AndroidManifest.xml:5:5-44
+MERGED from [com.russhwolf:multiplatform-settings-no-arg-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/8b9e8713a4a2a23d6d7700d5618eb5c2/transformed/multiplatform-settings-no-arg-debug/AndroidManifest.xml:21:5-44
+MERGED from [com.russhwolf:multiplatform-settings-no-arg-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/8b9e8713a4a2a23d6d7700d5618eb5c2/transformed/multiplatform-settings-no-arg-debug/AndroidManifest.xml:21:5-44
+MERGED from [com.fleeksoft.charset:charset-android:0.0.8] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/350d3478b2d9318111f048cf7163147e/transformed/charset-release/AndroidManifest.xml:5:5-44
+MERGED from [com.fleeksoft.charset:charset-android:0.0.8] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/350d3478b2d9318111f048cf7163147e/transformed/charset-release/AndroidManifest.xml:5:5-44
+MERGED from [com.fleeksoft.io:io-core-android:0.0.8] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5deb9012002107381422d3064311a01d/transformed/io-core-release/AndroidManifest.xml:5:5-44
+MERGED from [com.fleeksoft.io:io-core-android:0.0.8] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5deb9012002107381422d3064311a01d/transformed/io-core-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d44c6f13a7ee04f414688816266a7db5/transformed/sqlite-framework-2.4.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/d44c6f13a7ee04f414688816266a7db5/transformed/sqlite-framework-2.4.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/430ce18e4edc38856c77d2c2b84a2a84/transformed/sqlite-2.4.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/430ce18e4edc38856c77d2c2b84a2a84/transformed/sqlite-2.4.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1e170be4bc32fdee4585d7bd4aee1fa3/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1e170be4bc32fdee4585d7bd4aee1fa3/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1c882c6dcb7384f77d38a1d3e9e7b183/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1c882c6dcb7384f77d38a1d3e9e7b183/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.2.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/70dcb2368fdf3ad0c67d746e4dbcf799/transformed/startup-runtime-1.2.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.2.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/70dcb2368fdf3ad0c67d746e4dbcf799/transformed/startup-runtime-1.2.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.4.2] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/302b3843d527a8415bdbc6198cf04247/transformed/exifinterface-1.4.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.4.2] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/302b3843d527a8415bdbc6198cf04247/transformed/exifinterface-1.4.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1110e5f9847f201688ceb6676194ea13/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/1110e5f9847f201688ceb6676194ea13/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.tracing:tracing-ktx:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/522635091f3b9137248df2de3f8e9842/transformed/tracing-ktx-1.3.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.tracing:tracing-ktx:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/522635091f3b9137248df2de3f8e9842/transformed/tracing-ktx-1.3.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.tracing:tracing-android:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7a0e72b257ff7ff3a5b3d7d7d0e0b29c/transformed/tracing/AndroidManifest.xml:20:5-44
+MERGED from [androidx.tracing:tracing-android:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7a0e72b257ff7ff3a5b3d7d7d0e0b29c/transformed/tracing/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/69f7e9b5c6ff38a02047e53defba22fe/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/69f7e9b5c6ff38a02047e53defba22fe/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9b0669a9f88e70d5fbaefc961d302596/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9b0669a9f88e70d5fbaefc961d302596/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/37ec6e06a1ba2d3e13e2ae22f8984a2d/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/37ec6e06a1ba2d3e13e2ae22f8984a2d/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [co.touchlab:kermit-android-debug:2.0.8] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ce4ab4429df1148743ae93f422ccbe74/transformed/kermit-debug/AndroidManifest.xml:5:5-44
+MERGED from [co.touchlab:kermit-android-debug:2.0.8] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ce4ab4429df1148743ae93f422ccbe74/transformed/kermit-debug/AndroidManifest.xml:5:5-44
+MERGED from [com.russhwolf:multiplatform-settings-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/b451714149adef7e57d6ac4757eca260/transformed/multiplatform-settings-debug/AndroidManifest.xml:5:5-44
+MERGED from [com.russhwolf:multiplatform-settings-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/b451714149adef7e57d6ac4757eca260/transformed/multiplatform-settings-debug/AndroidManifest.xml:5:5-44
+MERGED from [co.touchlab:kermit-core-android-debug:2.0.8] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5a5be28a0c92394a0a5b0fa569883a03/transformed/kermit-core-debug/AndroidManifest.xml:5:5-44
+MERGED from [co.touchlab:kermit-core-android-debug:2.0.8] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/5a5be28a0c92394a0a5b0fa569883a03/transformed/kermit-core-debug/AndroidManifest.xml:5:5-44
+MERGED from [org.conscrypt:conscrypt-android:2.5.2] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/587c39891ec993470ac6adbc96ee88a1/transformed/conscrypt-android-2.5.2/AndroidManifest.xml:7:5-9:41
+MERGED from [org.conscrypt:conscrypt-android:2.5.2] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/587c39891ec993470ac6adbc96ee88a1/transformed/conscrypt-android-2.5.2/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.recloudstream.cloudstream:library-android:v4.7.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2d0f7b6a0d751b8fb1ba8d8a74bc7e5a/transformed/library-android-v4.7.0/AndroidManifest.xml:5:5-44
+MERGED from [com.github.recloudstream.cloudstream:library-android:v4.7.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2d0f7b6a0d751b8fb1ba8d8a74bc7e5a/transformed/library-android-v4.7.0/AndroidManifest.xml:5:5-44
+MERGED from [com.caverock:androidsvg-aar:1.4] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/b72f5d34b9a16f9aed525f8f1ee21b25/transformed/androidsvg-aar-1.4/AndroidManifest.xml:7:5-9:41
+MERGED from [com.caverock:androidsvg-aar:1.4] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/b72f5d34b9a16f9aed525f8f1ee21b25/transformed/androidsvg-aar-1.4/AndroidManifest.xml:7:5-9:41
+	android:targetSdkVersion
+		INJECTED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidFull/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/ayon-pc10-yazilim/Projects/Android/NuvioMobile/composeApp/src/androidFull/AndroidManifest.xml
+provider#androidx.startup.InitializationProvider
+ADDED from [io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e819f3f802b265cc34ef77bb3981a8ab/transformed/auth-kt/AndroidManifest.xml:9:9-17:20
+MERGED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:29:9-37:20
+MERGED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:29:9-37:20
+MERGED from [androidx.emoji2:emoji2:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ca6cb4f26983b5767fc0f23fab75172c/transformed/emoji2-1.4.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.emoji2:emoji2:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ca6cb4f26983b5767fc0f23fab75172c/transformed/emoji2-1.4.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/089f6c891505fd529a5c9236b62c9a3b/transformed/lifecycle-process-2.11.0-alpha03/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/089f6c891505fd529a5c9236b62c9a3b/transformed/lifecycle-process-2.11.0-alpha03/AndroidManifest.xml:24:9-32:20
+MERGED from [com.russhwolf:multiplatform-settings-no-arg-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/8b9e8713a4a2a23d6d7700d5618eb5c2/transformed/multiplatform-settings-no-arg-debug/AndroidManifest.xml:24:9-32:20
+MERGED from [com.russhwolf:multiplatform-settings-no-arg-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/8b9e8713a4a2a23d6d7700d5618eb5c2/transformed/multiplatform-settings-no-arg-debug/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.2.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/70dcb2368fdf3ad0c67d746e4dbcf799/transformed/startup-runtime-1.2.0/AndroidManifest.xml:24:9-28:34
+MERGED from [androidx.startup:startup-runtime:1.2.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/70dcb2368fdf3ad0c67d746e4dbcf799/transformed/startup-runtime-1.2.0/AndroidManifest.xml:24:9-28:34
+	tools:node
+		ADDED from [io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e819f3f802b265cc34ef77bb3981a8ab/transformed/auth-kt/AndroidManifest.xml:13:13-31
+	android:authorities
+		ADDED from [io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e819f3f802b265cc34ef77bb3981a8ab/transformed/auth-kt/AndroidManifest.xml:11:13-68
+	android:exported
+		ADDED from [io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e819f3f802b265cc34ef77bb3981a8ab/transformed/auth-kt/AndroidManifest.xml:12:13-37
+	android:name
+		ADDED from [io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e819f3f802b265cc34ef77bb3981a8ab/transformed/auth-kt/AndroidManifest.xml:10:13-67
+meta-data#io.github.jan.supabase.auth.SupabaseInitializer
+ADDED from [io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e819f3f802b265cc34ef77bb3981a8ab/transformed/auth-kt/AndroidManifest.xml:14:13-16:52
+	android:value
+		ADDED from [io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e819f3f802b265cc34ef77bb3981a8ab/transformed/auth-kt/AndroidManifest.xml:16:17-49
+	android:name
+		ADDED from [io.github.jan-tennert.supabase:auth-kt-android:3.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/e819f3f802b265cc34ef77bb3981a8ab/transformed/auth-kt/AndroidManifest.xml:15:17-79
+provider#org.jetbrains.compose.resources.AndroidContextProvider
+ADDED from [org.jetbrains.compose.components:components-resources-android:1.11.0-beta03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7eeba193368244e683fac25d7a168aaf/transformed/library-release/AndroidManifest.xml:8:9-13:20
+	android:enabled
+		ADDED from [org.jetbrains.compose.components:components-resources-android:1.11.0-beta03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7eeba193368244e683fac25d7a168aaf/transformed/library-release/AndroidManifest.xml:11:13-35
+	android:authorities
+		ADDED from [org.jetbrains.compose.components:components-resources-android:1.11.0-beta03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7eeba193368244e683fac25d7a168aaf/transformed/library-release/AndroidManifest.xml:10:13-84
+	android:exported
+		ADDED from [org.jetbrains.compose.components:components-resources-android:1.11.0-beta03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7eeba193368244e683fac25d7a168aaf/transformed/library-release/AndroidManifest.xml:12:13-37
+	android:name
+		ADDED from [org.jetbrains.compose.components:components-resources-android:1.11.0-beta03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/7eeba193368244e683fac25d7a168aaf/transformed/library-release/AndroidManifest.xml:9:13-82
+activity#androidx.compose.ui.tooling.PreviewActivity
+ADDED from [androidx.compose.ui:ui-tooling-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/660e30c834ca2ca5620d70be34069d3c/transformed/ui-tooling/AndroidManifest.xml:23:9-25:39
+	android:exported
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/660e30c834ca2ca5620d70be34069d3c/transformed/ui-tooling/AndroidManifest.xml:25:13-36
+	android:name
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.11.0-rc01] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/660e30c834ca2ca5620d70be34069d3c/transformed/ui-tooling/AndroidManifest.xml:24:13-71
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:23:5-68
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:23:22-65
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:25:5-81
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:25:22-78
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:26:5-77
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:26:22-74
+meta-data#androidx.work.WorkManagerInitializer
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:34:13-36:52
+	android:value
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:36:17-49
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:35:17-68
+service#androidx.work.impl.background.systemalarm.SystemAlarmService
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:39:9-45:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:42:13-72
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:43:13-37
+	tools:ignore
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:44:13-60
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:45:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:41:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:40:13-88
+service#androidx.work.impl.background.systemjob.SystemJobService
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:46:9-52:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:49:13-70
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:50:13-36
+	android:permission
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:51:13-69
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:52:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:48:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:47:13-84
+service#androidx.work.impl.foreground.SystemForegroundService
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:53:9-59:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:56:13-77
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:57:13-37
+	tools:ignore
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:58:13-60
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:59:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:55:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:54:13-81
+receiver#androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:61:9-66:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:64:13-35
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:65:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:66:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:63:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:62:13-88
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:67:9-77:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:70:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:71:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:72:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:69:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:68:13-106
+intent-filter#action:name:android.intent.action.ACTION_POWER_CONNECTED+action:name:android.intent.action.ACTION_POWER_DISCONNECTED
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:73:13-76:29
+action#android.intent.action.ACTION_POWER_CONNECTED
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:74:17-87
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:74:25-84
+action#android.intent.action.ACTION_POWER_DISCONNECTED
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:75:17-90
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:75:25-87
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:78:9-88:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:81:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:82:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:83:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:80:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:79:13-104
+intent-filter#action:name:android.intent.action.BATTERY_LOW+action:name:android.intent.action.BATTERY_OKAY
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:84:13-87:29
+action#android.intent.action.BATTERY_OKAY
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:85:17-77
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:85:25-74
+action#android.intent.action.BATTERY_LOW
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:86:17-76
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:86:25-73
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:89:9-99:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:92:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:93:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:94:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:91:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:90:13-104
+intent-filter#action:name:android.intent.action.DEVICE_STORAGE_LOW+action:name:android.intent.action.DEVICE_STORAGE_OK
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:95:13-98:29
+action#android.intent.action.DEVICE_STORAGE_LOW
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:96:17-83
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:96:25-80
+action#android.intent.action.DEVICE_STORAGE_OK
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:97:17-82
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:97:25-79
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:100:9-109:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:103:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:104:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:105:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:102:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:101:13-103
+intent-filter#action:name:android.net.conn.CONNECTIVITY_CHANGE
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:106:13-108:29
+action#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:107:17-79
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:107:25-76
+receiver#androidx.work.impl.background.systemalarm.RescheduleReceiver
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:110:9-121:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:113:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:114:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:115:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:112:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:111:13-88
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.TIMEZONE_CHANGED+action:name:android.intent.action.TIME_SET
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:116:13-120:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:117:17-79
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:117:25-76
+action#android.intent.action.TIME_SET
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:118:17-73
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:118:25-70
+action#android.intent.action.TIMEZONE_CHANGED
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:119:17-81
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:119:25-78
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:122:9-131:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:125:13-72
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:126:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:127:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:124:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:123:13-99
+intent-filter#action:name:androidx.work.impl.background.systemalarm.UpdateProxies
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:128:13-130:29
+action#androidx.work.impl.background.systemalarm.UpdateProxies
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:129:17-98
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:129:25-95
+receiver#androidx.work.impl.diagnostics.DiagnosticsReceiver
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:132:9-142:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:135:13-35
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:136:13-36
+	android:permission
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:137:13-57
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:138:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:134:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:133:13-78
+intent-filter#action:name:androidx.work.diagnostics.REQUEST_DIAGNOSTICS
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:139:13-141:29
+action#androidx.work.diagnostics.REQUEST_DIAGNOSTICS
+ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:140:17-88
+	android:name
+		ADDED from [androidx.work:work-runtime:2.10.3] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/987da6ceed40d3819339f7590b8df580/transformed/work-runtime-2.10.3/AndroidManifest.xml:140:25-85
+uses-library#androidx.window.extensions
+ADDED from [androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/449523cb20a565f7a05115e343ae4356/transformed/window-1.5.0/AndroidManifest.xml:23:9-25:40
+	android:required
+		ADDED from [androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/449523cb20a565f7a05115e343ae4356/transformed/window-1.5.0/AndroidManifest.xml:25:13-37
+	android:name
+		ADDED from [androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/449523cb20a565f7a05115e343ae4356/transformed/window-1.5.0/AndroidManifest.xml:24:13-54
+uses-library#androidx.window.sidecar
+ADDED from [androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/449523cb20a565f7a05115e343ae4356/transformed/window-1.5.0/AndroidManifest.xml:26:9-28:40
+	android:required
+		ADDED from [androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/449523cb20a565f7a05115e343ae4356/transformed/window-1.5.0/AndroidManifest.xml:28:13-37
+	android:name
+		ADDED from [androidx.window:window:1.5.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/449523cb20a565f7a05115e343ae4356/transformed/window-1.5.0/AndroidManifest.xml:27:13-51
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ca6cb4f26983b5767fc0f23fab75172c/transformed/emoji2-1.4.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ca6cb4f26983b5767fc0f23fab75172c/transformed/emoji2-1.4.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.4.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/ca6cb4f26983b5767fc0f23fab75172c/transformed/emoji2-1.4.0/AndroidManifest.xml:30:17-75
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:23:9-81
+permission#com.nuvio.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:26:22-94
+uses-permission#com.nuvio.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.16.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/2daf171ea3da33787c80fd74bf4ac917/transformed/core-1.16.0/AndroidManifest.xml:26:22-94
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/089f6c891505fd529a5c9236b62c9a3b/transformed/lifecycle-process-2.11.0-alpha03/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/089f6c891505fd529a5c9236b62c9a3b/transformed/lifecycle-process-2.11.0-alpha03/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.11.0-alpha03] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/089f6c891505fd529a5c9236b62c9a3b/transformed/lifecycle-process-2.11.0-alpha03/AndroidManifest.xml:30:17-78
+service#androidx.room.MultiInstanceInvalidationService
+ADDED from [androidx.room:room-runtime:2.6.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9803eb034b7fe91d8316181b8d1b79f9/transformed/room-runtime-2.6.1/AndroidManifest.xml:24:9-28:63
+	android:exported
+		ADDED from [androidx.room:room-runtime:2.6.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9803eb034b7fe91d8316181b8d1b79f9/transformed/room-runtime-2.6.1/AndroidManifest.xml:27:13-37
+	tools:ignore
+		ADDED from [androidx.room:room-runtime:2.6.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9803eb034b7fe91d8316181b8d1b79f9/transformed/room-runtime-2.6.1/AndroidManifest.xml:28:13-60
+	android:directBootAware
+		ADDED from [androidx.room:room-runtime:2.6.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9803eb034b7fe91d8316181b8d1b79f9/transformed/room-runtime-2.6.1/AndroidManifest.xml:26:13-43
+	android:name
+		ADDED from [androidx.room:room-runtime:2.6.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/9803eb034b7fe91d8316181b8d1b79f9/transformed/room-runtime-2.6.1/AndroidManifest.xml:25:13-74
+meta-data#com.russhwolf.settings.SettingsInitializer
+ADDED from [com.russhwolf:multiplatform-settings-no-arg-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/8b9e8713a4a2a23d6d7700d5618eb5c2/transformed/multiplatform-settings-no-arg-debug/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [com.russhwolf:multiplatform-settings-no-arg-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/8b9e8713a4a2a23d6d7700d5618eb5c2/transformed/multiplatform-settings-no-arg-debug/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [com.russhwolf:multiplatform-settings-no-arg-android-debug:1.3.0] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/8b9e8713a4a2a23d6d7700d5618eb5c2/transformed/multiplatform-settings-no-arg-debug/AndroidManifest.xml:30:17-74
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.1] /Users/ayon-pc10-yazilim/.gradle/caches/8.14.3/transforms/4745bd69852c1911fadc613ee3ecb753/transformed/profileinstaller-1.4.1/AndroidManifest.xml:50:25-92
