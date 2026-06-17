@@ -36,6 +36,7 @@ import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Tv
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -47,6 +48,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -480,6 +482,15 @@ private fun LiveChannelListScreen(
     onBack: () -> Unit,
     onChannelClick: (LiveChannel) -> Unit,
 ) {
+    var searchActive by rememberSaveable(category) { mutableStateOf(false) }
+    var query by rememberSaveable(category) { mutableStateOf("") }
+
+    val filteredChannels = remember(channels, query) {
+        val q = query.trim()
+        if (q.isBlank()) channels
+        else channels.filter { it.name.contains(q, ignoreCase = true) }
+    }
+
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         contentPadding = PaddingValues(
@@ -498,25 +509,73 @@ private fun LiveChannelListScreen(
                 IconButton(onClick = onBack) {
                     Icon(Icons.AutoMirrored.Filled.ArrowBack, null, tint = MaterialTheme.colorScheme.onBackground)
                 }
-                Column {
+                Column(modifier = Modifier.weight(1f)) {
                     Text(
                         text = category,
                         style = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.onBackground,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
                     )
                     Text(
-                        text = "${source.name} · ${channels.size} içerik",
+                        text = "${source.name} · ${filteredChannels.size} içerik",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
+                IconButton(
+                    onClick = {
+                        searchActive = !searchActive
+                        if (!searchActive) query = ""
+                    },
+                ) {
+                    Icon(
+                        imageVector = if (searchActive) Icons.Default.Close else Icons.Default.Search,
+                        contentDescription = if (searchActive) "Aramayı kapat" else "Kanal ara",
+                        tint = MaterialTheme.colorScheme.onBackground,
+                    )
+                }
             }
+
+            if (searchActive) {
+                OutlinedTextField(
+                    value = query,
+                    onValueChange = { query = it },
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
+                    placeholder = { Text("$category içinde ara") },
+                    leadingIcon = { Icon(Icons.Default.Search, null) },
+                    trailingIcon = {
+                        if (query.isNotEmpty()) {
+                            IconButton(onClick = { query = "" }) {
+                                Icon(Icons.Default.Close, contentDescription = "Temizle")
+                            }
+                        }
+                    },
+                    singleLine = true,
+                )
+            }
+
             HorizontalDivider()
             Spacer(Modifier.height(4.dp))
         }
 
-        itemsIndexed(channels, key = { _, ch -> ch.id }) { _, channel ->
+        if (filteredChannels.isEmpty()) {
+            item(key = "empty") {
+                Box(
+                    modifier = Modifier.fillMaxWidth().padding(top = 48.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text = "Sonuç bulunamadı",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            }
+        }
+
+        itemsIndexed(filteredChannels, key = { _, ch -> ch.id }) { _, channel ->
             LiveChannelRow(
                 channel = channel,
                 isLoading = loadingChannelId == channel.id,
