@@ -5,5 +5,8 @@ import com.nuvio.app.features.livetv.cloudstream.InatBoxPluginBridge
 actual suspend fun fetchPluginLiveChannels(sourceId: String): List<LiveChannel>? =
     InatBoxPluginBridge.fetchLiveChannels(sourceId)
 
-actual suspend fun resolvePluginLiveStream(sourceId: String, channelId: String): PluginLiveStream? =
-    InatBoxPluginBridge.resolveLiveStream(sourceId, channelId)
+actual suspend fun resolvePluginChannel(sourceId: String, channelId: String): LiveResolveResult =
+    InatBoxPluginBridge.resolveChannel(sourceId, channelId)
+
+actual suspend fun resolvePluginEpisodeStream(sourceId: String, episodeData: String): PluginLiveStream? =
+    InatBoxPluginBridge.resolveEpisodeStream(sourceId, episodeData)

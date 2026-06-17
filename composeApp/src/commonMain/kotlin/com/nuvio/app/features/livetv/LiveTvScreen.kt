@@ -33,6 +33,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Tv
@@ -40,10 +41,13 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -62,6 +66,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import coil3.compose.AsyncImage
 import com.nuvio.app.core.build.AppFeaturePolicy
 import kotlinx.coroutines.launch
@@ -85,6 +91,8 @@ fun LiveTvScreen(
     var navState by remember { mutableStateOf<LiveNavState>(LiveNavState.SourceList) }
     var loadingChannelId by remember { mutableStateOf<String?>(null) }
     var loadingSourceId by remember { mutableStateOf<String?>(null) }
+    var pendingSeries by remember { mutableStateOf<PendingSeries?>(null) }
+    var loadingEpisodeData by remember { mutableStateOf<String?>(null) }
 
     LaunchedEffect(Unit) {
         if (state is LiveTvState.Idle) {
@@ -160,8 +168,10 @@ fun LiveTvScreen(
                             val channelsByCategory = remember(sourceChannels) {
                                 sourceChannels.groupBy { it.category }
                             }
+                            // Preserve the plugin's category order (Liste 1, Liste 2, …),
+                            // matching NuvioTV. Giniko categories arrive already A-Z sorted.
                             val categories = remember(sourceChannels) {
-                                sourceChannels.map { it.category }.distinct().sorted()
+                                sourceChannels.map { it.category }.distinct()
                             }
                             LiveCategoryListScreen(
                                 source = source,
@@ -193,12 +203,15 @@ fun LiveTvScreen(
                                     scope.launch {
                                         loadingChannelId = channel.id
                                         try {
-                                            val stream = LiveTvRepository.resolveStreamUrl(channel)
-                                            if (stream != null) {
-                                                onPlay(channel.name, stream.url, stream.headers)
+                                            when (val result = LiveTvRepository.resolveChannel(channel)) {
+                                                is LiveResolveResult.Stream ->
+                                                    onPlay(channel.name, result.stream.url, result.stream.headers)
+                                                is LiveResolveResult.Series ->
+                                                    pendingSeries = PendingSeries(channel.name, result.episodes)
+                                                LiveResolveResult.Empty -> Unit
                                             }
                                         } catch (e: Exception) {
-                                            println("LiveTv: error resolving stream for ${channel.name}: ${e.message}")
+                                            println("LiveTv: error resolving channel ${channel.name}: ${e.message}")
                                         }
                                         loadingChannelId = null
                                     }
@@ -209,8 +222,39 @@ fun LiveTvScreen(
                 }
             }
         }
+
+        pendingSeries?.let { series ->
+            EpisodePickerSheet(
+                title = series.title,
+                episodes = series.episodes,
+                loadingEpisodeData = loadingEpisodeData,
+                onDismiss = { if (loadingEpisodeData == null) pendingSeries = null },
+                onEpisodeSelected = { episode ->
+                    if (loadingEpisodeData != null) return@EpisodePickerSheet
+                    scope.launch {
+                        loadingEpisodeData = episode.data
+                        try {
+                            val stream = LiveTvRepository.resolveEpisodeStream(episode)
+                            if (stream != null) {
+                                val epTitle = "${series.title} S${episode.season}E${episode.episode}"
+                                pendingSeries = null
+                                onPlay(epTitle, stream.url, stream.headers)
+                            }
+                        } catch (e: Exception) {
+                            println("LiveTv: error resolving episode: ${e.message}")
+                        }
+                        loadingEpisodeData = null
+                    }
+                },
+            )
+        }
     }
 }
+
+private data class PendingSeries(
+    val title: String,
+    val episodes: List<LiveEpisode>,
+)
 
 // ─── Kaynak listesi ────────────────────────────────────────────────────────────
 
@@ -592,6 +636,140 @@ private fun LiveTvError(onRetry: () -> Unit) {
                 Icon(Icons.Default.Refresh, null, modifier = Modifier.size(18.dp))
                 Spacer(Modifier.width(6.dp))
                 Text("Tekrar dene")
+            }
+        }
+    }
+}
+
+// ─── Bölüm seçici (dizi/anime kanalları) ────────────────────────────────────────
+
+@Composable
+private fun EpisodePickerSheet(
+    title: String,
+    episodes: List<LiveEpisode>,
+    loadingEpisodeData: String?,
+    onEpisodeSelected: (LiveEpisode) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    // Language/version tabs (e.g. "TR Dublaj", "TR Altyazı") and season tabs.
+    val labels = remember(episodes) { episodes.mapNotNull { it.label }.distinct() }
+    val seasons = remember(episodes) { episodes.map { it.season }.distinct().sorted() }
+    var selectedLabel by remember(labels) { mutableStateOf(labels.firstOrNull()) }
+    var selectedSeason by remember(seasons) { mutableStateOf(seasons.firstOrNull() ?: 1) }
+
+    val seasonEpisodes = remember(episodes, selectedSeason, selectedLabel) {
+        episodes
+            .filter { it.season == selectedSeason && (selectedLabel == null || it.label == selectedLabel) }
+            .sortedBy { it.episode }
+    }
+
+    Dialog(
+        onDismissRequest = onDismiss,
+        properties = DialogProperties(usePlatformDefaultWidth = false),
+    ) {
+        Surface(
+            modifier = Modifier
+                .fillMaxWidth(0.92f)
+                .fillMaxHeight(0.85f),
+            shape = RoundedCornerShape(20.dp),
+            color = MaterialTheme.colorScheme.surface,
+        ) {
+            Column(modifier = Modifier.fillMaxSize().padding(20.dp)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        text = title,
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.weight(1f),
+                    )
+                    IconButton(onClick = onDismiss) {
+                        Icon(
+                            Icons.Default.Close,
+                            contentDescription = "Kapat",
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                }
+
+                if (labels.size > 1) {
+                    Spacer(Modifier.height(8.dp))
+                    LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        items(labels, key = { it }) { label ->
+                            FilterChip(
+                                selected = label == selectedLabel,
+                                onClick = { selectedLabel = label },
+                                label = { Text(label) },
+                            )
+                        }
+                    }
+                }
+
+                if (seasons.size > 1) {
+                    Spacer(Modifier.height(8.dp))
+                    LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        items(seasons, key = { it }) { season ->
+                            FilterChip(
+                                selected = season == selectedSeason,
+                                onClick = { selectedSeason = season },
+                                label = { Text("Sezon $season") },
+                                colors = FilterChipDefaults.filterChipColors(),
+                            )
+                        }
+                    }
+                }
+
+                Spacer(Modifier.height(12.dp))
+                HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+
+                LazyColumn(
+                    modifier = Modifier.fillMaxWidth().weight(1f),
+                    contentPadding = PaddingValues(vertical = 8.dp),
+                    verticalArrangement = Arrangement.spacedBy(4.dp),
+                ) {
+                    items(seasonEpisodes, key = { it.data }) { ep ->
+                        val isLoading = loadingEpisodeData == ep.data
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clip(RoundedCornerShape(10.dp))
+                                .clickable(enabled = loadingEpisodeData == null) { onEpisodeSelected(ep) }
+                                .padding(horizontal = 12.dp, vertical = 14.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            Text(
+                                text = "${ep.episode}.",
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                modifier = Modifier.width(36.dp),
+                            )
+                            Text(
+                                text = ep.name?.takeIf { it.isNotBlank() } ?: "Bölüm ${ep.episode}",
+                                style = MaterialTheme.typography.bodyLarge,
+                                color = MaterialTheme.colorScheme.onSurface,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis,
+                                modifier = Modifier.weight(1f),
+                            )
+                            if (isLoading) {
+                                CircularProgressIndicator(
+                                    modifier = Modifier.size(20.dp),
+                                    strokeWidth = 2.dp,
+                                    color = MaterialTheme.colorScheme.primary,
+                                )
+                            } else {
+                                Icon(
+                                    Icons.Default.PlayArrow,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    modifier = Modifier.size(20.dp),
+                                )
+                            }
+                        }
+                    }
+                }
             }
         }
     }

@@ -31,6 +31,25 @@ data class PluginLiveStream(
     val headers: Map<String, String> = emptyMap(),
 )
 
+/** A single episode of a series-type live channel (e.g. InatBox dizi/anime). */
+data class LiveEpisode(
+    val season: Int,
+    val episode: Int,
+    val name: String?,
+    val data: String,
+    val label: String? = null, // e.g. "TR Dublaj", "TR Altyazı"
+)
+
+/**
+ * Result of resolving a live channel: either a directly playable stream, a
+ * series with an episode list (caller opens the picker), or empty.
+ */
+sealed interface LiveResolveResult {
+    data class Stream(val stream: PluginLiveStream) : LiveResolveResult
+    data class Series(val title: String, val episodes: List<LiveEpisode>) : LiveResolveResult
+    data object Empty : LiveResolveResult
+}
+
 sealed interface LiveTvState {
     data object Idle : LiveTvState
     data object Loading : LiveTvState

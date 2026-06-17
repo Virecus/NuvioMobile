@@ -48,22 +48,31 @@ object LiveTvRepository {
         }.getOrNull()
     }
 
-    suspend fun resolveStreamUrl(channel: LiveChannel): PluginLiveStream? = withContext(Dispatchers.IO) {
+    /**
+     * Resolves a channel into a playable stream, or a series (with episodes) for
+     * channels that expand into multiple episodes (InatBox dizi/anime).
+     */
+    suspend fun resolveChannel(channel: LiveChannel): LiveResolveResult = withContext(Dispatchers.IO) {
         return@withContext when {
             channel.streamPageUrl.contains("giniko.com") -> {
                 // Giniko — m3u8 scrape
-                runCatching {
+                val stream = runCatching {
                     val html = fetchText(channel.streamPageUrl) ?: return@runCatching null
                     val regex = Regex("""https?://[^\s"'<>]+\.m3u8[^\s"'<>]*""")
                     regex.find(html)?.value?.let { PluginLiveStream(it) }
                 }.getOrNull()
+                if (stream != null) LiveResolveResult.Stream(stream) else LiveResolveResult.Empty
             }
             else -> {
-                // InatBox (plugin) — resolve via CloudStream extension; carries headers.
-                resolvePluginLiveStream("inatbox", channel.id)
+                // InatBox (plugin) — resolve via CloudStream extension; may be a series.
+                resolvePluginChannel("inatbox", channel.id)
             }
         }
     }
+
+    /** Resolves a playable stream for a specific series episode. */
+    suspend fun resolveEpisodeStream(episode: LiveEpisode): PluginLiveStream? =
+        resolvePluginEpisodeStream("inatbox", episode.data)
 
     private fun alphabetCategory(name: String): String {
         val first = name.uppercase().trim().firstOrNull() ?: return "#"
@@ -78,6 +87,7 @@ object LiveTvRepository {
 expect suspend fun fetchText(url: String): String?
 
 // Platform-specific live TV plugin (CloudStream DEX) integration.
-// androidFull → real bridge; androidPlaystore + iOS → null.
+// androidFull → real bridge; androidPlaystore + iOS → empty/null.
 expect suspend fun fetchPluginLiveChannels(sourceId: String): List<LiveChannel>?
-expect suspend fun resolvePluginLiveStream(sourceId: String, channelId: String): PluginLiveStream?
+expect suspend fun resolvePluginChannel(sourceId: String, channelId: String): LiveResolveResult
+expect suspend fun resolvePluginEpisodeStream(sourceId: String, episodeData: String): PluginLiveStream?

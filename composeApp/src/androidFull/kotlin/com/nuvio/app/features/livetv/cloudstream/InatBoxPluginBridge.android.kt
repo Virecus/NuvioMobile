@@ -3,6 +3,8 @@ package com.nuvio.app.features.livetv.cloudstream
 import android.content.Context
 import android.util.Log
 import com.nuvio.app.features.livetv.LiveChannel
+import com.nuvio.app.features.livetv.LiveEpisode
+import com.nuvio.app.features.livetv.LiveResolveResult
 import com.nuvio.app.features.livetv.PluginLiveStream
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -16,12 +18,6 @@ private const val TAG = "InatBoxPluginBridge"
 private const val INATBOX_SCRAPER_ID = "InatBox"
 private const val INATBOX_CS3_URL =
     "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/builds/InatBox.cs3"
-
-// Series-like categories are skipped in phase 1 (no episode picker UI on mobile).
-private fun isSeriesCategory(category: String): Boolean {
-    val c = category.lowercase()
-    return c.contains("dizi") || c == "tv show" || c == "anime"
-}
 
 /**
  * Owns the CloudStream DEX loader + runner for the built-in InatBox live source.
@@ -52,9 +48,9 @@ object InatBoxPluginBridge {
     }
 
     /**
-     * Returns live channels for [sourceId] (only "inatbox" supported). Series
-     * categories are filtered out for phase 1. Maps CloudStream channels to the
-     * commonMain LiveChannel shape (id=url, streamPageUrl=url).
+     * Returns live channels for [sourceId] (only "inatbox" supported). Maps
+     * CloudStream channels to the commonMain LiveChannel shape (id=url,
+     * streamPageUrl=url). Plugin category order is preserved.
      */
     suspend fun fetchLiveChannels(sourceId: String): List<LiveChannel>? {
         if (sourceId != "inatbox") return null
@@ -62,7 +58,6 @@ object InatBoxPluginBridge {
         if (!ensureDownloaded()) return null
         return try {
             val channels = runner.getLiveChannels(INATBOX_SCRAPER_ID)
-                .filterNot { isSeriesCategory(it.category) }
             if (channels.isEmpty()) {
                 null
             } else {
@@ -83,27 +78,47 @@ object InatBoxPluginBridge {
     }
 
     /**
-     * Resolves a single playable stream for [channelId]. Series channels return
-     * null (no episode picker yet). Carries stream headers (Referer/User-Agent).
+     * Resolves a channel into a playable stream or a series with episodes.
+     * Carries stream headers (Referer/User-Agent).
      */
-    suspend fun resolveLiveStream(sourceId: String, channelId: String): PluginLiveStream? {
+    suspend fun resolveChannel(sourceId: String, channelId: String): LiveResolveResult {
+        if (sourceId != "inatbox") return LiveResolveResult.Empty
+        if (appContext == null) return LiveResolveResult.Empty
+        if (!ensureDownloaded()) return LiveResolveResult.Empty
+        return try {
+            when (val r = runner.resolveLiveChannel(INATBOX_SCRAPER_ID, channelId)) {
+                is CsLiveChannelResult.Streams -> {
+                    val stream = r.streams.firstOrNull()
+                        ?: return LiveResolveResult.Empty
+                    LiveResolveResult.Stream(
+                        PluginLiveStream(url = stream.url, headers = stream.headers.orEmpty())
+                    )
+                }
+                is CsLiveChannelResult.Series -> LiveResolveResult.Series(
+                    title = r.title,
+                    episodes = r.episodes.map { ep ->
+                        LiveEpisode(ep.season, ep.episode, ep.name, ep.data, ep.label)
+                    },
+                )
+                CsLiveChannelResult.Empty -> LiveResolveResult.Empty
+            }
+        } catch (e: Throwable) {
+            Log.e(TAG, "resolveChannel failed: ${e.message}", e)
+            LiveResolveResult.Empty
+        }
+    }
+
+    /** Resolves a playable stream for a series episode (from LiveEpisode.data). */
+    suspend fun resolveEpisodeStream(sourceId: String, episodeData: String): PluginLiveStream? {
         if (sourceId != "inatbox") return null
         if (appContext == null) return null
         if (!ensureDownloaded()) return null
         return try {
-            when (val r = runner.resolveLiveChannel(INATBOX_SCRAPER_ID, channelId)) {
-                is CsLiveChannelResult.Streams -> {
-                    val stream = r.streams.firstOrNull() ?: return null
-                    PluginLiveStream(url = stream.url, headers = stream.headers.orEmpty())
-                }
-                is CsLiveChannelResult.Series -> {
-                    Log.d(TAG, "resolveLiveStream: channel is a series, skipping (no picker)")
-                    null
-                }
-                CsLiveChannelResult.Empty -> null
-            }
+            val stream = runner.getLiveEpisodeStreams(INATBOX_SCRAPER_ID, episodeData).firstOrNull()
+                ?: return null
+            PluginLiveStream(url = stream.url, headers = stream.headers.orEmpty())
         } catch (e: Throwable) {
-            Log.e(TAG, "resolveLiveStream failed: ${e.message}", e)
+            Log.e(TAG, "resolveEpisodeStream failed: ${e.message}", e)
             null
         }
     }
