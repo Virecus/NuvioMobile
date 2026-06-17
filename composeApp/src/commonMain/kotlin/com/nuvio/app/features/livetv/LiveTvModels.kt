@@ -25,6 +25,12 @@ data class LiveSource(
     val logo: String? = null,
 )
 
+/** A resolved playable live stream plus any HTTP headers the player must send. */
+data class PluginLiveStream(
+    val url: String,
+    val headers: Map<String, String> = emptyMap(),
+)
+
 sealed interface LiveTvState {
     data object Idle : LiveTvState
     data object Loading : LiveTvState

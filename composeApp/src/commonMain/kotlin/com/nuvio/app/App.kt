@@ -1457,7 +1457,7 @@ private fun MainAppContent(
                                             requestedSettingsPageName = null
                                         },
                                         onInitialHomeContentRendered = { initialHomeReady = true },
-                                        onLiveTvPlay = { title, url ->
+                                        onLiveTvPlay = { title, url, headers ->
                                             val launch = PlayerLaunch(
                                                 title = title,
                                                 sourceUrl = url,
@@ -1467,6 +1467,7 @@ private fun MainAppContent(
                                                 videoId = url,
                                                 parentMetaId = url,
                                                 parentMetaType = "live",
+                                                sourceHeaders = headers,
                                             )
                                             val launchId = PlayerLaunchStore.put(launch)
                                             navController.navigate(PlayerRoute(launchId = launchId))
@@ -2829,7 +2830,7 @@ private fun AppTabHost(
     requestedSettingsPageName: String? = null,
     onRequestedSettingsPageConsumed: () -> Unit = {},
     onInitialHomeContentRendered: () -> Unit = {},
-    onLiveTvPlay: ((title: String, url: String) -> Unit)? = null,
+    onLiveTvPlay: ((title: String, url: String, headers: Map<String, String>) -> Unit)? = null,
 ) {
     val tabStateHolder = rememberSaveableStateHolder()
 
@@ -2876,7 +2877,7 @@ private fun AppTabHost(
                 AppScreenTab.LiveTv -> {
                     LiveTvScreen(
                         modifier = Modifier.fillMaxSize(),
-                        onPlay = { title, url -> onLiveTvPlay?.invoke(title, url) },
+                        onPlay = { title, url, headers -> onLiveTvPlay?.invoke(title, url, headers) },
                     )
                 }
 

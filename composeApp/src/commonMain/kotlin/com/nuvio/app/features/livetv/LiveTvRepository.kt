@@ -7,9 +7,6 @@ import kotlinx.serialization.json.Json
 private const val GINIKO_JSON_URL =
     "https://raw.githubusercontent.com/Kraptor123/cs-kraptor/master/giniko.json"
 
-private const val INATBOX_M3U_URL =
-    "https://raw.githubusercontent.com/feroxx/test/refs/heads/main/Kanallar/canlitv.m3u"
-
 private val json = Json { ignoreUnknownKeys = true }
 
 val GINIKO_SOURCE = LiveSource(
@@ -30,7 +27,7 @@ object LiveTvRepository {
 
     suspend fun fetchChannelsForSource(sourceId: String): List<LiveChannel>? = when (sourceId) {
         "giniko" -> fetchGinikoChannels()
-        "inatbox" -> fetchInatBoxChannels()
+        "inatbox" -> fetchPluginLiveChannels(sourceId)
         else -> null
     }
 
@@ -51,60 +48,20 @@ object LiveTvRepository {
         }.getOrNull()
     }
 
-    // InatBox — platform API tabanlı, kategori bazlı
-    private suspend fun fetchInatBoxChannels(): List<LiveChannel>? {
-        return fetchInatBoxAllChannels()
-    }
-
-    private fun parseM3U(content: String): List<LiveChannel> {
-        val channels = mutableListOf<LiveChannel>()
-        val lines = content.lines()
-        var i = 0
-        while (i < lines.size) {
-            val line = lines[i].trim()
-            if (line.startsWith("#EXTINF:")) {
-                val nameMatch = Regex(""",(.+)$""").find(line)
-                val name = nameMatch?.groupValues?.get(1)?.trim() ?: ""
-                val logo = Regex("""tvg-logo="([^"]+)"""").find(line)?.groupValues?.get(1) ?: ""
-                val group = Regex("""group-title="([^"]+)"""").find(line)?.groupValues?.get(1) ?: "Diğer"
-                // Next non-empty, non-comment line is the URL
-                var j = i + 1
-                while (j < lines.size && (lines[j].isBlank() || lines[j].startsWith("#"))) j++
-                val url = if (j < lines.size) lines[j].trim() else ""
-                if (url.isNotBlank() && name.isNotBlank()) {
-                    channels.add(
-                        LiveChannel(
-                            id = url,
-                            name = name,
-                            poster = logo,
-                            streamPageUrl = url,
-                            category = group,
-                        )
-                    )
-                }
-                i = j + 1
-            } else {
-                i++
-            }
-        }
-        return channels
-    }
-
-    suspend fun resolveStreamUrl(channel: LiveChannel): String? = withContext(Dispatchers.IO) {
+    suspend fun resolveStreamUrl(channel: LiveChannel): PluginLiveStream? = withContext(Dispatchers.IO) {
         return@withContext when {
-            channel.id.startsWith("{") -> {
-                // InatBox JSON item — platform API ile çöz
-                resolveInatBoxStreamUrl(channel.id)
-            }
             channel.streamPageUrl.contains("giniko.com") -> {
                 // Giniko — m3u8 scrape
                 runCatching {
                     val html = fetchText(channel.streamPageUrl) ?: return@runCatching null
                     val regex = Regex("""https?://[^\s"'<>]+\.m3u8[^\s"'<>]*""")
-                    regex.find(html)?.value
+                    regex.find(html)?.value?.let { PluginLiveStream(it) }
                 }.getOrNull()
             }
-            else -> channel.streamPageUrl
+            else -> {
+                // InatBox (plugin) — resolve via CloudStream extension; carries headers.
+                resolvePluginLiveStream("inatbox", channel.id)
+            }
         }
     }
 
@@ -120,6 +77,7 @@ object LiveTvRepository {
 
 expect suspend fun fetchText(url: String): String?
 
-// Platform-specific InatBox implementation
-expect suspend fun fetchInatBoxAllChannels(): List<LiveChannel>?
-expect suspend fun resolveInatBoxStreamUrl(itemJson: String): String?
+// Platform-specific live TV plugin (CloudStream DEX) integration.
+// androidFull → real bridge; androidPlaystore + iOS → null.
+expect suspend fun fetchPluginLiveChannels(sourceId: String): List<LiveChannel>?
+expect suspend fun resolvePluginLiveStream(sourceId: String, channelId: String): PluginLiveStream?

@@ -12,7 +12,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.nuvio.app.core.auth.AuthStorage
 import com.nuvio.app.core.license.LicenseStorage
 import com.nuvio.app.core.license.LicenseManager
-import com.nuvio.app.features.livetv.ensureConscrypt
+import com.nuvio.app.features.livetv.initLiveTvRuntime
 import com.nuvio.app.features.settings.ExtraSettingsStorage
 import com.nuvio.app.core.deeplink.handleAppUrl
 import com.nuvio.app.core.storage.PlatformLocalAccountDataCleaner
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         LicenseStorage.initialize(applicationContext)
         LicenseManager.initialize()
         ExtraSettingsStorage.initialize(applicationContext)
-        ensureConscrypt(applicationContext)
+        initLiveTvRuntime(applicationContext)
         LibraryStorage.initialize(applicationContext)
         WatchedStorage.initialize(applicationContext)
         MetaScreenSettingsStorage.initialize(applicationContext)

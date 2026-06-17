@@ -63,17 +63,24 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import com.nuvio.app.core.build.AppFeaturePolicy
 import kotlinx.coroutines.launch
 
 @Composable
 fun LiveTvScreen(
     modifier: Modifier = Modifier,
-    onPlay: (title: String, url: String) -> Unit = { _, _ -> },
+    onPlay: (title: String, url: String, headers: Map<String, String>) -> Unit = { _, _, _ -> },
 ) {
     val scope = rememberCoroutineScope()
     val statusBarTop = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
 
-    val allSources = remember { listOf(INATBOX_SOURCE, GINIKO_SOURCE) }
+    // InatBox is a CloudStream DEX plugin (full variant only); hide it on PlayStore.
+    val allSources = remember {
+        buildList {
+            if (AppFeaturePolicy.pluginsEnabled) add(INATBOX_SOURCE)
+            add(GINIKO_SOURCE)
+        }
+    }
     var state by remember { mutableStateOf<LiveTvState>(LiveTvState.Idle) }
     var navState by remember { mutableStateOf<LiveNavState>(LiveNavState.SourceList) }
     var loadingChannelId by remember { mutableStateOf<String?>(null) }
@@ -186,12 +193,12 @@ fun LiveTvScreen(
                                     scope.launch {
                                         loadingChannelId = channel.id
                                         try {
-                                            val url = LiveTvRepository.resolveStreamUrl(channel)
-                                            if (url != null) {
-                                                onPlay(channel.name, url)
+                                            val stream = LiveTvRepository.resolveStreamUrl(channel)
+                                            if (stream != null) {
+                                                onPlay(channel.name, stream.url, stream.headers)
                                             }
                                         } catch (e: Exception) {
-                                            android.util.Log.e("LiveTv", "Error resolving stream for ${channel.name}", e)
+                                            println("LiveTv: error resolving stream for ${channel.name}: ${e.message}")
                                         }
                                         loadingChannelId = null
                                     }

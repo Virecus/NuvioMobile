@@ -313,8 +313,21 @@ afterEvaluate {
     dependencies {
         add("fullImplementation", files("libs/quickjs-kt-android-1.0.5-nuvio.aar"))
         add("fullImplementation", libs.ksoup)
+        // CloudStream DEX extension runtime dependencies (full variant only).
+        // InatBox live TV is loaded as a .cs3 extension via DexClassLoader; these
+        // are the classes the host classloader must provide to the loaded plugin.
+        // Excludes mirror NuvioTV: drop heavy/irrelevant transitives (rhino,
+        // newpipeextractor, string-similarity) but keep CloudStream's own API.
+        add("fullImplementation", "com.github.Blatzar:NiceHttp:0.4.16")
+        add("fullImplementation", "org.jsoup:jsoup:1.17.2")
+        add("fullImplementation", "com.fasterxml.jackson.core:jackson-databind:2.17.0")
+        add("fullImplementation", "com.fasterxml.jackson.module:jackson-module-kotlin:2.17.0")
         add("fullImplementation", "com.github.recloudstream.cloudstream:library:v4.7.0") {
-            isTransitive = false
+            exclude(group = "org.mozilla", module = "rhino")
+            exclude(group = "com.github.AmarullisVFX", module = "newpipeextractor")
+            exclude(group = "com.github.AmaryllisVFX", module = "newpipeextractor")
+            exclude(group = "com.github.AmaryllisVFX.newpipeextractor")
+            exclude(group = "info.debatty", module = "java-string-similarity")
         }
         add("fullImplementation", libs.conscrypt.android)
     }

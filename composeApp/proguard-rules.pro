@@ -48,3 +48,24 @@
 -dontwarn org.conscrypt.**
 -dontwarn org.bouncycastle.**
 -dontwarn org.openjsse.**
+
+# CloudStream DEX extensions (full variant) are loaded at runtime via
+# DexClassLoader and resolve dependencies by fully-qualified name from the host
+# classloader, so these must not be obfuscated/removed. On the playstore variant
+# these classes are absent and the rules are harmless no-ops.
+-keep class com.lagradost.cloudstream3.** { *; }
+-keepclassmembers class com.lagradost.cloudstream3.** { *; }
+-keep class com.lagradost.nicehttp.** { *; }
+-keepclassmembers class com.lagradost.nicehttp.** { *; }
+-keep class com.lagradost.api.** { *; }
+-keep class kotlin.** { *; }
+-keep class kotlinx.coroutines.** { *; }
+-keep class okhttp3.** { *; }
+-keepclassmembers class okhttp3.** { *; }
+-keep class okio.** { *; }
+-keepclassmembers class okio.** { *; }
+-keep class org.jsoup.** { *; }
+-keepclassmembers class org.jsoup.** { *; }
+-keep class com.fasterxml.jackson.** { *; }
+-keepclassmembers class com.fasterxml.jackson.** { *; }
+-dontwarn okhttp3.internal.sse.**
