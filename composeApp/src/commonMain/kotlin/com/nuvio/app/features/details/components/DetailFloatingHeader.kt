@@ -16,8 +16,8 @@ import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Bookmark
-import androidx.compose.material.icons.filled.BookmarkBorder
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -49,6 +49,7 @@ fun DetailFloatingHeader(
     meta: MetaDetails,
     isSaved: Boolean,
     progress: Float,
+    backgroundColor: Color? = null,
     onBack: () -> Unit,
     onToggleSaved: () -> Unit,
     modifier: Modifier = Modifier,
@@ -56,7 +57,7 @@ fun DetailFloatingHeader(
     val safeAreaTop = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
     val headerTopPadding = (safeAreaTop - 6.dp).coerceAtLeast(safeAreaTop * 0.8f)
     val interactive = progress > 0.05f
-    val surfaceColor = if (isIos) {
+    val surfaceColor = backgroundColor ?: if (isIos) {
         MaterialTheme.colorScheme.surface.copy(alpha = 1.0f)
     } else {
         MaterialTheme.colorScheme.background
@@ -111,7 +112,7 @@ fun DetailFloatingHeader(
                         .padding(horizontal = 10.dp),
                     contentAlignment = Alignment.Center,
                 ) {
-                    if (meta.logo != null && !logoLoadError) {
+                    if (!meta.logo.isNullOrBlank() && !logoLoadError) {
                         AsyncImage(
                             model = meta.logo,
                             contentDescription = stringResource(Res.string.detail_logo_content_description, meta.name),
@@ -167,7 +168,7 @@ private fun DetailFloatingHeaderAction(
         contentAlignment = Alignment.Center,
     ) {
         Icon(
-            imageVector = if (isSaved) Icons.Default.Bookmark else Icons.Default.BookmarkBorder,
+            imageVector = if (isSaved) Icons.Default.Check else Icons.Default.Add,
             contentDescription = if (isSaved) {
                 stringResource(Res.string.hero_remove_from_library)
             } else {

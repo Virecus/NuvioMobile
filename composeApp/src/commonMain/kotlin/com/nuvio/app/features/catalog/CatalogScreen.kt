@@ -68,11 +68,7 @@ import org.jetbrains.compose.resources.stringResource
 fun CatalogScreen(
     title: String,
     subtitle: String,
-    manifestUrl: String,
-    type: String,
-    catalogId: String,
-    supportsPagination: Boolean,
-    genre: String? = null,
+    target: CatalogTarget,
     onBack: () -> Unit,
     onPosterClick: ((MetaPreview) -> Unit)? = null,
     onPosterLongClick: ((MetaPreview) -> Unit)? = null,
@@ -86,19 +82,38 @@ fun CatalogScreen(
         WatchedRepository.ensureLoaded()
         WatchedRepository.uiState
     }.collectAsStateWithLifecycle()
-    val gridState = rememberLazyGridState()
+    val fullyWatchedSeriesKeys by WatchedRepository.fullyWatchedSeriesKeys.collectAsStateWithLifecycle()
+    val initialScrollPosition = remember(
+        target,
+        homeCatalogSettingsUiState.hideUnreleasedContent,
+    ) {
+        CatalogRepository.scrollPosition(
+            target = target,
+        )
+    }
+    val gridState = rememberLazyGridState(
+        initialFirstVisibleItemIndex = initialScrollPosition.firstVisibleItemIndex,
+        initialFirstVisibleItemScrollOffset = initialScrollPosition.firstVisibleItemScrollOffset,
+    )
     var headerHeightPx by remember { mutableIntStateOf(0) }
     var observedOfflineState by remember { mutableStateOf(false) }
 
-    LaunchedEffect(manifestUrl, type, catalogId, genre, supportsPagination, homeCatalogSettingsUiState.hideUnreleasedContent) {
+    LaunchedEffect(target, homeCatalogSettingsUiState.hideUnreleasedContent) {
         CatalogRepository.load(
-            manifestUrl = manifestUrl,
-            type = type,
-            catalogId = catalogId,
-            genre = genre,
-            supportsPagination = supportsPagination,
-            force = true,
+            target = target,
         )
+    }
+
+    LaunchedEffect(gridState, target, homeCatalogSettingsUiState.hideUnreleasedContent) {
+        snapshotFlow { gridState.firstVisibleItemIndex to gridState.firstVisibleItemScrollOffset }
+            .distinctUntilChanged()
+            .collect { (index, offset) ->
+                CatalogRepository.saveScrollPosition(
+                    target = target,
+                    firstVisibleItemIndex = index,
+                    firstVisibleItemScrollOffset = offset,
+                )
+            }
     }
 
     LaunchedEffect(gridState, uiState.canLoadMore, uiState.isLoading) {
@@ -114,7 +129,7 @@ fun CatalogScreen(
             }
     }
 
-    LaunchedEffect(networkStatusUiState.condition, manifestUrl, type, catalogId, genre, supportsPagination) {
+    LaunchedEffect(networkStatusUiState.condition, target) {
         when (networkStatusUiState.condition) {
             NetworkCondition.NoInternet,
             NetworkCondition.ServersUnreachable,
@@ -126,11 +141,7 @@ fun CatalogScreen(
                 if (!observedOfflineState) return@LaunchedEffect
                 observedOfflineState = false
                 CatalogRepository.load(
-                    manifestUrl = manifestUrl,
-                    type = type,
-                    catalogId = catalogId,
-                    genre = genre,
-                    supportsPagination = supportsPagination,
+                    target = target,
                     force = true,
                 )
             }
@@ -174,11 +185,7 @@ fun CatalogScreen(
                             onRetry = {
                                 NetworkStatusRepository.requestRefresh(force = true)
                                 CatalogRepository.load(
-                                    manifestUrl = manifestUrl,
-                                    type = type,
-                                    catalogId = catalogId,
-                                    genre = genre,
-                                    supportsPagination = supportsPagination,
+                                    target = target,
                                     force = true,
                                 )
                             },
@@ -197,6 +204,7 @@ fun CatalogScreen(
                             isWatched = WatchingState.isPosterWatched(
                                 watchedKeys = watchedUiState.watchedKeys,
                                 item = item,
+                                fullyWatchedSeriesKeys = fullyWatchedSeriesKeys,
                             ),
                             onClick = onPosterClick?.let { { it(item) } },
                             onLongClick = onPosterLongClick?.let { { it(item) } },

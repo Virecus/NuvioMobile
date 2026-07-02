@@ -4,3 +4,7 @@
 [submodule "xavia-ota"]
 	path = xavia-ota
 	url = https://github.com/tapframe/NuvioOTA.git
+[submodule "MPVKit"]
+	path = MPVKit
+	url = https://github.com/NuvioMedia/MPVKit.git
+	branch = Nuvio

@@ -2,8 +2,10 @@ package com.nuvio.app.features.library
 
 import co.touchlab.kermit.Logger
 import com.nuvio.app.core.auth.AuthRepository
+import com.nuvio.app.core.ui.NuvioToastController
 import com.nuvio.app.core.auth.AuthState
 import com.nuvio.app.core.network.SupabaseProvider
+import com.nuvio.app.core.sync.putSyncOriginClientId
 import com.nuvio.app.features.home.PosterShape
 import com.nuvio.app.features.profiles.ProfileRepository
 import com.nuvio.app.features.trakt.TraktAuthRepository
@@ -16,11 +18,6 @@ import com.nuvio.app.features.trakt.effectiveLibrarySourceMode as resolveEffecti
 import com.nuvio.app.features.trakt.shouldUseTraktLibrary
 import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.postgrest.rpc
-import kotlinx.coroutines.runBlocking
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.library_local_tab_title
-import nuvio.composeapp.generated.resources.library_other
-import org.jetbrains.compose.resources.getString
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -33,6 +30,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
@@ -41,6 +39,12 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.encodeToJsonElement
 import kotlinx.serialization.json.put
+import nuvio.composeapp.generated.resources.Res
+import nuvio.composeapp.generated.resources.library_local_tab_title
+import nuvio.composeapp.generated.resources.library_other
+import nuvio.composeapp.generated.resources.trakt_lists_update_failed
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.getString
 
 @Serializable
 private data class StoredLibraryPayload(
@@ -78,6 +82,7 @@ object LibraryRepository {
 
     private var hasLoaded = false
     private var currentProfileId: Int = 1
+    private var profileGeneration: Long = 0L
     private var itemsById: MutableMap<String, LibraryItem> = mutableMapOf()
     private var isPullingNuvioSyncFromServer = false
     private var hasCompletedInitialNuvioSyncPull = false
@@ -153,6 +158,7 @@ object LibraryRepository {
     fun clearLocalState() {
         hasLoaded = false
         currentProfileId = 1
+        profileGeneration += 1L
         itemsById.clear()
         pushJob?.cancel()
         isPullingNuvioSyncFromServer = false
@@ -164,6 +170,7 @@ object LibraryRepository {
 
     private fun loadFromDisk(profileId: Int) {
         currentProfileId = profileId
+        profileGeneration += 1L
         hasLoaded = true
         itemsById.clear()
 
@@ -179,11 +186,15 @@ object LibraryRepository {
     }
 
     suspend fun pullFromServer(profileId: Int) {
-        currentProfileId = profileId
+        val operationGeneration = activeOperationGeneration(profileId) ?: run {
+            log.d { "Skipping library pull for inactive profile $profileId" }
+            return
+        }
 
         if (isTraktLibrarySourceActive()) {
             runCatching { TraktLibraryRepository.refreshNow() }
                 .onFailure { e -> log.e(e) { "Failed to pull Trakt library" } }
+            if (!isActiveOperation(profileId, operationGeneration)) return
             hasCompletedInitialNuvioSyncPull = true
             publish()
             return
@@ -192,6 +203,7 @@ object LibraryRepository {
         isPullingNuvioSyncFromServer = true
         runCatching {
             val serverItems = pullAllLibrarySyncItems(profileId)
+            if (!isActiveOperation(profileId, operationGeneration)) return@runCatching
             if (serverItems.isEmpty() && itemsById.isNotEmpty()) {
                 log.w { "Remote library is empty while local has ${itemsById.size} entries; preserving local library" }
             } else {
@@ -211,13 +223,33 @@ object LibraryRepository {
         }
     }
 
+    private fun activeOperationGeneration(profileId: Int): Long? {
+        if (ProfileRepository.activeProfileId != profileId) return null
+        if (!hasLoaded || currentProfileId != profileId) {
+            loadFromDisk(profileId)
+        }
+        return profileGeneration
+    }
+
+    private fun isActiveOperation(profileId: Int, generation: Long): Boolean =
+        currentProfileId == profileId &&
+            profileGeneration == generation &&
+            ProfileRepository.activeProfileId == profileId
+
     fun toggleSaved(item: LibraryItem) {
         ensureLoaded()
 
         if (isTraktLibrarySourceActive()) {
+            log.i { "toggleSaved routed to Trakt library source item=${item.id} type=${item.type} profile=$currentProfileId" }
             syncScope.launch {
                 runCatching { TraktLibraryRepository.toggleWatchlist(item) }
-                    .onFailure { e -> log.e(e) { "Failed to toggle Trakt watchlist" } }
+                    .onFailure { e ->
+                        log.e(e) { "Failed to toggle Trakt watchlist" }
+                        NuvioToastController.show(
+                            e.message?.takeIf { it.isNotBlank() }
+                                ?: getString(Res.string.trakt_lists_update_failed),
+                        )
+                    }
                 publish()
             }
             return
@@ -232,6 +264,7 @@ object LibraryRepository {
 
     fun save(item: LibraryItem) {
         ensureLoaded()
+        log.i { "Saving local library item item=${item.id} type=${item.type} profile=$currentProfileId" }
         itemsById[libraryItemKey(item.id, item.type)] = item.copy(savedAtEpochMs = LibraryClock.nowEpochMs())
         publish()
         persist()
@@ -243,6 +276,7 @@ object LibraryRepository {
         val before = itemsById.size
         itemsById.entries.removeAll { (_, item) -> item.id == id }
         if (itemsById.size != before) {
+            log.i { "Removing local library item id=$id profile=$currentProfileId removed=${before - itemsById.size}" }
             publish()
             persist()
             pushToServer()
@@ -252,6 +286,7 @@ object LibraryRepository {
     private fun remove(id: String, type: String) {
         ensureLoaded()
         if (itemsById.remove(libraryItemKey(id, type)) != null) {
+            log.i { "Removing local library item id=$id type=$type profile=$currentProfileId" }
             publish()
             persist()
             pushToServer()
@@ -317,6 +352,9 @@ object LibraryRepository {
         ensureLoaded()
         val localDesired = desiredMembership[LOCAL_LIBRARY_LIST_KEY] == true
         val currentlyInLocal = itemsById.containsKey(libraryItemKey(item.id, item.type))
+        log.i {
+            "Applying library membership item=${item.id} type=${item.type} profile=$currentProfileId localDesired=$localDesired currentlyInLocal=$currentlyInLocal traktAuthenticated=${TraktAuthRepository.isAuthenticated.value}"
+        }
         if (localDesired != currentlyInLocal) {
             if (localDesired) {
                 save(item)
@@ -349,23 +387,52 @@ object LibraryRepository {
 
     private fun pushToServer() {
         val authState = AuthRepository.state.value
-        if (authState !is AuthState.Authenticated || authState.isAnonymous) return
-        if (isPullingNuvioSyncFromServer || !hasCompletedInitialNuvioSyncPull) return
+        if (authState !is AuthState.Authenticated) {
+            log.w { "Skipping library push: auth state is ${authState::class.simpleName} profile=$currentProfileId" }
+            return
+        }
+        if (authState.isAnonymous) {
+            log.w { "Skipping library push: anonymous auth user=${authState.userId} profile=$currentProfileId" }
+            return
+        }
+        if (isPullingNuvioSyncFromServer) {
+            log.i { "Skipping library push: server pull is active profile=$currentProfileId localItems=${itemsById.size}" }
+            return
+        }
+        if (!hasCompletedInitialNuvioSyncPull) {
+            log.w { "Skipping library push: initial Nuvio sync pull not completed profile=$currentProfileId localItems=${itemsById.size}" }
+            return
+        }
 
         pushJob?.cancel()
+        val profileId = currentProfileId
         pushJob = syncScope.launch {
             delay(500)
+            if (profileId != currentProfileId) {
+                log.w { "Skipping debounced library push: profile changed scheduled=$profileId current=$currentProfileId" }
+                return@launch
+            }
+            val itemCount = itemsById.size
             runCatching {
-                val profileId = ProfileRepository.activeProfileId
                 val syncItems = itemsById.values.map { it.toSyncItem() }
-                if (syncItems.isEmpty()) return@runCatching
+                if (syncItems.isEmpty()) {
+                    log.w { "Skipping library push: sync payload is empty profile=$profileId" }
+                    return@runCatching false
+                }
                 val params = buildJsonObject {
                     put("p_profile_id", profileId)
                     put("p_items", json.encodeToJsonElement(syncItems))
+                    putSyncOriginClientId()
                 }
+                log.i { "Pushing library to server profile=$profileId itemCount=${syncItems.size}" }
                 SupabaseProvider.client.postgrest.rpc("sync_push_library", params)
+                true
+            }.onSuccess { pushed ->
+                if (pushed) {
+                    log.i { "Library push completed profile=$profileId itemCount=$itemCount" }
+                }
             }.onFailure { e ->
-                log.e(e) { "Failed to push library to server" }
+                log.e(e) { "Failed to push library to server profile=$profileId itemCount=$itemCount" }
             }
         }
     }
@@ -476,11 +543,16 @@ object LibraryRepository {
 }
 
 internal const val LOCAL_LIBRARY_LIST_KEY = "local"
+private const val DEFAULT_LOCAL_LIBRARY_TAB_TITLE = "Nuvio Library"
+private const val DEFAULT_LIBRARY_OTHER_TITLE = "Other"
 
 internal fun localLibraryListTab(): TraktListTab =
     TraktListTab(
         key = LOCAL_LIBRARY_LIST_KEY,
-        title = runBlocking { getString(Res.string.library_local_tab_title) },
+        title = localizedStringOrDefault(
+            resource = Res.string.library_local_tab_title,
+            fallback = DEFAULT_LOCAL_LIBRARY_TAB_TITLE,
+        ),
         type = TraktListType.WATCHLIST,
     )
 
@@ -552,7 +624,7 @@ private fun PosterShape.toSyncName(): String =
 
 internal fun String.toLibraryDisplayTitle(): String {
     val normalized = trim()
-    if (normalized.isBlank()) return runBlocking { getString(Res.string.library_other) }
+    if (normalized.isBlank()) return localizedLibraryOtherTitle()
 
     return normalized
         .split('-', '_', ' ')
@@ -560,5 +632,15 @@ internal fun String.toLibraryDisplayTitle(): String {
         .joinToString(" ") { token ->
             token.lowercase().replaceFirstChar { char -> char.uppercase() }
         }
-        .ifBlank { runBlocking { getString(Res.string.library_other) } }
+        .ifBlank { localizedLibraryOtherTitle() }
 }
+
+private fun localizedLibraryOtherTitle(): String =
+    localizedStringOrDefault(
+        resource = Res.string.library_other,
+        fallback = DEFAULT_LIBRARY_OTHER_TITLE,
+    )
+
+private fun localizedStringOrDefault(resource: StringResource, fallback: String): String =
+    runCatching { runBlocking { getString(resource) } }
+        .getOrDefault(fallback)

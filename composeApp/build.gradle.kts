@@ -1,4 +1,3 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.file.RegularFileProperty
@@ -26,6 +25,12 @@ abstract class GenerateRuntimeConfigsTask : DefaultTask() {
     @get:Input
     abstract val appVersionCode: Property<Int>
 
+    @get:Input
+    abstract val supabaseUrl: Property<String>
+
+    @get:Input
+    abstract val supabaseAnonKey: Property<String>
+
     @TaskAction
     fun generate() {
         val props = Properties()
@@ -39,8 +44,8 @@ abstract class GenerateRuntimeConfigsTask : DefaultTask() {
                 |package com.nuvio.app.core.network
                 |
                 |object SupabaseConfig {
-                |    const val URL = "${props.getProperty("SUPABASE_URL", "")}" 
-                |    const val ANON_KEY = "${props.getProperty("SUPABASE_ANON_KEY", "")}" 
+                |    const val URL = "${supabaseUrl.get()}"
+                |    const val ANON_KEY = "${supabaseAnonKey.get()}"
                 |}
                 """.trimMargin()
             )
@@ -161,7 +166,7 @@ fun readXcconfigValue(file: File, key: String): String? {
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.androidKotlinMultiplatformLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlinxSerialization)
@@ -171,11 +176,6 @@ val supabaseProps = Properties().apply {
     val propsFile = rootProject.file("local.properties")
     if (propsFile.exists()) propsFile.inputStream().use { load(it) }
 }
-val releaseStoreFile = supabaseProps.getProperty("NUVIO_RELEASE_STORE_FILE")?.takeIf { it.isNotBlank() }
-val releaseStorePassword = supabaseProps.getProperty("NUVIO_RELEASE_STORE_PASSWORD")?.takeIf { it.isNotBlank() }
-val releaseKeyAlias = supabaseProps.getProperty("NUVIO_RELEASE_KEY_ALIAS")?.takeIf { it.isNotBlank() }
-val releaseKeyPassword = supabaseProps.getProperty("NUVIO_RELEASE_KEY_PASSWORD")?.takeIf { it.isNotBlank() }
-val releaseKeystore = releaseStoreFile?.let(rootProject::file)
 val appVersionConfigFile = rootProject.file("iosApp/Configuration/Version.xcconfig")
 val releaseAppVersionName = readXcconfigValue(appVersionConfigFile, "MARKETING_VERSION")
     ?: error("MARKETING_VERSION is missing from ${appVersionConfigFile.path}")
@@ -199,12 +199,61 @@ val iosDistributionSourceDir = if (iosDistribution == "full") {
 val iosFrameworkBundleId = "com.nuvio.media"
 val fullCommonSourceDir = project.file("src/fullCommonMain/kotlin")
 val generatedRuntimeConfigDir = layout.buildDirectory.dir("generated/runtime-config/kotlin")
+val requestedGradleTasks = gradle.startParameter.taskNames.map { taskName ->
+    taskName.substringAfterLast(':').lowercase()
+}
+val requestedAndroidDistributions = requestedGradleTasks.mapNotNull { taskName ->
+    when {
+        "playstore" in taskName -> "playstore"
+        "full" in taskName -> "full"
+        else -> null
+    }
+}.toSet()
+require(requestedAndroidDistributions.size <= 1) {
+    "Build Android full and playstore distributions separately, or set -Pnuvio.android.distribution=full|playstore."
+}
+val configuredAndroidDistribution = providers.gradleProperty("nuvio.android.distribution").orNull
+    ?: supabaseProps.getProperty("NUVIO_ANDROID_DISTRIBUTION")
+val isAmbiguousAndroidPackageTask = requestedGradleTasks.any { taskName ->
+    taskName == "build" ||
+        taskName.startsWith("assemble") ||
+        taskName.startsWith("bundle")
+} && requestedAndroidDistributions.isEmpty()
+require(configuredAndroidDistribution != null || !isAmbiguousAndroidPackageTask) {
+    "Set -Pnuvio.android.distribution=full|playstore for aggregate Android assemble/bundle tasks."
+}
+val androidDistribution = (
+    configuredAndroidDistribution
+        ?: requestedAndroidDistributions.singleOrNull()
+        ?: "playstore"
+    ).trim().lowercase()
+require(androidDistribution == "playstore" || androidDistribution == "full") {
+    "nuvio.android.distribution must be 'playstore' or 'full'."
+}
+val androidDistributionSourceDir = if (androidDistribution == "full") {
+    "src/androidFull/kotlin"
+} else {
+    "src/androidPlaystore/kotlin"
+}
+val runtimeLocalProperties = Properties().apply {
+    val file = rootProject.file("local.properties")
+    if (file.exists()) {
+        file.inputStream().use(::load)
+    }
+}
+
+fun runtimeConfigValue(key: String, fallback: String = ""): String =
+    runtimeLocalProperties.getProperty(key)?.trim()?.takeIf { it.isNotBlank() }
+        ?: providers.environmentVariable(key).orNull?.trim()?.takeIf { it.isNotBlank() }
+        ?: fallback
 
 val generateRuntimeConfigs = tasks.register<GenerateRuntimeConfigsTask>("generateRuntimeConfigs") {
     outputDir.set(generatedRuntimeConfigDir)
     localPropertiesFile.set(rootProject.layout.projectDirectory.file("local.properties"))
     appVersionName.set(releaseAppVersionName)
     appVersionCode.set(releaseAppVersionCode)
+    supabaseUrl.set(runtimeConfigValue("NUVIO_SUPABASE_URL"))
+    supabaseAnonKey.set(runtimeConfigValue("NUVIO_SUPABASE_ANON_KEY"))
 }
 
 tasks.withType<KotlinCompilationTask<*>>().configureEach {
@@ -212,7 +261,16 @@ tasks.withType<KotlinCompilationTask<*>>().configureEach {
 }
 
 kotlin {
-    androidTarget {
+    android {
+        namespace = "com.nuvio.app"
+        compileSdk {
+            version = release(libs.versions.android.compileSdk.get().toInt()) {
+                minorApiLevel = libs.versions.android.compileSdkMinor.get().toInt()
+            }
+        }
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        androidResources.enable = true
+
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
         }
@@ -256,35 +314,70 @@ kotlin {
         val commonMain by getting {
             kotlin.srcDir(generatedRuntimeConfigDir)
         }
-        androidMain.dependencies {
-            implementation(libs.compose.uiToolingPreview)
-            implementation(libs.androidx.appcompat)
-            implementation(libs.androidx.activity.compose)
-            implementation(libs.androidx.core.splashscreen)
-            implementation(libs.androidx.work.runtime)
-            implementation(libs.coil.gif)
-            implementation("androidx.recyclerview:recyclerview:1.4.0")
-            implementation("com.squareup.okhttp3:okhttp:4.12.0")
-            implementation("com.google.code.gson:gson:2.11.0")
-            implementation("io.github.peerless2012:ass-media:0.4.0-beta01")
-            implementation(libs.ktor.client.android)
-            implementation(libs.androidx.media3.exoplayer.hls)
-            implementation(libs.androidx.media3.exoplayer.dash)
-            implementation(libs.androidx.media3.exoplayer.smoothstreaming)
-            implementation(libs.androidx.media3.exoplayer.rtsp)
-            implementation(libs.androidx.media3.datasource)
-            implementation(libs.androidx.media3.datasource.okhttp)
-            implementation(libs.androidx.media3.decoder)
-            implementation(libs.androidx.media3.session)
-            implementation(libs.androidx.media3.common)
-            implementation(libs.androidx.media3.container)
-            implementation(libs.androidx.media3.extractor)
-            implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("lib-*.aar"))))
+        androidMain {
+            kotlin.srcDir(project.file(androidDistributionSourceDir))
+            if (androidDistribution == "full") {
+                kotlin.srcDir(fullCommonSourceDir)
+            }
+
+            dependencies {
+                implementation(libs.compose.uiToolingPreview)
+                implementation(libs.androidx.appcompat)
+                implementation(libs.androidx.activity.compose)
+                implementation(libs.androidx.core.splashscreen)
+                implementation(libs.androidx.work.runtime)
+                implementation(libs.coil.gif)
+                implementation("androidx.recyclerview:recyclerview:1.4.0")
+                implementation("com.squareup.okhttp3:okhttp:4.12.0")
+                implementation("com.google.code.gson:gson:2.11.0")
+                implementation("io.github.peerless2012:ass-media:0.4.0-beta01")
+                implementation(libs.ktor.client.okhttp)
+                implementation(libs.androidx.media3.exoplayer.hls)
+                implementation(libs.androidx.media3.exoplayer.dash)
+                implementation(libs.androidx.media3.exoplayer.smoothstreaming)
+                implementation(libs.androidx.media3.exoplayer.rtsp)
+                implementation(libs.androidx.media3.datasource)
+                implementation(libs.androidx.media3.datasource.okhttp)
+                implementation(libs.androidx.media3.decoder)
+                implementation(libs.androidx.media3.session)
+                implementation(libs.androidx.media3.common)
+                implementation(libs.androidx.media3.container)
+                implementation(libs.androidx.media3.extractor)
+                implementation(libs.mpv.android.lib)
+                implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("lib-*.aar"))))
+                if (androidDistribution == "full") {
+                    implementation(files("libs/quickjs-kt-android-1.0.5-nuvio.aar"))
+                    implementation(libs.ksoup)
+                    // CloudStream DEX extension runtime dependencies (full distribution only).
+                    // InatBox live TV is loaded as a .cs3 extension via DexClassLoader; these
+                    // are the classes the host classloader must provide to the loaded plugin.
+                    // Excludes mirror NuvioTV: drop heavy/irrelevant transitives (rhino,
+                    // newpipeextractor, string-similarity) but keep CloudStream's own API.
+                    implementation("com.github.Blatzar:NiceHttp:0.4.16")
+                    implementation("org.jsoup:jsoup:1.17.2")
+                    implementation("com.fasterxml.jackson.core:jackson-databind:2.17.0")
+                    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.17.0")
+                    implementation("com.github.recloudstream.cloudstream:library:v4.7.0") {
+                        exclude(group = "org.mozilla", module = "rhino")
+                        exclude(group = "com.github.AmarullisVFX", module = "newpipeextractor")
+                        exclude(group = "com.github.AmaryllisVFX", module = "newpipeextractor")
+                        exclude(group = "com.github.AmaryllisVFX.newpipeextractor")
+                        exclude(group = "info.debatty", module = "java-string-similarity")
+                    }
+                    implementation(libs.conscrypt.android)
+                }
+            }
         }
         commonMain.dependencies {
-            implementation(libs.coil.compose)
-            implementation(libs.coil.network.ktor3)
-            implementation(libs.coil.svg)
+            implementation("io.coil-kt.coil3:coil-compose:${libs.versions.coil.get()}") {
+                exclude(group = "org.jetbrains.skiko", module = "skiko")
+            }
+            implementation("io.coil-kt.coil3:coil-network-ktor3:${libs.versions.coil.get()}") {
+                exclude(group = "org.jetbrains.skiko", module = "skiko")
+            }
+            implementation("io.coil-kt.coil3:coil-svg:${libs.versions.coil.get()}") {
+                exclude(group = "org.jetbrains.skiko", module = "skiko")
+            }
             implementation("dev.chrisbanes.haze:haze:1.7.2")
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)
@@ -296,11 +389,14 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(libs.kotlinx.serialization.json)
+            implementation(libs.kotlinx.atomicfu)
+            implementation(libs.kmpalette.core)
             implementation(libs.androidx.navigation.compose)
             implementation(libs.kermit)
             implementation(libs.supabase.postgrest)
             implementation(libs.supabase.auth)
             implementation(libs.supabase.functions)
+            implementation(libs.supabase.realtime)
             implementation(libs.reorderable)
         }
         commonTest.dependencies {
@@ -309,107 +405,11 @@ kotlin {
     }
 }
 
-afterEvaluate {
-    dependencies {
-        add("fullImplementation", files("libs/quickjs-kt-android-1.0.5-nuvio.aar"))
-        add("fullImplementation", libs.ksoup)
-        // CloudStream DEX extension runtime dependencies (full variant only).
-        // InatBox live TV is loaded as a .cs3 extension via DexClassLoader; these
-        // are the classes the host classloader must provide to the loaded plugin.
-        // Excludes mirror NuvioTV: drop heavy/irrelevant transitives (rhino,
-        // newpipeextractor, string-similarity) but keep CloudStream's own API.
-        add("fullImplementation", "com.github.Blatzar:NiceHttp:0.4.16")
-        add("fullImplementation", "org.jsoup:jsoup:1.17.2")
-        add("fullImplementation", "com.fasterxml.jackson.core:jackson-databind:2.17.0")
-        add("fullImplementation", "com.fasterxml.jackson.module:jackson-module-kotlin:2.17.0")
-        add("fullImplementation", "com.github.recloudstream.cloudstream:library:v4.7.0") {
-            exclude(group = "org.mozilla", module = "rhino")
-            exclude(group = "com.github.AmarullisVFX", module = "newpipeextractor")
-            exclude(group = "com.github.AmaryllisVFX", module = "newpipeextractor")
-            exclude(group = "com.github.AmaryllisVFX.newpipeextractor")
-            exclude(group = "info.debatty", module = "java-string-similarity")
-        }
-        add("fullImplementation", libs.conscrypt.android)
-    }
-}
-
-dependencies {
-    coreLibraryDesugaring(libs.desugar.jdk.libs)
-    debugImplementation(libs.compose.uiTooling)
+configurations.matching { it.name == "iosMainImplementation" }.configureEach {
+    project.dependencies.add(name, libs.ktor.client.darwin)
 }
 
 configurations.all {
     exclude(group = "androidx.media3", module = "media3-exoplayer")
     exclude(group = "androidx.media3", module = "media3-ui")
-}
-
-android {
-    namespace = "com.nuvio.app"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
-
-    signingConfigs {
-        create("release") {
-            if (releaseKeystore != null && releaseStorePassword != null && releaseKeyAlias != null && releaseKeyPassword != null) {
-                storeFile = releaseKeystore
-                storePassword = releaseStorePassword
-                keyAlias = releaseKeyAlias
-                keyPassword = releaseKeyPassword
-            }
-        }
-    }
-
-    defaultConfig {
-        applicationId = "com.nuvio.app"
-        minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = releaseAppVersionCode
-        versionName = releaseAppVersionName
-    }
-    flavorDimensions += "distribution"
-    productFlavors {
-        create("full") {
-            dimension = "distribution"
-        }
-        create("playstore") {
-            dimension = "distribution"
-        }
-    }
-    sourceSets.getByName("full") {
-        manifest.srcFile("src/androidFull/AndroidManifest.xml")
-        java.srcDir(fullCommonSourceDir)
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-        jniLibs {
-            useLegacyPackaging = true
-            pickFirsts += listOf(
-                "lib/*/libc++_shared.so",
-                "lib/*/libavcodec.so",
-                "lib/*/libavutil.so",
-                "lib/*/libswscale.so",
-                "lib/*/libswresample.so"
-            )
-        }
-    }
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = true
-            isShrinkResources = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro",
-            )
-            signingConfig = signingConfigs.getByName("release")
-            ndk {
-                debugSymbolLevel = "FULL"
-            }
-        }
-    }
-    compileOptions {
-        isCoreLibraryDesugaringEnabled = true
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
 }

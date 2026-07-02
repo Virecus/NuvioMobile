@@ -23,8 +23,10 @@ actual object PlayerSettingsStorage {
     private const val resizeModeKey = "resize_mode"
     private const val holdToSpeedEnabledKey = "hold_to_speed_enabled"
     private const val holdToSpeedValueKey = "hold_to_speed_value"
+    private const val touchGesturesEnabledKey = "touch_gestures_enabled"
     private const val externalPlayerEnabledKey = "external_player_enabled"
     private const val externalPlayerForwardSubtitlesKey = "external_player_forward_subtitles"
+    private const val externalPlayerSendSkipSegmentsKey = "external_player_send_skip_segments"
     private const val externalPlayerIdKey = "external_player_id"
     private const val preferredAudioLanguageKey = "preferred_audio_language"
     private const val secondaryPreferredAudioLanguageKey = "secondary_preferred_audio_language"
@@ -43,6 +45,10 @@ actual object PlayerSettingsStorage {
     private const val addonSubtitleStartupModeKey = "addon_subtitle_startup_mode"
     private const val streamReuseLastLinkEnabledKey = "stream_reuse_last_link_enabled"
     private const val streamReuseLastLinkCacheHoursKey = "stream_reuse_last_link_cache_hours"
+    private const val androidPlaybackEngineKey = "android_playback_engine"
+    private const val androidLibmpvVideoOutputKey = "android_libmpv_video_output"
+    private const val androidLibmpvHardwareDecodingEnabledKey = "android_libmpv_hardware_decoding_enabled"
+    private const val androidLibmpvYuv420pEnabledKey = "android_libmpv_yuv420p_enabled"
     private const val decoderPriorityKey = "decoder_priority"
     private const val mapDV7ToHevcKey = "map_dv7_to_hevc"
     private const val tunnelingEnabledKey = "tunneling_enabled"
@@ -70,6 +76,7 @@ actual object PlayerSettingsStorage {
     private const val iosTargetPrimariesKey = "ios_target_primaries"
     private const val iosTargetTransferKey = "ios_target_transfer"
     private const val iosHardwareDecoderModeKey = "ios_hardware_decoder_mode"
+    private const val iosAudioOutputModeKey = "ios_audio_output_mode"
     private const val iosExtendedDynamicRangeEnabledKey = "ios_extended_dynamic_range_enabled"
     private const val iosTargetColorspaceHintEnabledKey = "ios_target_colorspace_hint_enabled"
     private const val iosHdrComputePeakEnabledKey = "ios_hdr_compute_peak_enabled"
@@ -84,8 +91,10 @@ actual object PlayerSettingsStorage {
         resizeModeKey,
         holdToSpeedEnabledKey,
         holdToSpeedValueKey,
+        touchGesturesEnabledKey,
         externalPlayerEnabledKey,
         externalPlayerForwardSubtitlesKey,
+        externalPlayerSendSkipSegmentsKey,
         externalPlayerIdKey,
         preferredAudioLanguageKey,
         secondaryPreferredAudioLanguageKey,
@@ -104,6 +113,10 @@ actual object PlayerSettingsStorage {
         addonSubtitleStartupModeKey,
         streamReuseLastLinkEnabledKey,
         streamReuseLastLinkCacheHoursKey,
+        androidPlaybackEngineKey,
+        androidLibmpvVideoOutputKey,
+        androidLibmpvHardwareDecodingEnabledKey,
+        androidLibmpvYuv420pEnabledKey,
         decoderPriorityKey,
         mapDV7ToHevcKey,
         tunnelingEnabledKey,
@@ -129,6 +142,7 @@ actual object PlayerSettingsStorage {
         iosTargetPrimariesKey,
         iosTargetTransferKey,
         iosHardwareDecoderModeKey,
+        iosAudioOutputModeKey,
         iosExtendedDynamicRangeEnabledKey,
         iosTargetColorspaceHintEnabledKey,
         iosHdrComputePeakEnabledKey,
@@ -207,6 +221,23 @@ actual object PlayerSettingsStorage {
             ?.apply()
     }
 
+    actual fun loadTouchGesturesEnabled(): Boolean? =
+        preferences?.let { sharedPreferences ->
+            val key = ProfileScopedKey.of(touchGesturesEnabledKey)
+            if (sharedPreferences.contains(key)) {
+                sharedPreferences.getBoolean(key, true)
+            } else {
+                null
+            }
+        }
+
+    actual fun saveTouchGesturesEnabled(enabled: Boolean) {
+        preferences
+            ?.edit()
+            ?.putBoolean(ProfileScopedKey.of(touchGesturesEnabledKey), enabled)
+            ?.apply()
+    }
+
     actual fun loadExternalPlayerEnabled(): Boolean? =
         preferences?.let { sharedPreferences ->
             val key = ProfileScopedKey.of(externalPlayerEnabledKey)
@@ -238,6 +269,23 @@ actual object PlayerSettingsStorage {
         preferences
             ?.edit()
             ?.putBoolean(ProfileScopedKey.of(externalPlayerForwardSubtitlesKey), enabled)
+            ?.apply()
+    }
+
+    actual fun loadExternalPlayerSendSkipSegments(): Boolean? =
+        preferences?.let { sharedPreferences ->
+            val key = ProfileScopedKey.of(externalPlayerSendSkipSegmentsKey)
+            if (sharedPreferences.contains(key)) {
+                sharedPreferences.getBoolean(key, false)
+            } else {
+                null
+            }
+        }
+
+    actual fun saveExternalPlayerSendSkipSegments(enabled: Boolean) {
+        preferences
+            ?.edit()
+            ?.putBoolean(ProfileScopedKey.of(externalPlayerSendSkipSegmentsKey), enabled)
             ?.apply()
     }
 
@@ -502,6 +550,60 @@ actual object PlayerSettingsStorage {
         preferences
             ?.edit()
             ?.putInt(ProfileScopedKey.of(streamReuseLastLinkCacheHoursKey), hours)
+            ?.apply()
+    }
+
+    actual fun loadAndroidPlaybackEngine(): String? =
+        preferences?.getString(ProfileScopedKey.of(androidPlaybackEngineKey), null)
+
+    actual fun saveAndroidPlaybackEngine(engine: String) {
+        preferences
+            ?.edit()
+            ?.putString(ProfileScopedKey.of(androidPlaybackEngineKey), engine)
+            ?.apply()
+    }
+
+    actual fun loadAndroidLibmpvVideoOutput(): String? =
+        preferences?.getString(ProfileScopedKey.of(androidLibmpvVideoOutputKey), null)
+
+    actual fun saveAndroidLibmpvVideoOutput(output: String) {
+        preferences
+            ?.edit()
+            ?.putString(ProfileScopedKey.of(androidLibmpvVideoOutputKey), output)
+            ?.apply()
+    }
+
+    actual fun loadAndroidLibmpvHardwareDecodingEnabled(): Boolean? =
+        preferences?.let { sharedPreferences ->
+            val key = ProfileScopedKey.of(androidLibmpvHardwareDecodingEnabledKey)
+            if (sharedPreferences.contains(key)) {
+                sharedPreferences.getBoolean(key, true)
+            } else {
+                null
+            }
+        }
+
+    actual fun saveAndroidLibmpvHardwareDecodingEnabled(enabled: Boolean) {
+        preferences
+            ?.edit()
+            ?.putBoolean(ProfileScopedKey.of(androidLibmpvHardwareDecodingEnabledKey), enabled)
+            ?.apply()
+    }
+
+    actual fun loadAndroidLibmpvYuv420pEnabled(): Boolean? =
+        preferences?.let { sharedPreferences ->
+            val key = ProfileScopedKey.of(androidLibmpvYuv420pEnabledKey)
+            if (sharedPreferences.contains(key)) {
+                sharedPreferences.getBoolean(key, false)
+            } else {
+                null
+            }
+        }
+
+    actual fun saveAndroidLibmpvYuv420pEnabled(enabled: Boolean) {
+        preferences
+            ?.edit()
+            ?.putBoolean(ProfileScopedKey.of(androidLibmpvYuv420pEnabledKey), enabled)
             ?.apply()
     }
 
@@ -865,6 +967,13 @@ actual object PlayerSettingsStorage {
         preferences?.edit()?.putString(ProfileScopedKey.of(iosHardwareDecoderModeKey), mode)?.apply()
     }
 
+    actual fun loadIosAudioOutputMode(): String? =
+        preferences?.getString(ProfileScopedKey.of(iosAudioOutputModeKey), null)
+
+    actual fun saveIosAudioOutputMode(mode: String) {
+        preferences?.edit()?.putString(ProfileScopedKey.of(iosAudioOutputModeKey), mode)?.apply()
+    }
+
     private fun loadIosBoolean(keyBase: String, defaultValue: Boolean): Boolean? =
         preferences?.let { sharedPreferences ->
             val key = ProfileScopedKey.of(keyBase)
@@ -949,8 +1058,10 @@ actual object PlayerSettingsStorage {
         loadResizeMode()?.let { put(resizeModeKey, encodeSyncString(it)) }
         loadHoldToSpeedEnabled()?.let { put(holdToSpeedEnabledKey, encodeSyncBoolean(it)) }
         loadHoldToSpeedValue()?.let { put(holdToSpeedValueKey, encodeSyncFloat(it)) }
+        loadTouchGesturesEnabled()?.let { put(touchGesturesEnabledKey, encodeSyncBoolean(it)) }
         loadExternalPlayerEnabled()?.let { put(externalPlayerEnabledKey, encodeSyncBoolean(it)) }
         loadExternalPlayerForwardSubtitles()?.let { put(externalPlayerForwardSubtitlesKey, encodeSyncBoolean(it)) }
+        loadExternalPlayerSendSkipSegments()?.let { put(externalPlayerSendSkipSegmentsKey, encodeSyncBoolean(it)) }
         loadExternalPlayerId()?.let { put(externalPlayerIdKey, encodeSyncString(it)) }
         loadPreferredAudioLanguage()?.let { put(preferredAudioLanguageKey, encodeSyncString(it)) }
         loadSecondaryPreferredAudioLanguage()?.let { put(secondaryPreferredAudioLanguageKey, encodeSyncString(it)) }
@@ -969,6 +1080,12 @@ actual object PlayerSettingsStorage {
         loadAddonSubtitleStartupMode()?.let { put(addonSubtitleStartupModeKey, encodeSyncString(it)) }
         loadStreamReuseLastLinkEnabled()?.let { put(streamReuseLastLinkEnabledKey, encodeSyncBoolean(it)) }
         loadStreamReuseLastLinkCacheHours()?.let { put(streamReuseLastLinkCacheHoursKey, encodeSyncInt(it)) }
+        loadAndroidPlaybackEngine()?.let { put(androidPlaybackEngineKey, encodeSyncString(it)) }
+        loadAndroidLibmpvVideoOutput()?.let { put(androidLibmpvVideoOutputKey, encodeSyncString(it)) }
+        loadAndroidLibmpvHardwareDecodingEnabled()?.let {
+            put(androidLibmpvHardwareDecodingEnabledKey, encodeSyncBoolean(it))
+        }
+        loadAndroidLibmpvYuv420pEnabled()?.let { put(androidLibmpvYuv420pEnabledKey, encodeSyncBoolean(it)) }
         loadDecoderPriority()?.let { put(decoderPriorityKey, encodeSyncInt(it)) }
         loadMapDV7ToHevc()?.let { put(mapDV7ToHevcKey, encodeSyncBoolean(it)) }
         loadTunnelingEnabled()?.let { put(tunnelingEnabledKey, encodeSyncBoolean(it)) }
@@ -994,6 +1111,7 @@ actual object PlayerSettingsStorage {
         loadIosTargetPrimaries()?.let { put(iosTargetPrimariesKey, encodeSyncString(it)) }
         loadIosTargetTransfer()?.let { put(iosTargetTransferKey, encodeSyncString(it)) }
         loadIosHardwareDecoderMode()?.let { put(iosHardwareDecoderModeKey, encodeSyncString(it)) }
+        loadIosAudioOutputMode()?.let { put(iosAudioOutputModeKey, encodeSyncString(it)) }
         loadIosExtendedDynamicRangeEnabled()?.let { put(iosExtendedDynamicRangeEnabledKey, encodeSyncBoolean(it)) }
         loadIosTargetColorspaceHintEnabled()?.let { put(iosTargetColorspaceHintEnabledKey, encodeSyncBoolean(it)) }
         loadIosHdrComputePeakEnabled()?.let { put(iosHdrComputePeakEnabledKey, encodeSyncBoolean(it)) }
@@ -1014,8 +1132,10 @@ actual object PlayerSettingsStorage {
         payload.decodeSyncString(resizeModeKey)?.let(::saveResizeMode)
         payload.decodeSyncBoolean(holdToSpeedEnabledKey)?.let(::saveHoldToSpeedEnabled)
         payload.decodeSyncFloat(holdToSpeedValueKey)?.let(::saveHoldToSpeedValue)
+        payload.decodeSyncBoolean(touchGesturesEnabledKey)?.let(::saveTouchGesturesEnabled)
         payload.decodeSyncBoolean(externalPlayerEnabledKey)?.let(::saveExternalPlayerEnabled)
         payload.decodeSyncBoolean(externalPlayerForwardSubtitlesKey)?.let(::saveExternalPlayerForwardSubtitles)
+        payload.decodeSyncBoolean(externalPlayerSendSkipSegmentsKey)?.let(::saveExternalPlayerSendSkipSegments)
         payload.decodeSyncString(externalPlayerIdKey)?.let(::saveExternalPlayerId)
         payload.decodeSyncString(preferredAudioLanguageKey)?.let(::savePreferredAudioLanguage)
         payload.decodeSyncString(secondaryPreferredAudioLanguageKey)?.let(::saveSecondaryPreferredAudioLanguage)
@@ -1034,6 +1154,11 @@ actual object PlayerSettingsStorage {
         payload.decodeSyncString(addonSubtitleStartupModeKey)?.let(::saveAddonSubtitleStartupMode)
         payload.decodeSyncBoolean(streamReuseLastLinkEnabledKey)?.let(::saveStreamReuseLastLinkEnabled)
         payload.decodeSyncInt(streamReuseLastLinkCacheHoursKey)?.let(::saveStreamReuseLastLinkCacheHours)
+        payload.decodeSyncString(androidPlaybackEngineKey)?.let(::saveAndroidPlaybackEngine)
+        payload.decodeSyncString(androidLibmpvVideoOutputKey)?.let(::saveAndroidLibmpvVideoOutput)
+        payload.decodeSyncBoolean(androidLibmpvHardwareDecodingEnabledKey)
+            ?.let(::saveAndroidLibmpvHardwareDecodingEnabled)
+        payload.decodeSyncBoolean(androidLibmpvYuv420pEnabledKey)?.let(::saveAndroidLibmpvYuv420pEnabled)
         payload.decodeSyncInt(decoderPriorityKey)?.let(::saveDecoderPriority)
         payload.decodeSyncBoolean(mapDV7ToHevcKey)?.let(::saveMapDV7ToHevc)
         payload.decodeSyncBoolean(tunnelingEnabledKey)?.let(::saveTunnelingEnabled)
@@ -1061,6 +1186,7 @@ actual object PlayerSettingsStorage {
         payload.decodeSyncString(iosTargetPrimariesKey)?.let(::saveIosTargetPrimaries)
         payload.decodeSyncString(iosTargetTransferKey)?.let(::saveIosTargetTransfer)
         payload.decodeSyncString(iosHardwareDecoderModeKey)?.let(::saveIosHardwareDecoderMode)
+        payload.decodeSyncString(iosAudioOutputModeKey)?.let(::saveIosAudioOutputMode)
         payload.decodeSyncBoolean(iosExtendedDynamicRangeEnabledKey)?.let(::saveIosExtendedDynamicRangeEnabled)
         payload.decodeSyncBoolean(iosTargetColorspaceHintEnabledKey)?.let(::saveIosTargetColorspaceHintEnabled)
         payload.decodeSyncBoolean(iosHdrComputePeakEnabledKey)?.let(::saveIosHdrComputePeakEnabled)

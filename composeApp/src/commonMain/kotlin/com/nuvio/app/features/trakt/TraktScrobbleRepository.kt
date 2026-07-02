@@ -62,12 +62,12 @@ internal object TraktScrobbleRepository {
     private val retryDelayMs = 1_500L
     private val serverOverloadedRetryDelayMs = 5_000L
 
-    suspend fun scrobbleStart(item: TraktScrobbleItem, progressPercent: Float) {
-        sendScrobble(action = "start", item = item, progressPercent = progressPercent)
+    suspend fun scrobbleStart(profileId: Int, item: TraktScrobbleItem, progressPercent: Float) {
+        sendScrobble(profileId = profileId, action = "start", item = item, progressPercent = progressPercent)
     }
 
-    suspend fun scrobbleStop(item: TraktScrobbleItem, progressPercent: Float) {
-        sendScrobble(action = "stop", item = item, progressPercent = progressPercent)
+    suspend fun scrobbleStop(profileId: Int, item: TraktScrobbleItem, progressPercent: Float) {
+        sendScrobble(profileId = profileId, action = "stop", item = item, progressPercent = progressPercent)
     }
 
     suspend fun buildItem(
@@ -81,7 +81,19 @@ internal object TraktScrobbleRepository {
         releaseInfo: String? = null,
     ): TraktScrobbleItem? {
         val normalizedType = contentType.trim().lowercase()
-        val ids = parseTraktContentIds(parentMetaId)
+        var ids = parseTraktContentIds(parentMetaId)
+
+        // Fallback: if parentMetaId doesn't resolve to valid Trakt IDs, try videoId.
+        // Some addons use non-standard contentId (e.g. "tun_tt7821582") but set a
+        // valid IMDB/TMDB videoId (e.g. "tt7821582:3:7").
+        if (!ids.hasAnyId() && !videoId.isNullOrBlank() && videoId != parentMetaId) {
+            ids = parseTraktContentIds(videoId)
+        }
+
+        // Don't send scrobble if we still have no valid Trakt IDs — would cause
+        // title-based fuzzy match on Trakt API resulting in wrong show matched.
+        if (!ids.hasAnyId()) return null
+
         val parsedYear = extractTraktYear(releaseInfo)
 
         return if (
@@ -115,14 +127,16 @@ internal object TraktScrobbleRepository {
     }
 
     private suspend fun sendScrobble(
+        profileId: Int,
         action: String,
         item: TraktScrobbleItem,
         progressPercent: Float,
     ) {
+        if (ProfileRepository.activeProfileId != profileId) return
         val headers = TraktAuthRepository.authorizedHeaders() ?: return
-        val activeProfileId = ProfileRepository.activeProfileId
+        if (ProfileRepository.activeProfileId != profileId) return
         val clampedProgress = progressPercent.coerceIn(0f, 100f)
-        if (shouldSkip(activeProfileId, action, item.itemKey, clampedProgress)) return
+        if (shouldSkip(profileId, action, item.itemKey, clampedProgress)) return
 
         val url = "$BASE_URL/scrobble/$action"
         val requestBody = json.encodeToString(buildRequestBody(item, clampedProgress))
@@ -215,7 +229,7 @@ internal object TraktScrobbleRepository {
         if (!wasSent) return
 
         lastScrobbleStamp = ScrobbleStamp(
-            profileId = activeProfileId,
+            profileId = profileId,
             action = action,
             itemKey = item.itemKey,
             progress = clampedProgress,
