@@ -110,7 +110,7 @@ private class NoChannelReleaseException : IllegalStateException(
     runBlocking { getString(Res.string.updates_no_channel_release) },
 )
 
-private object VersionUtils {
+internal object VersionUtils {
     fun normalize(raw: String?): String {
         if (raw.isNullOrBlank()) return ""
         return raw.trim().removePrefix("v").removePrefix("V")
@@ -147,7 +147,7 @@ private object VersionUtils {
     }
 }
 
-private object AppUpdaterRepository {
+internal object AppUpdaterRepository {
     suspend fun getLatestChannelUpdate(): Result<AppUpdate> = runCatching {
         val response = httpRequestRaw(
             method = "GET",

@@ -78,6 +78,7 @@ import coil3.request.CachePolicy
 import coil3.request.crossfade
 import coil3.svg.SvgDecoder
 import com.nuvio.app.core.build.AppFeaturePolicy
+import com.nuvio.app.core.build.AppVersionConfig
 import com.nuvio.app.core.auth.AuthRepository
 import com.nuvio.app.core.auth.AuthState
 import com.nuvio.app.core.deeplink.AppDeepLink
@@ -203,7 +204,12 @@ import com.nuvio.app.features.player.PlayerSettingsRepository
 import com.nuvio.app.features.trakt.TraktAuthRepository
 import com.nuvio.app.features.trakt.TraktListTab
 import com.nuvio.app.features.trakt.TraktScrobbleRepository
+import com.nuvio.app.features.updater.AppUpdate
 import com.nuvio.app.features.updater.AppUpdaterHost
+import com.nuvio.app.features.updater.AppUpdaterPlatform
+import com.nuvio.app.features.updater.AppUpdaterRepository
+import com.nuvio.app.features.updater.ForceUpdateScreen
+import com.nuvio.app.features.updater.VersionUtils
 import com.nuvio.app.features.updater.rememberAppUpdaterController
 import com.nuvio.app.features.watched.WatchedRepository
 import com.nuvio.app.features.watchprogress.ContinueWatchingItem
@@ -380,6 +386,7 @@ private fun PlayerLaunch.toExternalPlayerPlaybackRequest(): ExternalPlayerPlayba
 
 private enum class AppGateScreen {
     Loading,
+    UpdateRequired,
     Auth,
     License,
     ProfileSelection,
@@ -446,9 +453,27 @@ fun App() {
         }
 
         var gateScreen by rememberSaveable { mutableStateOf(AppGateScreen.Loading.name) }
+        var updateInfo by remember { mutableStateOf<AppUpdate?>(null) }
         var editingProfile by remember { mutableStateOf<NuvioProfile?>(null) }
         var isNewProfile by remember { mutableStateOf(false) }
         var autoSkipProfileSelection by rememberSaveable { mutableStateOf(false) }
+        var updateCheckDone by rememberSaveable { mutableStateOf(false) }
+
+        LaunchedEffect(Unit) {
+            if (updateCheckDone) return@LaunchedEffect
+            if (!AppFeaturePolicy.inAppUpdaterEnabled || !AppUpdaterPlatform.isSupported) {
+                updateCheckDone = true
+                return@LaunchedEffect
+            }
+            val result = AppUpdaterRepository.getLatestChannelUpdate()
+            result.onSuccess { update ->
+                if (VersionUtils.isRemoteNewer(update.tag, AppVersionConfig.VERSION_NAME)) {
+                    updateInfo = update
+                    gateScreen = AppGateScreen.UpdateRequired.name
+                }
+            }
+            updateCheckDone = true
+        }
 
         fun rememberedStartupProfile(profiles: List<NuvioProfile>): NuvioProfile? {
             val currentProfileState = ProfileRepository.state.value
@@ -499,7 +524,9 @@ fun App() {
             }
         }
 
-        LaunchedEffect(authState, networkStatusUiState.condition, profileState.profiles) {
+        LaunchedEffect(authState, networkStatusUiState.condition, profileState.profiles, updateCheckDone) {
+            if (gateScreen == AppGateScreen.UpdateRequired.name) return@LaunchedEffect
+
             val cachedProfiles = profileState.profiles
             val hasCachedProfileAccess =
                 cachedProfiles.isNotEmpty() &&
@@ -520,6 +547,7 @@ fun App() {
                     }
                 }
                 is AuthState.Unauthenticated -> {
+                    if (!updateCheckDone) return@LaunchedEffect
                     if (allowCachedProfileAccess) {
                         enterProfileGate(cachedProfiles, syncOnEnter = false)
                     } else {
@@ -528,6 +556,7 @@ fun App() {
                     }
                 }
                 is AuthState.Authenticated -> {
+                    if (!updateCheckDone) return@LaunchedEffect
                     val authenticatedState = authState as AuthState.Authenticated
                     ProfileRepository.ensureLoaded(authenticatedState.userId)
                     if (gateScreen == AppGateScreen.Loading.name) {
@@ -603,6 +632,12 @@ fun App() {
                     ) {
                         CircularProgressIndicator(color = MaterialTheme.nuvio.colors.accent)
                     }
+                }
+                AppGateScreen.UpdateRequired.name -> {
+                    ForceUpdateScreen(
+                        update = updateInfo,
+                        modifier = Modifier.fillMaxSize(),
+                    )
                 }
                 AppGateScreen.License.name -> {
                     LicenseScreen(modifier = Modifier.fillMaxSize())
