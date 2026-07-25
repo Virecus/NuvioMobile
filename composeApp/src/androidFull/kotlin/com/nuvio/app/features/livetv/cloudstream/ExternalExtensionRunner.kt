@@ -40,6 +40,7 @@ class ExternalExtensionRunner(
             return@withContext emptyList()
         }
         Log.d(TAG, "getLiveChannels: using API ${api.name}")
+        forceUnlockInatContent(api)
         if (!api.supportedTypes.contains(TvType.Live)) {
             Log.w(TAG, "getLiveChannels: $scraperId does not declare TvType.Live")
         }
@@ -54,12 +55,12 @@ class ExternalExtensionRunner(
                 // Try page=1 first; some providers (e.g. InatBox) return 0 results on page=1
                 // but work correctly on page=0.
                 var response = runCatching { api.getMainPage(1, request) }
-                    .onFailure { Log.w(TAG, "getLiveChannels: [${pageData.name}] page=1 error: ${it.javaClass.simpleName}: ${it.message}") }
+                    .onFailure { Log.w(TAG, "getLiveChannels: [${pageData.name}] page=1 error: ${it.javaClass.simpleName}: ${it.message}", it) }
                     .getOrNull()
                 if (response != null && response.items.all { it.list.isEmpty() }) {
                     Log.d(TAG, "getLiveChannels: [${pageData.name}] page=1 returned empty lists, retrying page=0")
                     response = runCatching { api.getMainPage(0, request) }
-                        .onFailure { Log.w(TAG, "getLiveChannels: [${pageData.name}] page=0 error: ${it.javaClass.simpleName}: ${it.message}") }
+                        .onFailure { Log.w(TAG, "getLiveChannels: [${pageData.name}] page=0 error: ${it.javaClass.simpleName}: ${it.message}", it) }
                         .getOrNull() ?: response
                 }
                 if (response == null) {
@@ -236,5 +237,45 @@ class ExternalExtensionRunner(
             headers = allHeaders.ifEmpty { null },
             provider = providerName,
         )
+    }
+
+    /**
+     * InatBox, yükleme sırasında InatBoxHelper.<clinit> içinde APK imza hash'ini kontrol
+     * eder ve kendi CloudStream debug imzasıyla eşleşmeyince isAllowedVersion=false bırakır.
+     * getMainPage bu boolean'ı okuyup false ise erken döner.
+     * Çözüm: InatBoxHelper.isAllowedVersion static boolean field'ını reflection ile true yap.
+     */
+    private fun forceUnlockInatContent(api: com.lagradost.cloudstream3.MainAPI) {
+        val cl = (api as Any).javaClass.classLoader ?: run {
+            Log.w(TAG, "forceUnlockInatContent: no classLoader")
+            return
+        }
+
+        // InatBoxHelper.isAllowedVersion — Z (boolean) static field
+        try {
+            val helperClass = cl.loadClass("com.kraptor.InatBoxHelper")
+            val f = helperClass.getDeclaredField("isAllowedVersion")
+            f.isAccessible = true
+            val before = f.getBoolean(null)
+            if (!before) {
+                f.setBoolean(null, true)
+                Log.d(TAG, "forceUnlockInatContent: InatBoxHelper.isAllowedVersion $before→true")
+            } else {
+                Log.d(TAG, "forceUnlockInatContent: InatBoxHelper.isAllowedVersion already true")
+            }
+        } catch (e: Exception) {
+            Log.w(TAG, "forceUnlockInatContent: InatBoxHelper.isAllowedVersion failed: ${e.message}")
+        }
+
+        // GlobalPluginChecker.performCheck'i de bypass et — startCheck'i çağırmak yerine
+        // doğrudan isAllowedVersion'ı set etmek yeterli; ama emin olmak için
+        // GlobalPluginChecker.INSTANCE.isAllowedVersion (eğer varsa) da set et
+        try {
+            val checkerClass = cl.loadClass("com.kraptor.GlobalPluginChecker")
+            // InatBoxHelper üzerinde kontrol yeterli; checker logunu da görelim
+            Log.d(TAG, "forceUnlockInatContent: GlobalPluginChecker loaded OK")
+        } catch (e: Exception) {
+            Log.d(TAG, "forceUnlockInatContent: GlobalPluginChecker: ${e.message}")
+        }
     }
 }

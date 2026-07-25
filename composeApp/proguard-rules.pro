@@ -83,3 +83,9 @@
 -keep class com.fasterxml.jackson.** { *; }
 -keepclassmembers class com.fasterxml.jackson.** { *; }
 -dontwarn okhttp3.internal.sse.**
+-dontwarn com.google.re2j.**
+-dontwarn com.lagradost.cloudstream3.utils.AppUtils
+-dontwarn java.beans.ConstructorProperties
+-dontwarn java.beans.Transient
+-dontwarn javax.script.ScriptEngineFactory
+-dontwarn org.mozilla.javascript.**
