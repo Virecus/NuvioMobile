@@ -32,6 +32,7 @@ data class HomeCatalogSettingsItem(
 
 data class HomeCatalogSettingsUiState(
     val heroEnabled: Boolean = true,
+    val showCatalogType: Boolean = true,
     val hideUnreleasedContent: Boolean = false,
     val hideCatalogUnderline: Boolean = false,
     val items: List<HomeCatalogSettingsItem> = emptyList(),
@@ -39,6 +40,8 @@ data class HomeCatalogSettingsUiState(
     val signature: String
         get() = buildString {
             append(heroEnabled)
+            append('|')
+            append(showCatalogType)
             append('|')
             append(hideUnreleasedContent)
             append('|')
@@ -61,6 +64,7 @@ internal data class HomeCatalogPreference(
 
 internal data class HomeCatalogSettingsSnapshot(
     val heroEnabled: Boolean,
+    val showCatalogType: Boolean,
     val hideUnreleasedContent: Boolean,
     val hideCatalogUnderline: Boolean,
     val preferences: Map<String, HomeCatalogPreference>,
@@ -78,6 +82,7 @@ private data class StoredHomeCatalogPreference(
 @Serializable
 private data class StoredHomeCatalogSettingsPayload(
     val heroEnabled: Boolean = true,
+    val showCatalogType: Boolean = true,
     val hideUnreleasedContent: Boolean = false,
     val hideCatalogUnderline: Boolean = false,
     val items: List<StoredHomeCatalogPreference> = emptyList(),
@@ -99,6 +104,7 @@ object HomeCatalogSettingsRepository {
     private var collectionDefinitions: List<CollectionCatalogDefinition> = emptyList()
     private var preferences: MutableMap<String, StoredHomeCatalogPreference> = mutableMapOf()
     private var heroEnabled = true
+    private var showCatalogType = true
     private var hideUnreleasedContent = false
     private var hideCatalogUnderline = false
 
@@ -106,6 +112,7 @@ object HomeCatalogSettingsRepository {
         hasLoaded = false
         preferences.clear()
         heroEnabled = true
+        showCatalogType = true
         hideUnreleasedContent = false
         hideCatalogUnderline = false
         definitions = emptyList()
@@ -119,6 +126,7 @@ object HomeCatalogSettingsRepository {
         collectionDefinitions = emptyList()
         preferences.clear()
         heroEnabled = true
+        showCatalogType = true
         hideUnreleasedContent = false
         hideCatalogUnderline = false
         _uiState.value = HomeCatalogSettingsUiState()
@@ -152,6 +160,7 @@ object HomeCatalogSettingsRepository {
         ensureLoaded()
         return HomeCatalogSettingsSnapshot(
             heroEnabled = heroEnabled,
+            showCatalogType = showCatalogType,
             hideUnreleasedContent = hideUnreleasedContent,
             hideCatalogUnderline = hideCatalogUnderline,
             preferences = preferences.mapValues { (_, value) ->
@@ -171,6 +180,16 @@ object HomeCatalogSettingsRepository {
         publish()
         persist()
         HomeRepository.applyCurrentSettings()
+    }
+
+    fun setShowCatalogType(enabled: Boolean) {
+        ensureLoaded()
+        if (showCatalogType == enabled) return
+        showCatalogType = enabled
+        publish()
+        persist()
+        HomeRepository.applyCurrentSettings()
+        HomeCatalogSettingsSyncService.triggerPush()
     }
 
     fun setHideUnreleasedContent(enabled: Boolean) {
@@ -219,6 +238,7 @@ object HomeCatalogSettingsRepository {
     fun resetToDefaults() {
         ensureLoaded()
         heroEnabled = true
+        showCatalogType = true
         hideUnreleasedContent = false
         hideCatalogUnderline = false
         preferences.clear()
@@ -268,6 +288,7 @@ object HomeCatalogSettingsRepository {
 
         if (parsedPayload != null) {
             heroEnabled = parsedPayload.heroEnabled
+            showCatalogType = parsedPayload.showCatalogType
             hideUnreleasedContent = parsedPayload.hideUnreleasedContent
             hideCatalogUnderline = parsedPayload.hideCatalogUnderline
             preferences = parsedPayload.items.associateBy { it.key }.toMutableMap()
@@ -368,6 +389,7 @@ object HomeCatalogSettingsRepository {
 
         _uiState.value = HomeCatalogSettingsUiState(
             heroEnabled = heroEnabled,
+            showCatalogType = showCatalogType,
             hideUnreleasedContent = hideUnreleasedContent,
             hideCatalogUnderline = hideCatalogUnderline,
             items = items,
@@ -379,6 +401,7 @@ object HomeCatalogSettingsRepository {
             json.encodeToString(
                 StoredHomeCatalogSettingsPayload(
                     heroEnabled = heroEnabled,
+                    showCatalogType = showCatalogType,
                     hideUnreleasedContent = hideUnreleasedContent,
                     hideCatalogUnderline = hideCatalogUnderline,
                     items = preferences.values.sortedBy { it.order },
@@ -393,7 +416,7 @@ object HomeCatalogSettingsRepository {
         transform: (StoredHomeCatalogPreference) -> StoredHomeCatalogPreference,
     ) {
         ensureLoaded()
-        val current = preferences[key] ?: return
+        val current = preferences[key] ?: defaultPreferenceForMissingKey(key) ?: return
         val updated = transform(current)
         if (updated == current) return
         preferences[key] = updated
@@ -442,9 +465,12 @@ object HomeCatalogSettingsRepository {
 
     fun exportToSyncPayload(): SyncHomeCatalogPayload {
         ensureLoaded()
+        val catalogDefinitionsByKey = definitions.associateBy { it.key }
+        val collectionDefinitionsByKey = collectionDefinitions.associateBy { it.key }
         val items = preferences.values.sortedBy { it.order }.map { pref ->
-            val parts = pref.key.split(":")
-            val isCollection = pref.key.startsWith("collection_")
+            val catalogDefinition = catalogDefinitionsByKey[pref.key]
+            val collectionDefinition = collectionDefinitionsByKey[pref.key]
+            val isCollection = collectionDefinition != null || pref.key.startsWith("collection_")
             if (isCollection) {
                 SyncCatalogItem(
                     addonId = "",
@@ -454,21 +480,25 @@ object HomeCatalogSettingsRepository {
                     order = pref.order,
                     customTitle = pref.customTitle,
                     isCollection = true,
-                    collectionId = pref.key.removePrefix("collection_"),
+                    collectionId = collectionDefinition?.collectionId ?: pref.key.removePrefix("collection_"),
+                    key = pref.key,
                 )
             } else {
+                val legacyParts = pref.key.split(':', limit = 3)
                 SyncCatalogItem(
-                    addonId = parts.getOrElse(0) { "" },
-                    type = parts.getOrElse(1) { "" },
-                    catalogId = parts.getOrElse(2) { "" },
+                    addonId = catalogDefinition?.addonIdForSync() ?: legacyParts.getOrElse(0) { "" },
+                    type = catalogDefinition?.type ?: legacyParts.getOrElse(1) { "" },
+                    catalogId = catalogDefinition?.catalogId ?: legacyParts.getOrElse(2) { "" },
                     enabled = pref.enabled,
                     order = pref.order,
                     customTitle = pref.customTitle,
                     isCollection = false,
+                    key = pref.key,
                 )
             }
         }
         return SyncHomeCatalogPayload(
+            showCatalogType = showCatalogType,
             hideUnreleasedContent = hideUnreleasedContent,
             hideCatalogUnderline = hideCatalogUnderline,
             items = items,
@@ -477,16 +507,13 @@ object HomeCatalogSettingsRepository {
 
     fun applyFromRemote(payload: SyncHomeCatalogPayload) {
         ensureLoaded()
+        showCatalogType = payload.showCatalogType
         hideUnreleasedContent = payload.hideUnreleasedContent
         hideCatalogUnderline = payload.hideCatalogUnderline
         if (payload.items.isNotEmpty()) {
             val existingHeroState = preferences.mapValues { it.value.heroSourceEnabled }
-            preferences = payload.items.associate { item ->
-                val key = if (item.isCollection) {
-                    "collection_${item.collectionId}"
-                } else {
-                    "${item.addonId}:${item.type}:${item.catalogId}"
-                }
+            val remotePreferences = payload.items.associate { item ->
+                val key = item.preferenceKey()
                 key to StoredHomeCatalogPreference(
                     key = key,
                     customTitle = item.customTitle,
@@ -494,7 +521,14 @@ object HomeCatalogSettingsRepository {
                     heroSourceEnabled = existingHeroState[key] ?: true,
                     order = item.order,
                 )
-            }.toMutableMap()
+            }
+            val remoteKeys = remotePreferences.keys
+            val knownKeys = knownPreferenceKeys()
+            val preservedPreferences = preferences.filterKeys { key ->
+                key !in remoteKeys && (key in knownKeys || key.requiresExplicitSyncKey())
+            }
+            preferences = (preservedPreferences + remotePreferences).toMutableMap()
+            normalizePreferences()
         }
         hasLoaded = true
         publish()
@@ -532,6 +566,43 @@ object HomeCatalogSettingsRepository {
             preferences[itemKey] = current.copy(order = index)
         }
     }
+
+    private fun defaultPreferenceForMissingKey(key: String): StoredHomeCatalogPreference? {
+        val isCollection = collectionDefinitions.any { it.key == key }
+        val isCatalog = definitions.any { it.key == key }
+        if (!isCollection && !isCatalog) return null
+
+        return StoredHomeCatalogPreference(
+            key = key,
+            enabled = true,
+            heroSourceEnabled = isCatalog &&
+                selectedHeroSourceCount(excludingKey = key) < HERO_SOURCE_SELECTION_LIMIT,
+            order = _uiState.value.items.firstOrNull { it.key == key }?.order
+                ?: ((preferences.values.maxOfOrNull { it.order } ?: -1) + 1),
+        )
+    }
+
+    private fun knownPreferenceKeys(): Set<String> =
+        definitions.mapTo(mutableSetOf()) { it.key }.also { keys ->
+            keys.addAll(collectionDefinitions.map { it.key })
+        }
+
+    private fun HomeCatalogDefinition.addonIdForSync(): String {
+        val suffix = ":$type:$catalogId"
+        return key.removeSuffix(suffix)
+    }
+
+    private fun SyncCatalogItem.preferenceKey(): String =
+        key.ifBlank {
+            if (isCollection) {
+                "collection_$collectionId"
+            } else {
+                "$addonId:$type:$catalogId"
+            }
+        }
+
+    private fun String.requiresExplicitSyncKey(): Boolean =
+        !startsWith("collection_") && count { it == ':' } > 2
 }
 
 internal data class CollectionCatalogDefinition(
@@ -542,8 +613,13 @@ internal data class CollectionCatalogDefinition(
     val isPinnedToTop: Boolean,
 )
 
+internal fun visibleCollectionsWithUniqueIds(collections: List<Collection>): List<Collection> =
+    collections
+        .filter { collection -> collection.folders.isNotEmpty() }
+        .distinctBy(Collection::id)
+
 internal fun buildCollectionDefinitions(collections: List<Collection>): List<CollectionCatalogDefinition> =
-    collections.filter { it.folders.isNotEmpty() }.map { collection ->
+    visibleCollectionsWithUniqueIds(collections).map { collection ->
         CollectionCatalogDefinition(
             key = "collection_${collection.id}",
             collectionId = collection.id,

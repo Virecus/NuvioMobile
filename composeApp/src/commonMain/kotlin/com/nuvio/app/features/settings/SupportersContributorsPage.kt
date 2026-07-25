@@ -27,7 +27,7 @@ import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.CircularProgressIndicator
+import com.nuvio.app.core.ui.NuvioLoadingIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
@@ -59,6 +59,7 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
+import kotlin.math.roundToInt
 import nuvio.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.getString
 import org.jetbrains.compose.resources.stringResource
@@ -208,8 +209,7 @@ private object SupportersContributorsRepository {
 
         val progress = donationsResponse.monthlyGoal
             ?.progressPercent
-            ?.toInt()
-            ?.coerceIn(0, 100)
+            ?.toDonationProgressPercent()
             ?.let { percent -> DonationProgress(progressPercent = percent) }
 
         SupportersResult(
@@ -239,6 +239,15 @@ private object SupportersContributorsRepository {
         val month = parts[1].toLongOrNull() ?: return Long.MIN_VALUE
         val day = parts[2].toLongOrNull() ?: return Long.MIN_VALUE
         return year * 10_000L + month * 100L + day
+    }
+
+    private fun Double.toDonationProgressPercent(): Int? {
+        if (isNaN()) return null
+        return when {
+            this >= 100.0 -> 100
+            this <= 0.0 -> 0
+            else -> roundToInt().coerceIn(0, 99)
+        }
     }
 }
 
@@ -428,10 +437,9 @@ private fun SupportersContributorsBody(
 
     selectedContributor?.let { contributor ->
         val supportUrl = contributorSupportLink(contributor.login)
-        val contributionSummary = contributorContributionSummary(contributor)
         CommunityDetailsDialog(
             title = contributor.login,
-            subtitle = contributionSummary,
+            subtitle = null,
             onDismiss = { selectedContributor = null },
             primaryActionLabel = if (contributor.profileUrl != null) {
                 stringResource(Res.string.community_open_github)
@@ -455,11 +463,6 @@ private fun SupportersContributorsBody(
                     modifier = Modifier.weight(1f),
                     verticalArrangement = Arrangement.spacedBy(6.dp),
                 ) {
-                    Text(
-                        text = contributionSummary,
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurface,
-                    )
                     Text(
                         text = contributor.profileUrl ?: stringResource(Res.string.community_github_profile_unavailable),
                         style = MaterialTheme.typography.bodySmall,
@@ -630,13 +633,27 @@ private fun DonationProgressSection(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        Text(
-            text = stringResource(Res.string.community_donation_progress_title),
-            style = MaterialTheme.typography.titleSmall,
-            color = MaterialTheme.colorScheme.onSurface,
-            fontWeight = FontWeight.SemiBold,
+        Row(
             modifier = Modifier.fillMaxWidth(),
-        )
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Text(
+                text = stringResource(Res.string.community_donation_progress_title),
+                style = MaterialTheme.typography.titleSmall,
+                color = MaterialTheme.colorScheme.onSurface,
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier.weight(1f),
+            )
+            if (progress != null && errorMessage == null) {
+                Text(
+                    text = "$percent%",
+                    style = MaterialTheme.typography.titleSmall,
+                    color = MaterialTheme.colorScheme.primary,
+                    fontWeight = FontWeight.SemiBold,
+                )
+            }
+        }
 
         if (isLoading && progress == null) {
             LinearProgressIndicator(
@@ -701,13 +718,6 @@ private fun ContributorRow(
                 color = MaterialTheme.colorScheme.onSurface,
                 fontWeight = FontWeight.SemiBold,
                 maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
-            Text(
-                text = contributorContributionSummary(contributor),
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
             )
         }
@@ -835,7 +845,7 @@ private fun LoadingState(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        CircularProgressIndicator(strokeWidth = 2.dp)
+        NuvioLoadingIndicator()
         Text(
             text = label,
             style = MaterialTheme.typography.bodyMedium,
@@ -894,7 +904,7 @@ private fun ErrorState(
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 private fun CommunityDetailsDialog(
     title: String,
-    subtitle: String,
+    subtitle: String?,
     onDismiss: () -> Unit,
     primaryActionLabel: String?,
     onPrimaryAction: (() -> Unit)?,
@@ -919,11 +929,13 @@ private fun CommunityDetailsDialog(
                         color = MaterialTheme.colorScheme.onSurface,
                         fontWeight = FontWeight.SemiBold,
                     )
-                    Text(
-                        text = subtitle,
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
+                    subtitle?.takeIf(String::isNotBlank)?.let { text ->
+                        Text(
+                            text = text,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
                 }
 
                 content()
@@ -948,10 +960,6 @@ private fun CommunityDetailsDialog(
         }
     }
 }
-
-@Composable
-private fun contributorContributionSummary(contributor: CommunityContributor): String =
-    stringResource(Res.string.community_total_commits, contributor.totalContributions)
 
 private fun contributorSupportLink(login: String): String? = when (login.lowercase()) {
     "skoruppa" -> "https://ko-fi.com/skoruppa"

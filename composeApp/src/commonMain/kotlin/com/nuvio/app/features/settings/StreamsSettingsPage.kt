@@ -21,7 +21,7 @@ import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.Visibility
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
+import com.nuvio.app.core.ui.NuvioLoadingIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -128,6 +128,12 @@ internal fun LazyListScope.streamsSettingsContent(isTablet: Boolean) {
                 )
             }
         }
+
+        Spacer(
+            modifier = Modifier.height(
+                if (isTablet) NuvioTokens.Space.s18 else MaterialTheme.nuvio.spacing.listGap,
+            ),
+        )
 
         SettingsSection(
             title = stringResource(Res.string.settings_stream_display_section),
@@ -306,8 +312,7 @@ private fun BadgeUrlManagerDialog(
                     },
                 ) {
                     if (isImporting) {
-                        CircularProgressIndicator(
-                            strokeWidth = tokens.borders.medium,
+                        NuvioLoadingIndicator(
                             modifier = Modifier.size(tokens.icons.sm),
                             color = tokens.colors.onAccent,
                         )

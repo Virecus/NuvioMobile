@@ -99,6 +99,8 @@ internal fun PlayerScreenRuntime.BindPlayerRuntimeEffects() {
             return@LaunchedEffect
         }
         if (!P2pSettingsRepository.isVisible || !p2pSettingsUiState.p2pEnabled) {
+            p2pResolvedSourceUrl = null
+            P2pStreamingEngine.stopStream()
             return@LaunchedEffect
         }
 
@@ -142,6 +144,11 @@ internal fun PlayerScreenRuntime.BindPlayerRuntimeEffects() {
     LaunchedEffect(p2pStreamingState, activeTorrentInfoHash) {
         val state = p2pStreamingState
         if (activeTorrentInfoHash != null && state is P2pStreamingState.Error) {
+            p2pResolvedSourceUrl = null
+            playerController = null
+            playerControllerSourceUrl = null
+            playbackSnapshot = PlayerPlaybackSnapshot()
+            initialLoadCompleted = true
             errorMessage = getString(Res.string.player_error_torrent, state.message)
             controlsVisible = !playerControlsLocked
         }
@@ -162,6 +169,23 @@ internal fun PlayerScreenRuntime.BindPlayerRuntimeEffects() {
 
     LaunchedEffect(playerController, subtitleStyle) {
         playerController?.applySubtitleStyle(subtitleStyle)
+    }
+
+    LaunchedEffect(
+        playerController,
+        playerControllerSourceUrl,
+        activeSourceUrl,
+        title,
+        activeStreamTitle,
+        activeSeasonNumber,
+        activeEpisodeNumber,
+        activeEpisodeTitle,
+        poster,
+        background,
+    ) {
+        val controller = playerController ?: return@LaunchedEffect
+        if (playerControllerSourceUrl != activeSourceUrl) return@LaunchedEffect
+        controller.updateNowPlayingMetadata(buildNowPlayingInfo())
     }
 
     LaunchedEffect(activeSourceUrl, addonSubtitleFetchKey, playerSettingsUiState.addonSubtitleStartupMode) {
@@ -255,6 +279,7 @@ internal fun PlayerScreenRuntime.BindPlayerRuntimeEffects() {
 
     DisposableEffect(Unit) {
         onDispose {
+            playerController?.clearNowPlayingInfo()
             P2pStreamingEngine.shutdown()
             PlayerStreamsRepository.clearAll()
         }
@@ -468,6 +493,45 @@ private fun PlayerScreenRuntime.BindPlayerMetadataAndSkipEffects() {
         }
     }
 }
+
+private fun PlayerScreenRuntime.buildNowPlayingInfo(): PlayerNowPlayingInfo {
+    val isEpisode = activeSeasonNumber != null && activeEpisodeNumber != null
+    return PlayerNowPlayingInfo(
+        title = title.ifBlank { activeStreamTitle },
+        subtitle = buildNowPlayingSubtitle(
+            isEpisode = isEpisode,
+            seasonNumber = activeSeasonNumber,
+            episodeNumber = activeEpisodeNumber,
+            episodeTitle = activeEpisodeTitle,
+        ),
+        artworkUrl = firstNonBlankUrl(poster, background),
+    )
+}
+
+private fun buildNowPlayingSubtitle(
+    isEpisode: Boolean,
+    seasonNumber: Int?,
+    episodeNumber: Int?,
+    episodeTitle: String?,
+): String? {
+    if (!isEpisode) return null
+
+    val episodeParts = buildList {
+        if (seasonNumber != null && episodeNumber != null) {
+            add("S${seasonNumber}E${episodeNumber}")
+        }
+        episodeTitle?.takeIf { it.isNotBlank() }?.let { add(it) }
+    }
+
+    return when (episodeParts.size) {
+        0 -> null
+        1 -> episodeParts.first()
+        else -> "${episodeParts[0]} - ${episodeParts[1]}"
+    }
+}
+
+private fun firstNonBlankUrl(vararg values: String?): String? =
+    values.firstOrNull { !it.isNullOrBlank() }?.trim()
 
 internal fun PlayerScreenRuntime.removeFailedStreamFromCache() {
     val currentVideoId = activeVideoId ?: return

@@ -21,6 +21,8 @@ interface PlayerEngineController {
     fun applySubtitleStyle(style: SubtitleStyleState) {}
     fun setSubtitleDelayMs(delayMs: Int) {}
     fun configureIosVideoOutput(settings: PlayerSettingsUiState) {}
+    fun updateNowPlayingMetadata(info: PlayerNowPlayingInfo) {}
+    fun clearNowPlayingInfo() {}
 }
 
 internal fun sanitizePlaybackHeaders(headers: Map<String, String>?): Map<String, String> {
@@ -63,8 +65,11 @@ expect fun PlatformPlayerSurface(
     useYoutubeChunkedPlayback: Boolean = false,
     modifier: Modifier = Modifier,
     playWhenReady: Boolean = true,
+    initialPositionMs: Long? = null,
+    initialPositionRequestKey: String? = null,
     resizeMode: PlayerResizeMode = PlayerResizeMode.Fit,
     useNativeController: Boolean = false,
+    onInitialPositionHandled: (key: String, handled: Boolean) -> Unit = { _, _ -> },
     onControllerReady: (PlayerEngineController) -> Unit,
     onSnapshot: (PlayerPlaybackSnapshot) -> Unit,
     onError: (String?) -> Unit,
